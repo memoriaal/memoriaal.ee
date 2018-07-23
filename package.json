@@ -1,0 +1,21 @@
+{
+  "name": "memoriaal",
+  "version": "1.0.0",
+  "description": "Eesti Kommunismiohvrid 1940–1991",
+  "private": true,
+  "dependencies": {
+    "entu-ssg": "4.3.0"
+  },
+  "scripts": {
+    "build": "node ./node_modules/entu-ssg/build.js entu-ssg.yaml",
+    "start": "pushd ./build; python -m SimpleHTTPServer; popd"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/memoriaal/memoriaal.ee.git"
+  },
+  "bugs": {
+    "url": "https://github.com/memoriaal/memoriaal.ee/issues"
+  },
+  "homepage": "https://www.memoriaal.ee"
+}
