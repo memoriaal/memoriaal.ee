@@ -10,7 +10,7 @@ content:
 
             Otsingu akna kaudu saate tutvuda memoriaali andmebaasis oleva infoga kommunistliku terrori läbi kannatanud isikute kohta ning leiate juhised ohvrite nime leidmiseks nimetahvlitel.
     -
-        id: autorid 
+        id: autorid
         title: Memoriaali autorid 
         text: |
             Arhitektuur ja maastikuarhitektuur:
@@ -22,7 +22,7 @@ content:
             Graafiline disain: Martin Pedanik
             Ohvitseride mälestusmärgi tehniline lahendus: Margus Triibmann
     -
-        id: haldus 
+        id: haldus
         title: Memoriaali haldus 
         text: |
             Memoriaali andmebaasi haldab SA Eesti Mälu Instituut.
@@ -33,7 +33,7 @@ content:
             haldusega tegeleb Riigi Kinnisvara AS.
             [www.rkas.ee](https://www.rkas.ee)
     -
-        id: andmebaasi-haldus 
+        id: andmebaasi-haldus
         title: Memoriaali andmebaasi haldus 
         text: |
             Memoriaali andmebaas
