@@ -1,9 +1,9 @@
 block text
-    .row.h-100
-        h1.col-12= self.title
-        .col-12.h-100
+    .row
+        h1.col-12.mt-2= self.title
+        .col-12
             .row.mt-5
-                #text.col-4.py-3
+                #text.col-4.pt-3.pb-2
                     each c, idx in self.content
                         div(id=c.id, class={ 'd-none': idx > 0 })
                             +markdown(c.text)
