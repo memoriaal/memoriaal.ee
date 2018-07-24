@@ -29,9 +29,10 @@ html(lang=self.locale)
             ga('send', 'pageview');
 
 
-    body
-        include text.pug
-        include navigation.pug
+    body(style={ 'background-image': `url(${self.pictures[0]})` })
+        .container-fluid.h-100
+            include text.pug
+            include navigation.pug
 
         block script
 

@@ -1,8 +1,13 @@
 block text
-    #text(style={ 'background-image': `url(${self.pictures[0]})` })
-        h1= self.title
-        each c in self.content
-            div(id=c.id)
-                +markdown(c.text)
-        each c in self.content
-            a(href='#' + c.id)= c.title
+    .row.h-100
+        h1.col-12= self.title
+        .col-12.h-100
+            .row.mt-5
+                #text.col-4.py-3
+                    each c, idx in self.content
+                        div(id=c.id, class={ 'd-none': idx > 0 })
+                            +markdown(c.text)
+                if self.content.length > 1
+                    #text-links.col-4.ml-1.py-3
+                        each c in self.content
+                            a.d-block(href='#' + c.id)= c.title
