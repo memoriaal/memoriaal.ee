@@ -2,4 +2,5 @@ block navigation
     each n in self.navigation
         a(href=n.url)
             h2= n.title
+            img(src=n.picture, alt=n.title)
             p= n.text

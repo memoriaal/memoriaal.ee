@@ -1,4 +1,6 @@
 title: Memoriaali andmebaas
+pictures:
+    - /assets/images/bg/andmebaas.jpg
 content:
     -
         id: andmebaas
