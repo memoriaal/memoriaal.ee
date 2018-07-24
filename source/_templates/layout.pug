@@ -31,6 +31,11 @@ html(lang=self.locale)
 
     body(style={ 'background-image': `url(${self.pictures[0]})` })
         .container-fluid
+            .row
+                if self.title !== self.siteTitle
+                    h2.col-12.mt-3.mb-0= self.siteTitle
+                h1.col-12.mt-4= self.title
+
             include text.pug
             include navigation.pug
 
