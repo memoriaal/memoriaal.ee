@@ -1,0 +1,7 @@
+block text
+    h1= self.title
+    each c in self.content
+        div(id=c.id)
+            +markdown(c.text)
+    each c in self.content
+        a(href='#' + c.id)= c.title

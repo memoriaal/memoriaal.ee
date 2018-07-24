@@ -1,0 +1,32 @@
+title: Memoriaali andmebaas
+content:
+    -
+        id: andmebaas
+        title: Eesti kommunismiohvrite memoriaali andmebaas
+        text: |
+            Andmebaasi kantakse aastatel 1940-1991 Nõukogude Liidu okupatsioonivõimu poolt kohtuväliselt represseeritud või alusetult süüdimõistetud ning vastavalt Eesti Vabariigi seadusele kohtuväliselt represseeritud ja alusetult süüdimõistetud isikute rehabiliteerimise kohta rehabiliteerimisele kuulunud isikud. Lisaks sisaldab andmebaas: vahetu kommunistliku terrori käigus hukkunud isikuid; kannatanuid, kes vangistusest või asumiselt vabanesid; küüditamisele kuulunuid, kuid keda ei küüditatud ja neid, kelle saatus on teadmata.
+
+    -
+        id: nimekiri
+        title: Hukkunute nimekiri
+        text: |
+            Memoriaali teekonna mälestusseinale kantakse nende andmebaasis sisalduvate Eesti inimeste nimed koos sünni- ja surmaajaga, kes on terrori käigus mõrvatud, vangistuses või asumisel surnud või on teadaolevalt mõrvatud Nõukogude võimuesindajate vahetu isikuvastase ründe tagajärjel. Mälestusseinale kantute nimekirjaga tutvumiseks kliki pildil. Edasise töö käigus selguvad hukkunud kantakse jooksvalt elektroonilisse andmebaasi. Perioodiliselt lisatakse nende nimed lisatahvlitel memoriaali teekonna mälestusseinale.
+
+    -
+        id: kontroll-ja-taiendamine
+        title: Andmete kontroll ja täiendamine
+        text: |
+            Palume kontrollida Teile teadaolevate represseeritute nimesid ning kui vaja, meile paranduste ja täienduste osas tagasisidet anda. Teretulnud on ettepanekud ka juhul, kui kahe nimekuju puhul on tegemist tõenäoliselt sama isikuga ja tekib kahtlus, et erinevad isikud oleks tarvis ühendada.
+
+            Oleme paranduste ja täienduste eest väga tänulikud. Nendest on juba olnud suur abi hukkunute nimestiku koostamisel. Aktsepteeritud parandused viime sisse jooksvalt, seega täieneb ja muutub nimekiri pidevalt.
+
+    -
+        id: andmebaasis-kasitlemata-isikud
+        title: Kommunismiohvrite andmebaasis käsitlemata isikud
+        text: |
+            - 1940/1941 metsavennana või Omakaitse liikmena lahingutes Nõukogude võimuga langenud võitlejad;
+            - sõjaohvritena lahingutegevuse tagajärjel hukkunud;
+            - 1941\. aasta suvel Eestist evakueeritavatena Nõukogude tagalasse lahkunud ja seal surnud isikud, kelle suhtes ei kohaldatud repressioone;
+            - 1941\. aasta suvel Punaarmeesse mobiliseeritud, kes surid Nõukogude tagalas tööpataljonides haiguste, ebainimlike elamistingimuste või selgelt tuvastamata asjaolude tõttu. Ohvritena käsitletakse mobiliseerituid, kes tööpataljonis olles poliitilistel põhjustel arreteeriti ning kohtu alla anti;
+            - sõja kestel mistahes relvaüksuste koosseisus lahingutegevuses langenud või muus sõjaolukorras surnud isikuid;
+            - kommunistliku terrori ohvrid, kes olid ise osalenud võitlustes Nõukogude hävituspataljonide ridades või astunud kommunistliku partei liikmeks enne 1954. aastat.
