@@ -1,6 +1,5 @@
 CACHE MANIFEST
-
-# Version 3
+# Version 4
 
 /index.html
 /andmebaas/index.html
@@ -33,3 +32,6 @@ CACHE MANIFEST
 /assets/images/nav/memoriaal.jpg
 /assets/images/nav/ohvitserid.jpg
 /assets/images/nav/sein.jpg
+
+NETWORK
+*

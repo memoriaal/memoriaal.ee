@@ -12,8 +12,7 @@ html(lang=self.locale, manifest='/cache.appcache')
         meta(name='viewport', content='width=device-width, initial-scale=1')
         meta(property='og:url', content='https://www.memoriaal.ee' + self.path)
         meta(property='og:title', content=self.title ? self.title + ' · ' + self.siteTitle : self.siteTitle)
-        meta(property='og:image', content=self.image)
-        meta(property='og:description', content=self.description)
+        meta(property='og:image', content=self.pictures[0])
 
         title= self.title ? self.title + ' · ' + self.siteTitle : self.siteTitle
 
