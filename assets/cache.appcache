@@ -1,6 +1,7 @@
 CACHE MANIFEST
 # Version 4
 
+CACHE:
 /index.html
 /andmebaas/index.html
 /koduaed/index.html
@@ -33,5 +34,5 @@ CACHE MANIFEST
 /assets/images/nav/ohvitserid.jpg
 /assets/images/nav/sein.jpg
 
-NETWORK
+NETWORK:
 *
