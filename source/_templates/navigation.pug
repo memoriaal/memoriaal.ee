@@ -1,7 +1,7 @@
 block navigation
-    #navigation.row.fixed-bottom
+    #navigation.row.mt-5.fixed-bottom
         each n in self.navigation
-            a.col-2.py-3(href=n.url, class={ 'active': self.path + '/' === n.url })
+            a.col-12.col-md-4.col-xl-2.py-3(href=n.url, class={ 'active': self.path + '/' === n.url })
                 h3.nav-title.col-12.my-0= n.title
                 img.col-12.my-2.w-100(src=n.picture, alt=n.title)
                 p.col-12.my-0= n.text

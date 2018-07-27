@@ -28,17 +28,18 @@ html(lang=self.locale, manifest='/cache.appcache')
             ga('send', 'pageview');
 
 
-    body(style={ 'background-image': `url(${self.pictures[0]})` })
-        .container-fluid
-            .row
-                if self.title !== self.siteTitle
-                    h2.col-12.mt-3.mb-0
-                        a(href=self.root)= self.siteTitle
-                h1.col-12.mt-4
-                    a(href=self.path)= self.title
+    body
+        #content
+            .container-fluid(style={ 'background-image': `url(${self.pictures[0]})` })
+                .row
+                    if self.title !== self.siteTitle
+                        h2.col-12.mt-3.mb-0
+                            a(href=self.root)= self.siteTitle
+                    h1.col-12.mt-4
+                        a(href=self.path)= self.title
 
-            include text.pug
-            include navigation.pug
+                include text.pug
+                include navigation.pug
 
         block script
 

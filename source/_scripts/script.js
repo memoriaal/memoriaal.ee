@@ -1,4 +1,6 @@
 function load () {
+    document.getElementById('content').style['padding-bottom'] = document.getElementById('navigation').offsetHeight + 'px'
+
     var findClass = document.getElementsByClassName('nav-title')
     var tallest = 0
 

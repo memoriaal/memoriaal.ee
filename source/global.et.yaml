@@ -32,6 +32,8 @@ navigation:
         title: Memoriaali andmebaas
         text: Memoriaali andmebaasi haldab SA Eesti Mälu Instituut.
 search:
-    title: Nimeline otsing kommunismiohvrite andmebaasis
-    placeholder: sisesta nimi
+    text: |
+        ### Nimeline otsing kommunismiohvrite andmebaasis
+        Otsingu akna kaudu saate tutvuda memoriaali andmebaasis oleva infoga kommunistliku terrori läbi kannatanud isikute kohta ning leiate juhised ohvrite nime leidmiseks nimetahvlitel.
+    placeholder: sisesta nimi →
     button: Otsi
