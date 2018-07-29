@@ -20,5 +20,5 @@
                     .col.py-3
                         +markdown(self.search.text)
                         form.form(action=self.search.url, method='GET')
-                            input.col-8(type='search', name='q', placeholder=self.search.placeholder)
+                            input.col-8(type='search', name='q', placeholder=self.search.placeholder, autofocus)
                             button.col-4= self.search.button
