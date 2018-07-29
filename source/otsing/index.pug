@@ -2,7 +2,7 @@ extends /_templates/layout.pug
 
 
 block content
-    #search.col-4.pt-3.pb-2.mr-1
+    #search.col-xs-12.col-sm-8.col-xl-4.pt-3.pb-2.mr-1
         h3= self.search.title
         form.form(action=self.search.url, method='GET')
             input.col-8(type='search', name='q', placeholder=self.search.placeholder, autofocus)
