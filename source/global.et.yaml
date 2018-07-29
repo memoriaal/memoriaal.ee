@@ -39,3 +39,12 @@ search:
         Otsingu akna kaudu saate tutvuda memoriaali andmebaasis oleva infoga kommunistliku terrori läbi kannatanud isikute kohta ning leiate juhised ohvrite nime leidmiseks nimetahvlitel.
     placeholder: sisesta nimi →
     button: Otsi
+    result:
+        count: kirjet
+        lastname: p
+        firstname: e
+        id: id
+        father: isa
+        mother: ema
+        born: sünd
+        dead: surm

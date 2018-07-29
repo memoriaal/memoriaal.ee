@@ -7,20 +7,65 @@ block content
         form.form(action=self.search.url, method='GET')
             input.col-8(type='search', name='q', placeholder=self.search.placeholder, autofocus)
             button.col-4= self.search.button
+        p#search-count.mb-3
+        #search-results
 
 
 block script
     script.
         $(function () {
             var qs = function (key) {
-                key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars
-                var match = location.search.match(new RegExp("[?&]"+key+"=([^&]+)(&|$)"));
-                return match && decodeURIComponent(match[1].replace(/\+/g, " "));
+                key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&")
+                var match = location.search.match(new RegExp("[?&]"+key+"=([^&]+)(&|$)"))
+                return match && decodeURIComponent(match[1].replace(/\+/g, " "))
             }
 
             var query = qs('q')
 
             if (query) {
                 $('input[name="q"]').val(query)
+
+                $.ajax('https://94abc9318c712977e8c684628aa5ea0f.us-east-1.aws.found.io:9243/persons/_search?size=50&from=0', {
+                    data : JSON.stringify({ query: { match: { _all: query } } }),
+                    contentType : 'application/json',
+                    type : 'POST',
+                    cache: false,
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('Authorization', 'Basic cmVhZGVyOnJlYWRlcg==')
+                    },
+                    success: function (data) {
+                        $('#search-count').html(data.hits.total + ' #{self.search.result.count}')
+
+                        for (var i = 0; i < data.hits.hits.length; i++) {
+                            var text = []
+                            var p = data.hits.hits[i]._source
+
+                            text.push('<div id="' + p.id + '" class="search-result pt-2 pb-4">')
+                            text.push('<div class="row">')
+                            text.push('<div class="col-4">')
+                            text.push('<p class="mb-0">#{self.search.result.lastname}:' + p.perenimi + '</p>')
+                            text.push('<p class="mb-0">#{self.search.result.firstname}:' + p.eesnimi + '</p>')
+                            text.push('<p class="mb-0">#{self.search.result.father}:' + p.isanimi + '</p>')
+                            text.push('<p class="mb-0">#{self.search.result.mother}:' + p.emanimi + '</p>')
+                            text.push('<p class="mb-0">#{self.search.result.born}:' + p.sünd + '</p>')
+                            //- text.push('<p class="mb-0">#{self.search.result.dead}:' + p.surm + '</p>')
+                            //- text.push('<p class="mb-0">#{self.search.result.id}:' + p.id + '</p>')
+                            text.push('</div>')
+
+                            text.push('<div class="search-result-info col-8">')
+                            for (var ii = 0; ii < p.kirjed.length; ii++) {
+                                text.push('<p>'+ p.kirjed[ii].kirje + ' <span>' + p.kirjed[ii].allikasTxt + '<span></p>')
+                            }
+                            text.push('</div>')
+                            text.push('</div>')
+                            text.push('</div>')
+
+                            $('#search-results').append(text.join(''))
+                        }
+                    },
+                    error: function( error) {
+                        console.log(error)
+                    }
+                })
             }
         })
