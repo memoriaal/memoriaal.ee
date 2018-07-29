@@ -1,8 +1,8 @@
-block navigation
-    #navigation.row.mt-5.fixed-bottom
+#navigation.container-fluid.fixed-bottom
+    .row
         each n in self.navigation
-            a.col-12.col-md-4.col-xl-2.py-3(href=n.url, class={ 'active': self.path + '/' === n.url })
-                h3.nav-title.col-12.my-0= n.title
-                img.col-12.my-2.w-100(src=n.picture, alt=n.title)
-                p.col-12.my-0= n.text
-                p.col-12.mt-2.mb-0 →
+            a.col-xs-12.col-sm-6.col-md-4.col-xl-2.py-3(href=n.url, class={ 'active': self.path + '/' === n.url })
+                h3.nav-title.my-0= n.title
+                img.my-2.w-100(src=n.picture, alt=n.title)
+                p.my-0= n.text
+                p.mt-2.mb-0 →

@@ -6,7 +6,8 @@ mixin markdown(text)
 
 
 doctype html
-html(lang=self.locale, manifest='/cache.appcache')
+//- html(lang=self.locale, manifest='/cache.appcache')
+html(lang=self.locale)
     head
         meta(charset='utf-8')
         meta(name='viewport', content='width=device-width, initial-scale=1')
@@ -19,28 +20,15 @@ html(lang=self.locale, manifest='/cache.appcache')
         link(href='/assets/css/bootstrap.min.css', rel='stylesheet')
         link(href='/style.css', rel='stylesheet')
 
-        script.
+        //- script.
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
             })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
             //- ga('create', 'UA-XXXXXX-YY', 'auto');
             ga('send', 'pageview');
-
-
     body
-        #content
-            .container-fluid(style={ 'background-image': `url(${self.pictures[0]})` })
-                .row
-                    if self.title !== self.siteTitle
-                        h2.col-12.mt-3.mb-0
-                            a(href=self.root)= self.siteTitle
-                    h1.col-12.mt-4
-                        a(href=self.path)= self.title
-
-                include text.pug
-                include navigation.pug
-
-        block script
+        include text.pug
+        include navigation.pug
 
         script(src='/script.js')

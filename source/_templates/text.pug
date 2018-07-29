@@ -1,14 +1,20 @@
-block text
+#text.container-fluid(style={ 'background-image': `url(${self.pictures[0]})` })
+    .row
+        if self.title !== self.siteTitle
+            h2.col-12.mt-3.mb-0
+                a(href=self.root)= self.siteTitle
+        h1.col-12.mt-4
+            a(href=self.path)= self.title
     .row.mt-5
-        #text.col-4.pt-3.pb-2.mr-1
+        #text-text.col-4.pt-3.pb-2.mr-1
             each c, idx in self.content
                 .text-block.d-none(id=c.id)
                     +markdown(c.text)
         if self.content.length > 1
-            #text-links.col-4.py-3
+            #text-links.col-5.py-3
                 each c in self.content
                     a.text-link.d-block(href='#' + c.id)= c.title
-        .col-2
+        .col.col-md-4.col-lg-3.col-xl-2
             #text-search.row
                 .col.py-3
                     +markdown(self.search.text)
