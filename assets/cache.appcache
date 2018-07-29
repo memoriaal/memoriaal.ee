@@ -11,15 +11,13 @@ CACHE:
 /sein/index.html
 /otsing/index.html
 
-/style.css
-/style.css.map
-/script.js
-/script.js.map
-
-/assets/css/bootstrap.min.css.map
-/assets/css/bootstrap.min.css
-
 https://cloud.typography.com/6935656/6118392/css/fonts.css
+/assets/css/bootstrap.min.css
+/style.css
+
+/assets/js/jquery-3.3.1.min.js
+/script.js
+
 
 /assets/images/bg/andmebaas.jpg
 /assets/images/bg/esileht.jpg

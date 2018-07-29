@@ -43,18 +43,22 @@ block script
                             text.push('<div id="' + p.id + '" class="search-result pt-2 pb-4">')
                             text.push('<div class="row">')
                             text.push('<div class="col-4">')
-                            text.push('<p class="mb-0">#{self.search.result.lastname}:' + p.perenimi + '</p>')
-                            text.push('<p class="mb-0">#{self.search.result.firstname}:' + p.eesnimi + '</p>')
-                            text.push('<p class="mb-0">#{self.search.result.father}:' + p.isanimi + '</p>')
-                            text.push('<p class="mb-0">#{self.search.result.mother}:' + p.emanimi + '</p>')
-                            text.push('<p class="mb-0">#{self.search.result.born}:' + p.sünd + '</p>')
-                            //- text.push('<p class="mb-0">#{self.search.result.dead}:' + p.surm + '</p>')
-                            //- text.push('<p class="mb-0">#{self.search.result.id}:' + p.id + '</p>')
+                            if (p.perenimi) { text.push('<p class="mb-0">#{self.search.result.lastname}:' + p.perenimi + '</p>') }
+                            if (p.eesnimi) { text.push('<p class="mb-0">#{self.search.result.firstname}:' + p.eesnimi + '</p>') }
+                            if (p.isanimi) { text.push('<p class="mb-0">#{self.search.result.father}:' + p.isanimi + '</p>') }
+                            if (p.emanimi) { text.push('<p class="mb-0">#{self.search.result.mother}:' + p.emanimi + '</p>') }
+                            if (p.sünd) { text.push('<p class="mb-0">#{self.search.result.born}:' + p.sünd + '</p>') }
+                            if (p.surm) { text.push('<p class="mb-0">#{self.search.result.dead}:' + p.surm + '</p>') }
+                            if (p.id) { text.push('<p class="mb-0">#{self.search.result.id}:' + p.id + '</p>') }
                             text.push('</div>')
 
                             text.push('<div class="search-result-info col-8">')
                             for (var ii = 0; ii < p.kirjed.length; ii++) {
-                                text.push('<p>'+ p.kirjed[ii].kirje + ' <span>' + p.kirjed[ii].allikasTxt + '<span></p>')
+                                text.push('<p class="mb-1">')
+                                if (p.kirjed[ii].kirjekood) { text.push(p.kirjed[ii].kirjekood + ', ') }
+                                if (p.kirjed[ii].kirje) { text.push(p.kirjed[ii].kirje) }
+                                if (p.kirjed[ii].allikasTxt) { text.push(' <span>' + p.kirjed[ii].allikasTxt + '<span>') }
+                                text.push('</p>')
                             }
                             text.push('</div>')
                             text.push('</div>')
