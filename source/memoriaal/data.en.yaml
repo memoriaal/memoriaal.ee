@@ -1,0 +1,41 @@
+title: The Memorial
+pictures:
+    - /assets/images/bg/memoriaal.jpg
+content:
+    -
+        text: |
+            The memorial to victims of communism is dedicated to all Estonian people who suffered under the terror inflicted by the Soviet Union. The communist terror regime was established with the occupation of Estonia on 17 June 1940 and ended with the restoration of Estonia’s independence on 20 August 1991. As a consequence of this, Estonia lost one of every five persons from its population of slightly over one million, of whom more than 75,000 were murdered, imprisoned or deported.
+
+            The Memorial has two parts – the Journey with the name plaques of the victims, and the symbolic Home Garden with informative texts and location stones marking sites of terror. A monument to Estonian military officers who fell victim to communist terror is part of the Memorial.
+    -
+        id: autorid
+        title: Authors of the Memorial 
+        text: |
+            Architecture and landscape architecture:
+            Authors: Kalle Vellevoog, Jaan Tiidemann, Tiiu Truus
+            Team: Martin Prommik, Kersti Nigols, Liis Voksepp, Annika Liivo, Marianna Zvereva
+
+            Sculpture: Kirke Kangro
+            Databases: Mihkel Putrinš
+            Digital output: Argo Roots
+            Greenery: Lidia Zarudnaja
+            Graphic design: Martin Pedanik
+            Technical design for the Officers’ Monument: Margus Triibmann
+    -
+        id: haldus
+        title: Management of the Memorial 
+        text: |
+            The Estonian Institute of Historical Memory Foundation manages and administers the Memorial’s database.
+            Contact: Suur-Ameerika 12, Tallinn 10119;
+            Tel. +372 6484962
+            <memoriaal@mnemosyne.ee>
+
+            Riigi Kinnisvara AS handles the maintenance of the Memorial.
+            [www.rkas.ee](https://www.rkas.ee)
+    -
+        id: andmebaasi-haldus
+        title: Management of the Memorial's Database 
+        text: |
+            The Memorial's Database
+            The Estonian Institute of Historical Memory Foundation manages and administers the Memorial’s database.
+            Kontakt: <memoriaal@mnemosyne.ee>
