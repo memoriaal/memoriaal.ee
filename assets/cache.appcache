@@ -8,8 +8,26 @@ CACHE:
 /kohakivid/index.html
 /memoriaal/index.html
 /ohvitserid/index.html
-/sein/index.html
 /otsing/index.html
+/sein/index.html
+
+/en/index.html
+/en/database/index.html
+/en/garden/index.html
+/en/stones/index.html
+/en/memorial/index.html
+/en/officers/index.html
+/en/search/index.html
+/en/wall/index.html
+
+/ru/index.html
+/ru/baza-dannyh/index.html
+/ru/sad/index.html
+/ru/kamni/index.html
+/ru/memorial/index.html
+/ru/oficery/index.html
+/ru/poisk/index.html
+/ru/stena/index.html
 
 https://cloud.typography.com/6935656/6118392/css/fonts.css
 /assets/css/bootstrap.min.css
