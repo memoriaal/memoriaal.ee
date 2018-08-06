@@ -1,38 +1,38 @@
-siteTitle: Eesti Kommunismiohvrid 1940–1991
+siteTitle: Жертвы коммунизмы в Эстонии 1940–1991
 root: /
 navigation:
     -
-        url: /memoriaal/
+        url: /ru/memorial/
         picture: /assets/images/nav/memoriaal.jpg
-        title: Memoriaal
+        title: Мемориал
         text: Kommunismiohvrite memoriaal on pühendatud kõigile Nõukogude Liidu terrori all kannatanud Eesti inimestele.
     -
-        url: /sein/
+        url: /ru/stena/
         picture: /assets/images/nav/sein.jpg
-        title: Teekonna mälestussein
+        title: Стена памяти Пути
         text: Memoriaali Teekonda palistavatel nimetahvlitel on enam kui 22 000 inimese nimed, kes kunagi koju tagasi ei pöördunud. Nad mõrvati või surid ebainimlike elutingimuste tõttu vangistuses või sundasumisel.
     -
-        url: /ohvitserid/
+        url: /ru/oficery/
         picture: /assets/images/nav/ohvitserid.jpg
-        title: Eesti kaadriohvitseride mälestusmärk
+        title: Памятник кадровым офицерам Эстонии
         text: Memoriaalis mälestatakse Eesti Vabariigi ohvitsere, kes võitlesid Vabadussõjas või teenisid kaitseväes, piirivalves või Kaitseliidus ning kes mõrvati sellepärast Nõukogude okupatsioonivõimude poolt või hukkusid vangistuses.
     -
-        url: /koduaed/
+        url: /ru/sad/
         picture: /assets/images/nav/koduaed.jpg
-        title: Koduaed
+        title: Сад
         text: Koduaed on koht, kus põimuvad unistused, mälestused ja koduigatsus. Koduaia sümboliteks on õunapuud ja mesilased.
     -
-        url: /kohakivid/
+        url: /ru/kamni/
         picture: /assets/images/nav/kohakivid.jpg
-        title: Kohakivid ja teabetekstid
+        title: Location Stones and Information Texts
         text: Kommunistliku terrori kurikuulsad kinnipidamis- ja hukkamiskohad on mälupaigad, mis sümboliseerivad uutele põlvkondadele esivanemate kannatusi.
     -
-        url: /andmebaas/
+        url: /ru/baza-dannyh/
         picture: /assets/images/nav/andmebaas.jpg
-        title: Memoriaali andmebaas
+        title: База данных Мемориала
         text: Memoriaali andmebaasi haldab SA Eesti Mälu Instituut.
 search:
-    url: /poisk/
+    url: /ru/poisk/
     text: |
         ### Nimeline otsing kommunismiohvrite andmebaasis
         Otsingu akna kaudu saate tutvuda memoriaali andmebaasis oleva infoga kommunistliku terrori läbi kannatanud isikute kohta ning leiate juhised ohvrite nime leidmiseks nimetahvlitel.
