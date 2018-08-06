@@ -23,7 +23,8 @@
             if self.content.length > 1
                 #text-links.col-5.py-3
                     each c in self.content
-                        a.text-link.d-block(href='#' + c.id)= c.title
+                        if c.id
+                            a.pb-2.text-link.d-block(href='#' + c.id)= c.title
             .col.col-md-4.col-lg-3.col-xl-2
                 #text-search.row
                     .col.py-3
