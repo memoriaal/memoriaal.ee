@@ -1,13 +1,28 @@
 $(function () {
     var windowResized = function () {
-        var tallest = 0
+        if ($(window).width() < 576) {
+            $('.nav-title').css('height', '')
+        } else {
+            var tallest = 0
 
-        $('.nav-title').css('height', '')
-        $('.nav-title').each(function () {
-            var eleHeight = $(this).outerHeight(true)
-            tallest = eleHeight > tallest ? eleHeight : tallest
-        })
-        $('.nav-title').css('height', tallest + 'px')
+            $('.nav-title').css('height', '')
+            $('.nav-title').each(function () {
+                var eleHeight = $(this).outerHeight(true)
+                tallest = eleHeight > tallest ? eleHeight : tallest
+            })
+
+            $('.nav-title').css('height', tallest + 'px')
+        }
+
+        if ($(window).width() < 768) {
+            $('#navigation').removeClass('fixed-bottom')
+            $('#text').css('min-height', 'inherit')
+            $('#text').css('padding-bottom', '')
+        } else {
+            $('#navigation').addClass('fixed-bottom')
+            $('#text').css('min-height', '100%')
+            $('#text').css('padding-bottom', $('#navigation').outerHeight(true) + 'px')
+        }
 
         $('#navigation img').addClass('d-none')
         $('#navigation p').addClass('d-none')
@@ -26,16 +41,6 @@ $(function () {
             } else if ($(window).height() > 800) {
                 $('#navigation img').removeClass('d-none')
             }
-        }
-
-        if ($(window).width() < 768) {
-            $('#navigation').removeClass('fixed-bottom')
-            $('#text').css('min-height', 'inherit')
-            $('#text').css('padding-bottom', '')
-        } else {
-            $('#navigation').addClass('fixed-bottom')
-            $('#text').css('min-height', '100%')
-            $('#text').css('padding-bottom', $('#navigation').outerHeight(true) + 'px')
         }
     }
 
