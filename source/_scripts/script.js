@@ -1,5 +1,5 @@
 $(function () {
-    $('#text').css('padding-bottom', $('#navigation').outerHeight(true) + 'px')
+    $('#text').css('padding-bottom', $('#navigation').outerHeight(true) * 2 + 'px')
 
     var tallest = 0
     $('.nav-title').each(function () {
