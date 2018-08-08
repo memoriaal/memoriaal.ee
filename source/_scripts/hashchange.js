@@ -6,8 +6,6 @@ $(function () {
 
             $('.text-block').addClass('d-none')
             $(location.hash).removeClass('d-none')
-        } else {
-            $('.text-block').first().removeClass('d-none')
         }
     })
 

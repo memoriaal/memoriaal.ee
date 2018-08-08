@@ -16,28 +16,27 @@
         text-transform uppercase
 
 #text-text
-#text-links
     color rgb(199, 199, 199)
     background rgba(20, 20, 20, .7)
+    font-weight 500
     font-size 12pt
     line-height 14pt
-
-#text-text
-    font-weight 500
 
     img
         background rgba(255, 255, 255, .5)
 
-#text-links
-    font-weight 700
-    text-transform uppercase
+    a.text-link
+        text-transform uppercase
+        font-weight 700
 
-    a
         &.active
             color rgb(218, 56, 50)
 
             &:hover
                 text-decoration none
+
+    p:last-of-type
+        margin 0
 
 #text-search
     background rgb(6, 6, 6)

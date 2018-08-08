@@ -28,7 +28,7 @@ $(function () {
             }
         }
 
-        $('#text').css('padding-bottom', $('#navigation').outerHeight(true) + 4 + 'px')
+        $('#text').css('padding-bottom', $('#navigation').outerHeight(true) + 'px')
     }
 
     windowResized()
