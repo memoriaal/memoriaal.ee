@@ -16,14 +16,14 @@ $(function () {
             if ($(window).height() > 800) {
                 $('#navigation p').removeClass('d-none')
                 $('#navigation img').removeClass('d-none')
-            } else if ($(window).height() > 700) {
+            } else if ($(window).height() > 600) {
                 $('#navigation img').removeClass('d-none')
             }
         } else {
             if ($(window).height() > 1200) {
                 $('#navigation p').removeClass('d-none')
                 $('#navigation img').removeClass('d-none')
-            } else if ($(window).height() > 900) {
+            } else if ($(window).height() > 800) {
                 $('#navigation img').removeClass('d-none')
             }
         }
