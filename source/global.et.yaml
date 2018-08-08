@@ -10,12 +10,12 @@ navigation:
         url: /sein/
         picture: /assets/images/nav/sein.jpg
         title: Teekonna mälestussein
-        text: Memoriaali Teekonda palistavatel nimetahvlitel on enam kui 22 000 inimese nimed, kes kunagi koju tagasi ei pöördunud. Nad mõrvati või surid ebainimlike elutingimuste tõttu vangistuses või sundasumisel.
+        text: Teekonda palistavatel nimetahvlitel on enam kui 22 000 inimese nimed, kes kunagi koju tagasi ei pöördunud.
     -
         url: /ohvitserid/
         picture: /assets/images/nav/ohvitserid.jpg
         title: Eesti kaadriohvitseride mälestusmärk
-        text: Memoriaalis mälestatakse Eesti Vabariigi ohvitsere, kes võitlesid Vabadussõjas või teenisid kaitseväes, piirivalves või Kaitseliidus ning kes mõrvati sellepärast Nõukogude okupatsioonivõimude poolt või hukkusid vangistuses.
+        text: Memoriaalis mälestatakse Nõukogude okupatsioonivõimude poolt mõrvatud või vangistuses hukkunud Eesti Vabariigi ohvitsere.
     -
         url: /koduaed/
         picture: /assets/images/nav/koduaed.jpg
