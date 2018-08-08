@@ -1,13 +1,4 @@
 $(function () {
-    $('#text').css('padding-bottom', $('#navigation').outerHeight(true) * 2 + 'px')
-
-    var tallest = 0
-    $('.nav-title').each(function () {
-        var eleHeight = $(this).outerHeight(true)
-        tallest = eleHeight > tallest ? eleHeight : tallest
-    })
-    $('.nav-title').css('height', tallest + 'px')
-
     $(window).on('hashchange', function () {
         if (location.hash) {
             $('.text-link').removeClass('active')
@@ -19,5 +10,6 @@ $(function () {
             $('.text-block').first().removeClass('d-none')
         }
     })
+
     $(window).trigger('hashchange')
 })

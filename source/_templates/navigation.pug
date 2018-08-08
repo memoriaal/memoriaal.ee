@@ -3,5 +3,5 @@
         each n in self.navigation
             a.col-xs-12.col-sm-6.col-md-4.col-xl-2.py-3(href=n.url, class={ 'active': self.path + '/' === n.url })
                 h3.nav-title.my-0= n.title
-                img.my-2.w-100(src=n.picture, alt=n.title)
-                p.my-0= n.text
+                img.mt-2.w-100.d-none(src=n.picture, alt=n.title)
+                p.mt-2.mb-0.d-none= n.text
