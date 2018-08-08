@@ -28,7 +28,15 @@ $(function () {
             }
         }
 
-        $('#text').css('padding-bottom', $('#navigation').outerHeight(true) + 'px')
+        if ($(window).width() < 768) {
+            $('#navigation').removeClass('fixed-bottom')
+            $('#text').css('min-height', 'inherit')
+            $('#text').css('padding-bottom', '')
+        } else {
+            $('#navigation').addClass('fixed-bottom')
+            $('#text').css('min-height', '100%')
+            $('#text').css('padding-bottom', $('#navigation').outerHeight(true) + 'px')
+        }
     }
 
     windowResized()
