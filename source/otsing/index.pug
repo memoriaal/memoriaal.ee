@@ -4,7 +4,7 @@ extends /_templates/layout.pug
 block content
     #search.col-12.col-md-8.col-xl-4.pt-3.pb-2.mr-1
         h3= self.result.title
-        form.form(action=self.search.url, method='GET')
+        form.form.form-inline(action=self.search.url, method='GET')
             input.col-8(type='search', name='q', placeholder=self.search.placeholder)
             button.col-4= self.search.button
         p#search-count.mb-3
