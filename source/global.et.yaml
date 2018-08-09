@@ -1,5 +1,9 @@
 siteTitle: Eesti Kommunismiohvrid 1940–1991
 root: /
+language:
+    et: eesti
+    en: english
+    ru: русский
 navigation:
     -
         url: /memoriaal/
