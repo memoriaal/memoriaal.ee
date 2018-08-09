@@ -1,5 +1,10 @@
 $(function () {
     var windowResized = function () {
+        $('#text-text').css('height', '')
+        if ($('#text-text').outerHeight(true) < $('#text-search').outerHeight(true)) {
+            $('#text-text').css('height', $('#text-search').outerHeight(true) + 'px')
+        }
+
         if ($(window).width() < 576) {
             $('.nav-title').css('height', '')
         } else {
