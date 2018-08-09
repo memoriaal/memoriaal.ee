@@ -9,17 +9,17 @@ navigation:
         url: /en/memorial/
         picture: /assets/images/nav/memoriaal.jpg
         title: The Memorial
-        text: Kommunismiohvrite memoriaal on pühendatud kõigile Nõukogude Liidu terrori all kannatanud Eesti inimestele.
+        text: The memorial to victims of communism is dedicated to all Estonian people who suffered under the terror inflicted by the Soviet Union.
     -
         url: /en/wall/
         picture: /assets/images/nav/sein.jpg
         title: Wall of Remembrance of the Journey
-        text: Memoriaali Teekonda palistavatel nimetahvlitel on enam kui 22 000 inimese nimed, kes kunagi koju tagasi ei pöördunud. Nad mõrvati või surid ebainimlike elutingimuste tõttu vangistuses või sundasumisel.
+        text: Teekonda palistavatel nimetahvlitel on enam kui 22 000 inimese nimed, kes kunagi koju tagasi ei pöördunud.
     -
         url: /en/officers/
         picture: /assets/images/nav/ohvitserid.jpg
         title: Monument to Estonian Regular Officers
-        text: Memoriaalis mälestatakse Eesti Vabariigi ohvitsere, kes võitlesid Vabadussõjas või teenisid kaitseväes, piirivalves või Kaitseliidus ning kes mõrvati sellepärast Nõukogude okupatsioonivõimude poolt või hukkusid vangistuses.
+        text: Memoriaalis mälestatakse Nõukogude okupatsioonivõimude poolt mõrvatud või vangistuses hukkunud Eesti Vabariigi ohvitsere.
     -
         url: /en/garden/
         picture: /assets/images/nav/koduaed.jpg
@@ -34,7 +34,7 @@ navigation:
         url: /en/database/
         picture: /assets/images/nav/andmebaas.jpg
         title: The Memorial’s Database
-        text: Memoriaali andmebaasi haldab SA Eesti Mälu Instituut.
+        text: The Estonian Institute of Historical Memory Foundation manages and administers the Memorial’s database.
 search:
     url: /en/search/
     text: |
