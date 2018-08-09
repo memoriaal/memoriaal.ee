@@ -40,5 +40,5 @@ search:
     text: |
         ### Nimeline otsing kommunismiohvrite andmebaasis
         Otsingu akna kaudu saate tutvuda memoriaali andmebaasis oleva infoga kommunistliku terrori läbi kannatanud isikute kohta ning leiate juhised ohvrite nime leidmiseks nimetahvlitel.
-    placeholder: sisesta nimi →
-    button: Otsi
+    placeholder: введите имя →
+    button: Искать

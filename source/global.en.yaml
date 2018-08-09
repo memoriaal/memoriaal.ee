@@ -14,22 +14,22 @@ navigation:
         url: /en/wall/
         picture: /assets/images/nav/sein.jpg
         title: Wall of Remembrance of the Journey
-        text: Teekonda palistavatel nimetahvlitel on enam kui 22 000 inimese nimed, kes kunagi koju tagasi ei pöördunud.
+        text: The names of over 22,000 people who never returned home are on the name plaques lining the Journey.
     -
         url: /en/officers/
         picture: /assets/images/nav/ohvitserid.jpg
         title: Monument to Estonian Regular Officers
-        text: Memoriaalis mälestatakse Nõukogude okupatsioonivõimude poolt mõrvatud või vangistuses hukkunud Eesti Vabariigi ohvitsere.
+        text: The Memorial commemorates military officers of the Republic of Estonia who were murdered by the Soviet occupying regime or perished in imprisonment.
     -
         url: /en/garden/
         picture: /assets/images/nav/koduaed.jpg
         title: Home Garden
-        text: Koduaed on koht, kus põimuvad unistused, mälestused ja koduigatsus. Koduaia sümboliteks on õunapuud ja mesilased.
+        text: The Home Garden is the place where dreams, memories and the yearning for home are intertwined. Apple trees and honeybees are the symbols of the Home Garden.
     -
         url: /en/stones/
         picture: /assets/images/nav/kohakivid.jpg
         title: Location Stones and Information Texts
-        text: Kommunistliku terrori kurikuulsad kinnipidamis- ja hukkamiskohad on mälupaigad, mis sümboliseerivad uutele põlvkondadele esivanemate kannatusi.
+        text: The notorious penal institutions and execution sites of the communist terror are sites of memory that symbolise the sufferings of their forebears for new generations.
     -
         url: /en/database/
         picture: /assets/images/nav/andmebaas.jpg
@@ -38,7 +38,7 @@ navigation:
 search:
     url: /en/search/
     text: |
-        ### Nimeline otsing kommunismiohvrite andmebaasis
-        Otsingu akna kaudu saate tutvuda memoriaali andmebaasis oleva infoga kommunistliku terrori läbi kannatanud isikute kohta ning leiate juhised ohvrite nime leidmiseks nimetahvlitel.
-    placeholder: sisesta nimi →
-    button: Otsi
+        ### Search by name in the database of victims of communism
+        You can peruse information in the Memorial’s database on individuals who have suffered under the communist terror via the search window and you will find instructions for how to find the names of victims on the name plaques.
+    placeholder: enter name →
+    button: Search

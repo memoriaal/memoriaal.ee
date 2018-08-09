@@ -49,7 +49,6 @@ block script
                             if (p.emanimi) { text.push('<p class="mb-0">#{self.result.mother}: ' + p.emanimi + '</p>') }
                             if (p.sünd) { text.push('<p class="mb-0">#{self.result.born}: ' + p.sünd + '</p>') }
                             if (p.surm) { text.push('<p class="mb-0">#{self.result.dead}: ' + p.surm + '</p>') }
-                            //- if (p.id) { text.push('<p class="mb-0">#{self.result.id}: ' + p.id + '</p>') }
                             text.push('</div>')
 
                             text.push('<div class="search-result-info col-7 col-sm-6">')
@@ -61,9 +60,9 @@ block script
                                 text.push('</p>')
                             }
                             text.push('</div>')
-                            text.push('<div class="search-result-slate col-12 col-sm-3">')
-                            if (p.tahvel) { text.push('<p class="mb-0">#{self.result.slate}:</p>') }
-                            if (p.tahvel) { text.push('<p class="mb-0 slate-info">' + p.tahvel + '</p>') }
+                            text.push('<div class="search-result-plaque col-12 col-sm-3">')
+                            if (p.tahvel) { text.push('<p class="mb-0">#{self.result.plaque}:</p>') }
+                            if (p.tahvel) { text.push('<p class="mb-0 plaque-info">' + p.tahvel + '</p>') }
                             if (p.tulp) { text.push('<p class="mb-0">#{self.result.col}: ' + p.tulp + ' / #{self.result.row}: ' + p.rida + '</p>') }
                             text.push('</div>')
                             text.push('</div>')

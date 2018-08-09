@@ -1,17 +1,16 @@
 path: search
-title: Otsing
+title: Search
 pictures:
     - /assets/images/bg/andmebaas.jpg
 result:
     title: Otsing kõigi kannatanute andmebaasist
-    count: kirjet
-    lastname: p
-    firstname: e
-    id: id
-    father: isa
-    mother: ema
-    born: sünd
-    dead: surm
-    slate: tahvel
-    col: tulp
+    count: entries
+    lastname: s
+    firstname: f
+    father: father
+    mother: mother
+    born: born
+    dead: death
+    plaque: plaque
+    col: column
     row: rida

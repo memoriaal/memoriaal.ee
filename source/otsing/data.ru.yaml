@@ -1,17 +1,16 @@
 path: poisk
-title: Otsing
+title: Поиск
 pictures:
     - /assets/images/bg/andmebaas.jpg
 result:
     title: Otsing kõigi kannatanute andmebaasist
-    count: kirjet
-    lastname: p
-    firstname: e
-    id: id
-    father: isa
-    mother: ema
-    born: sünd
-    dead: surm
-    slate: tahvel
-    col: tulp
-    row: rida
+    count: записей
+    lastname: ф
+    firstname: и
+    father: отец
+    mother: мать
+    born: рождение
+    dead: смерть
+    plaque: бляшка
+    col: столб
+    row: ряд

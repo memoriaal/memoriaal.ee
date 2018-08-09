@@ -6,11 +6,10 @@ result:
     count: kirjet
     lastname: p
     firstname: e
-    id: id
     father: isa
     mother: ema
     born: sünd
     dead: surm
-    slate: tahvel
+    plaque: tahvel
     col: tulp
     row: rida
