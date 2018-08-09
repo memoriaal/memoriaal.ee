@@ -2,11 +2,11 @@ extends /_templates/layout.pug
 
 
 block content
-    #search.col-12.col-md-8.col-xl-4.pt-3.pb-2.mr-1
+    #search.col-12.col-md-10.col-lg-8.col-xl-6.pt-3.pb-2.mr-1
         h3= self.result.title
         form.form.form-inline(action=self.search.url, method='GET')
-            input.col-8(type='search', name='q', placeholder=self.search.placeholder)
-            button.col-4= self.search.button
+            input.col-8.col-md-6.col-xl-4(type='search', name='q', placeholder=self.search.placeholder)
+            button.col-4.col-md-3.col-xl-2= self.search.button
         p#search-count.mb-3
         #search-results
 
@@ -42,20 +42,17 @@ block script
 
                             text.push('<div id="' + p.id + '" class="search-result pt-2 pb-4">')
                             text.push('<div class="row">')
-                            text.push('<div class="col-4">')
+                            text.push('<div class="col-5 col-sm-3">')
                             if (p.perenimi) { text.push('<p class="mb-0">#{self.result.lastname}: ' + p.perenimi + '</p>') }
                             if (p.eesnimi) { text.push('<p class="mb-0">#{self.result.firstname}: ' + p.eesnimi + '</p>') }
                             if (p.isanimi) { text.push('<p class="mb-0">#{self.result.father}: ' + p.isanimi + '</p>') }
                             if (p.emanimi) { text.push('<p class="mb-0">#{self.result.mother}: ' + p.emanimi + '</p>') }
                             if (p.sünd) { text.push('<p class="mb-0">#{self.result.born}: ' + p.sünd + '</p>') }
                             if (p.surm) { text.push('<p class="mb-0">#{self.result.dead}: ' + p.surm + '</p>') }
-                            if (p.tahvel) { text.push('<p class="mb-0">#{self.result.slate}: ' + p.tahvel + '</p>') }
-                            if (p.tulp) { text.push('<p class="mb-0">#{self.result.col}: ' + p.tulp + '</p>') }
-                            if (p.rida) { text.push('<p class="mb-0">#{self.result.row}: ' + p.rida + '</p>') }
                             //- if (p.id) { text.push('<p class="mb-0">#{self.result.id}: ' + p.id + '</p>') }
                             text.push('</div>')
 
-                            text.push('<div class="search-result-info col-8">')
+                            text.push('<div class="search-result-info col-7 col-sm-6">')
                             for (var ii = 0; ii < p.kirjed.length; ii++) {
                                 text.push('<p class="mb-1">')
                                 //- if (p.kirjed[ii].kirjekood) { text.push(p.kirjed[ii].kirjekood + ', ') }
@@ -63,6 +60,11 @@ block script
                                 if (p.kirjed[ii].allikasTxt) { text.push(' <span>' + p.kirjed[ii].allikasTxt + '<span>') }
                                 text.push('</p>')
                             }
+                            text.push('</div>')
+                            text.push('<div class="search-result-slate col-12 col-sm-3">')
+                            if (p.tahvel) { text.push('<p class="mb-0">#{self.result.slate}:</p>') }
+                            if (p.tahvel) { text.push('<p class="mb-0 slate-info">' + p.tahvel + '</p>') }
+                            if (p.tulp) { text.push('<p class="mb-0">#{self.result.col}: ' + p.tulp + ' / #{self.result.row}: ' + p.rida + '</p>') }
                             text.push('</div>')
                             text.push('</div>')
                             text.push('</div>')
