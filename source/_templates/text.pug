@@ -1,5 +1,5 @@
-#text.container-fluid(style={ 'background-image': `url(${self.pictures[0]})` })
-    .row.mt-3.mb-0
+#text.container-fluid.pt-3(style={ 'background-image': `url(${self.pictures[0]})` })
+    .row.my-0
         h2.col-12
             if self.siteTitle !== self.title
                 a(href=self.root)= self.siteTitle
