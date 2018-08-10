@@ -9,7 +9,7 @@ content:
             Memoriaalil on kaks osa – Teekond ohvrite nimetahvlitega ja sümboolne Koduaed koos terroripaiku tähistavate kohakivide ning teabetekstidega. Memoriaali juurde kuulub kommunistliku terrori ohvriks langenud Eesti ohvitseride mälestusmärk.
     -
         id: autorid
-        title: Memoriaali autorid 
+        title: Memoriaali autorid
         text: |
             Arhitektuur ja maastikuarhitektuur:
             autorid: Kalle Vellevoog, Jaan Tiidemann, Tiiu Truus
@@ -23,7 +23,7 @@ content:
             Ohvitseride mälestusmärgi tehniline lahendus: Margus Triibmann
     -
         id: haldus
-        title: Memoriaali haldus 
+        title: Memoriaali haldus
         text: |
             Memoriaali andmebaasi haldab SA Eesti Mälu Instituut.
             Kontakt: Suur-Ameerika 12, Tallinn 10119;
@@ -34,7 +34,7 @@ content:
             [www.rkas.ee](https://www.rkas.ee)
     -
         id: andmebaasi-haldus
-        title: Memoriaali andmebaasi haldus 
+        title: Memoriaali andmebaasi haldus
         text: |
             Memoriaali andmebaas
             Memoriaali andmebaasi haldab SA Eesti Mälu Instituut.
