@@ -10,7 +10,7 @@ content:
             The Memorial has two parts – the Journey with the name plaques of the victims, and the symbolic Home Garden with informative texts and location stones marking sites of terror. A monument to Estonian military officers who fell victim to communist terror is part of the Memorial.
     -
         id: autorid
-        title: Authors of the Memorial 
+        title: Authors of the Memorial
         text: |
             Architecture and landscape architecture:
             Authors: Kalle Vellevoog, Jaan Tiidemann, Tiiu Truus
@@ -21,10 +21,10 @@ content:
             Digital output: Argo Roots
             Greenery: Lidia Zarudnaja
             Graphic design: Martin Pedanik
-            Technical design for the Officers’ Monument: Margus Triibmann
+            Technical design for the Officers’ Monument: Margus Triibmann
     -
         id: haldus
-        title: Management of the Memorial 
+        title: Management of the Memorial
         text: |
             The Estonian Institute of Historical Memory Foundation manages and administers the Memorial’s database.
             Contact: Suur-Ameerika 12, Tallinn 10119;
@@ -35,7 +35,7 @@ content:
             [www.rkas.ee](https://www.rkas.ee)
     -
         id: andmebaasi-haldus
-        title: Management of the Memorial's Database 
+        title: Management of the Memorial's Database
         text: |
             The Memorial's Database
             The Estonian Institute of Historical Memory Foundation manages and administers the Memorial’s database.
