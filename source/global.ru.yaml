@@ -14,22 +14,22 @@ navigation:
         url: /ru/stena/
         picture: /assets/images/nav/sein.jpg
         title: Стена памяти Пути
-        text: Teekonda palistavatel nimetahvlitel on enam kui 22 000 inimese nimed, kes kunagi koju tagasi ei pöördunud.
+        text: На стенах мемориального коридора «Путь» размещены таблички с более чем 22 000 имен тех, кто никогда не вернулся домой.
     -
         url: /ru/oficery/
         picture: /assets/images/nav/ohvitserid.jpg
         title: Памятник кадровым офицерам Эстонии
-        text: Memoriaalis mälestatakse Nõukogude okupatsioonivõimude poolt mõrvatud või vangistuses hukkunud Eesti Vabariigi ohvitsere.
+        text: Мемориал посвящен также убитым или погибшим в заключении по воле советских оккупационных властей офицерам Эстонской Республики.
     -
         url: /ru/sad/
         picture: /assets/images/nav/koduaed.jpg
         title: Сад
-        text: Koduaed on koht, kus põimuvad unistused, mälestused ja koduigatsus. Koduaia sümboliteks on õunapuud ja mesilased.
+        text: «Домашний сад» – это место, где переплетаются мечты, воспоминания и тоска по дому. «Домашний сад» символизируют яблони и пчелы.
     -
         url: /ru/kamni/
         picture: /assets/images/nav/kohakivid.jpg
         title: Камни с обозначением мест заключения и депортаций
-        text: Kommunistliku terrori kurikuulsad kinnipidamis- ja hukkamiskohad on mälupaigad, mis sümboliseerivad uutele põlvkondadele esivanemate kannatusi.
+        text: Обозначенные печально известные места расправ и заключения коммунистического террора символизируют для новых поколений страдания предков.
     -
         url: /ru/baza-dannyh/
         picture: /assets/images/nav/andmebaas.jpg
@@ -38,7 +38,7 @@ navigation:
 search:
     url: /ru/poisk/
     text: |
-        ### Nimeline otsing kommunismiohvrite andmebaasis
-        Otsingu akna kaudu saate tutvuda memoriaali andmebaasis oleva infoga kommunistliku terrori läbi kannatanud isikute kohta ning leiate juhised ohvrite nime leidmiseks nimetahvlitel.
+        ### Именной поиск в базе данных жертв коммунизма
+        При помощи поискового окошка можно ознакомиться с информацией в базе данных мемориала, касающейся пострадавших от коммунистических репрессий. Там Вы найдете инструкцию для поиска желаемого имени на именных табличках мемориала.
     placeholder: введите имя →
     button: Искать
