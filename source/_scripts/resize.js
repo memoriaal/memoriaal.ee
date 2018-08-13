@@ -1,4 +1,5 @@
 $(function () {
+    var doit
     var windowResized = function () {
         $('#navigation img').addClass('d-none')
         $('#navigation p').addClass('d-none')
@@ -49,9 +50,10 @@ $(function () {
         }
     }
 
-    windowResized()
+    $(window).on('load', function () {
+        windowResized()
+    })
 
-    var doit
     $(window).on('resize', function () {
         clearTimeout(doit)
 
