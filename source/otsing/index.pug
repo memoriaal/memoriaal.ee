@@ -26,7 +26,7 @@ block script
                 $('input[name="q"]').val(query)
 
                 $.ajax('https://94abc9318c712977e8c684628aa5ea0f.us-east-1.aws.found.io:9243/persons/_search?size=50&from=0', {
-                    data : JSON.stringify({ query: { match: { _all: query } } }),
+                    data : JSON.stringify({ query: { match: { _all: { query: query, operator: and } } } }),
                     contentType : 'application/json',
                     type : 'POST',
                     cache: false,
