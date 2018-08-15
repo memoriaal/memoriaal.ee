@@ -117,7 +117,9 @@ block script
             $('#db-feedback-submit').click(function (e) {
                 e.preventDefault()
 
-                $.post('', $('#db-feedback').serialize(), function () {
+                $.post('', $('#db-feedback').serialize(), function (data) {
+                    console.log(data)
+
                     $('#db-feedback-title, #db-feedback-text, #db-feedback').addClass('d-none')
                     $('#db-feedback-success').removeClass('d-none')
 
