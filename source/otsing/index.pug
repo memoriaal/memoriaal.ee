@@ -12,30 +12,31 @@ block content
 
     #popup-background.d-none
     #popup-content.p-3.d-none
-        form#feedback(name='db-feedback', netlify)
-            .form-group
-                label(for='feedback-name') name
-                input#feedback-name(type='text', name='name')
-            .form-group
-                label(for='feedback-email') email
-                input#feedback-email(type='email', name='email')
-            .form-group
-                label(for='feedback-phone') phone
-                input#feedback-phone(type='tel', name='phone')
-            .form-group
-                label(for='feedback-id') id
-                input#feedback-id(type='hidden', name='id')
-            .form-group
-                label(for='feedback-text') text
-                textarea#feedback-text(name='text')
-            button.btn.btn-primary(type='submit') submit
-        img#popup-close(src='/assets/images/close.svg')
+        .row
+            h2#db-feedback-title.col-12= self.feedback.title
+            p.col-12.col-md-10.offset-md-1.text-center= self.feedback.text
 
+            form#db-feedback.col-12.col-md-8.offset-md-2(name='db-feedback', netlify)
+                input#db-feedback-id(type='hidden', name='id')
+                input#db-feedback-name(type='hidden', name='name')
+                .form-group.mt-5
+                    label.form-label.col-12.px-0(for='feedback-email')= self.feedback.email
+                    input#db-feedback-email.col-12.px-0(type='email', name='email')
+                .form-group.mt-5
+                    label.form-label.col-12.px-0(for='feedback-phone')= self.feedback.phone
+                    input#db-feedback-phone.col-12.px-0(type='tel', name='phone')
+                .form-group.mt-5
+                    label.form-label.col-12.px-0(for='feedback-text')= self.feedback.feedback
+                    textarea#db-feedback-text.col-12.px-0(name='text', rows=5)
+                .form-group.mt-5.text-right
+                    button#db-feedback-cancel.btn.btn-secondary= self.feedback.cancel
+                    button#db-feedback-submit.btn.btn-primary.ml-3(type='submit')= self.feedback.submit
 
 block script
     script.
-        var openForm = function (id) {
-            $('#feedback input[name="id"]').val(id)
+        var openForm = function (id, name) {
+            $('#db-feedback input[name="id"]').val(id)
+            $('#db-feedback-title').html('#{ self.feedback.title }'.replace('%name%', name))
             $('#popup-background, #popup-content').removeClass('d-none')
         }
 
@@ -75,7 +76,7 @@ block script
                             if (p.emanimi) { text.push('<p class="mb-0">#{self.result.mother}: ' + p.emanimi + '</p>') }
                             if (p.sünd) { text.push('<p class="mb-0">#{self.result.born}: ' + p.sünd + '</p>') }
                             if (p.surm) { text.push('<p class="mb-0">#{self.result.dead}: ' + p.surm + '</p>') }
-                            if (p.id) { text.push('<p class="mb-0"><a href=\'javascript:openForm("' + p.id + '")\'>#' + p.id + '</a></p>') }
+                            if (p.id) { text.push('<p class="mb-0"><a href=\'javascript:openForm("' + p.id + '", "' + p.eesnimi + ' ' + p.perenimi + '")\'>#' + p.id + '</a></p>') }
                             text.push('</div>')
 
                             text.push('<div class="search-result-info col-7 col-sm-6">')
@@ -106,4 +107,10 @@ block script
             } else {
                 $('input[name="q"]').focus()
             }
+
+            $('#db-feedback-cancel').click(function (e) {
+                e.preventDefault()
+                $('#db-feedback input[name="id"]').val('')
+                $('#popup-background, #popup-content').addClass('d-none')
+            })
         })
