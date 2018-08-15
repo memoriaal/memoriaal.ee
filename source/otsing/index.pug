@@ -31,14 +31,15 @@ block content
             button.btn.btn-primary(type='submit') submit
         img#popup-close(src='/assets/images/close.svg')
 
+
 block script
     script.
-        $(function () {
-            var openForm = function (id) {
-                $('#feedback input[name="id"]').val(id)
-                $('#popup-background, #popup-content').removeClass('d-none')
-            }
+        var openForm = function (id) {
+            $('#feedback input[name="id"]').val(id)
+            $('#popup-background, #popup-content').removeClass('d-none')
+        }
 
+        $(function () {
             var qs = function (key) {
                 key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&")
                 var match = location.search.match(new RegExp("[?&]"+key+"=([^&]+)(&|$)"))

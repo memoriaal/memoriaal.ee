@@ -1,9 +1,5 @@
 $(function () {
     $('#popup-close, #popup-background').click(function () {
-        $('#popup-background, #popup-content').hide()
+        $('#popup-background, #popup-content').addClass('d-none')
     })
-
-    if (window.location.host === 'www.memoriaal.ee') {
-        $('#popup-background, #popup-content').removeClass('d-none')
-    }
 })

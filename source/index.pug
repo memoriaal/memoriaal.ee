@@ -1,1 +1,10 @@
 extends /_templates/layout.pug
+
+
+block script
+    script.
+        $(function () {
+            if (window.location.host === 'www.memoriaal.ee') {
+                $('#popup-background, #popup-content').removeClass('d-none')
+            }
+        })
