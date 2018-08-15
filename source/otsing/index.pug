@@ -49,15 +49,15 @@ block script
                             if (p.emanimi) { text.push('<p class="mb-0">#{self.result.mother}: ' + p.emanimi + '</p>') }
                             if (p.sünd) { text.push('<p class="mb-0">#{self.result.born}: ' + p.sünd + '</p>') }
                             if (p.surm) { text.push('<p class="mb-0">#{self.result.dead}: ' + p.surm + '</p>') }
-                            if (p.id) { text.push('<p class="mb-0">#' + p.id + '</p>') }
+                            //- if (p.id) { text.push('<p class="mb-0">#' + p.id + '</p>') }
                             text.push('</div>')
 
                             text.push('<div class="search-result-info col-7 col-sm-6">')
                             for (var ii = 0; ii < p.kirjed.length; ii++) {
                                 text.push('<p class="mb-1">')
-                                if (p.kirjed[ii].kirjekood) { text.push(p.kirjed[ii].kirjekood + ', ') }
+                                //- if (p.kirjed[ii].kirjekood) { text.push(p.kirjed[ii].kirjekood + ', ') }
+                                if (p.kirjed[ii].allikas) { text.push(' <span>' + p.kirjed[ii].allikas + '</span><br/>') }
                                 if (p.kirjed[ii].kirje) { text.push(p.kirjed[ii].kirje) }
-                                if (p.kirjed[ii].allikasTxt) { text.push(' <span>' + p.kirjed[ii].allikasTxt + '<span>') }
                                 text.push('</p>')
                             }
                             text.push('</div>')
