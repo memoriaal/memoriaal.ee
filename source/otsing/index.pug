@@ -14,23 +14,25 @@ block content
     #popup-content.p-3.d-none
         .row
             h2#db-feedback-title.col-12= self.feedback.title
-            p.col-12.col-md-10.offset-md-1.text-center= self.feedback.text
+            p#db-feedback-text.col-12.col-md-10.offset-md-1.text-center= self.feedback.text
 
-            form#db-feedback.col-12.col-md-8.offset-md-2(name='db-feedback', netlify)
+            form#db-feedback.col-12.col-md-8.offset-md-2(name='db-feedback', method='POST', action='', netlify)
                 input#db-feedback-id(type='hidden', name='id')
                 input#db-feedback-name(type='hidden', name='name')
                 .form-group.mt-5
-                    label.form-label.col-12.px-0(for='feedback-email')= self.feedback.email
+                    label.form-label.col-12.px-0(for='db-feedback-email')= self.feedback.email
                     input#db-feedback-email.col-12.px-0(type='email', name='contact-email')
                 .form-group.mt-5
-                    label.form-label.col-12.px-0(for='feedback-phone')= self.feedback.phone
+                    label.form-label.col-12.px-0(for='db-feedback-phone')= self.feedback.phone
                     input#db-feedback-phone.col-12.px-0(type='tel', name='contact-phone')
                 .form-group.mt-5
-                    label.form-label.col-12.px-0(for='feedback-text')= self.feedback.feedback
-                    textarea#db-feedback-text.col-12.px-0(name='text', rows=5)
+                    label.form-label.col-12.px-0(for='db-feedback-feedback')= self.feedback.feedback
+                    textarea#db-feedback-feedback.col-12.px-0(name='feedback', rows=5)
                 .form-group.mt-5.text-right
                     button#db-feedback-cancel.btn.btn-secondary= self.feedback.cancel
-                    button#db-feedback-submit.btn.btn-primary.ml-3(type='submit')= self.feedback.submit
+                    button#db-feedback-submit.btn.btn-primary.ml-3= self.feedback.submit
+
+            h2#db-feedback-success.col-12.d-none= self.feedback.success
 
 block script
     script.
@@ -38,6 +40,9 @@ block script
             $('#db-feedback-id').val(id)
             $('#db-feedback-name').val(name)
             $('#db-feedback-title').html('#{ self.feedback.title }'.replace('%name%', name))
+
+            $('#db-feedback-title, #db-feedback-text, #db-feedback').removeClass('d-none')
+            $('#db-feedback-success').addClass('d-none')
             $('#popup-background, #popup-content').removeClass('d-none')
         }
 
@@ -109,9 +114,30 @@ block script
                 $('input[name="q"]').focus()
             }
 
+            $('#db-feedback-submit').click(function (e) {
+                e.preventDefault()
+
+                $.post('', $('#db-feedback').serialize(), function () {
+                    $('#db-feedback-title, #db-feedback-text, #db-feedback').addClass('d-none')
+                    $('#db-feedback-success').removeClass('d-none')
+
+                    $('#db-feedback-id').val('')
+                    $('#db-feedback-name').val('')
+                    $('#db-feedback-title').html('')
+
+                    setTimeout(function () {
+                        $('#popup-background, #popup-content').addClass('d-none')
+                    }, 5000)
+                })
+            })
+
             $('#db-feedback-cancel').click(function (e) {
                 e.preventDefault()
-                $('#db-feedback input[name="id"]').val('')
+
+                $('#db-feedback-id').val('')
+                $('#db-feedback-name').val('')
+                $('#db-feedback-title').html('')
+
                 $('#popup-background, #popup-content').addClass('d-none')
             })
         })
