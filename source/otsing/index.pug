@@ -121,21 +121,19 @@ block script
                     $('#db-feedback-title, #db-feedback-text, #db-feedback').addClass('d-none')
                     $('#db-feedback-success').removeClass('d-none')
 
-                    $('#db-feedback-id').val('')
-                    $('#db-feedback-name').val('')
+                    $('#db-feedback input, #db-feedback textarea').val('')
                     $('#db-feedback-title').html('')
 
                     setTimeout(function () {
                         $('#popup-background, #popup-content').addClass('d-none')
-                    }, 5000)
+                    }, 4000)
                 })
             })
 
             $('#db-feedback-cancel').click(function (e) {
                 e.preventDefault()
 
-                $('#db-feedback-id').val('')
-                $('#db-feedback-name').val('')
+                $('#db-feedback input, #db-feedback textarea').val('')
                 $('#db-feedback-title').html('')
 
                 $('#popup-background, #popup-content').addClass('d-none')
