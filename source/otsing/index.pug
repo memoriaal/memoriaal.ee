@@ -28,6 +28,8 @@ block content
                 .form-group.mt-5
                     label.form-label.col-12.px-0(for='db-feedback-feedback')= self.feedback.feedback
                     textarea#db-feedback-feedback.col-12.px-0(name='feedback', rows=5)
+                .form-group.mt-5
+                    div(data-netlify-recaptcha)
                 .form-group.mt-5.text-right
                     button#db-feedback-cancel.btn.btn-secondary= self.feedback.cancel
                     button#db-feedback-submit.btn.btn-primary.ml-3(type='submit')= self.feedback.submit
