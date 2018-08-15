@@ -16,7 +16,7 @@ block content
             h2#db-feedback-title.col-12= self.feedback.title
             p#db-feedback-text.col-12.col-md-10.offset-md-1.text-center= self.feedback.text
 
-            form#db-feedback.col-12.col-md-8.offset-md-2(name='db-feedback', method='POST', action='', netlify)
+            form#db-feedback.col-12.col-md-8.offset-md-2(name='db-feedback', method='POST', netlify)
                 input#db-feedback-id(type='hidden', name='id')
                 input#db-feedback-name(type='hidden', name='name')
                 .form-group.mt-5
@@ -30,7 +30,7 @@ block content
                     textarea#db-feedback-feedback.col-12.px-0(name='feedback', rows=5)
                 .form-group.mt-5.text-right
                     button#db-feedback-cancel.btn.btn-secondary= self.feedback.cancel
-                    button#db-feedback-submit.btn.btn-primary.ml-3= self.feedback.submit
+                    button#db-feedback-submit.btn.btn-primary.ml-3(type='submit')= self.feedback.submit
 
             h2#db-feedback-success.col-12.d-none= self.feedback.success
 
@@ -114,10 +114,12 @@ block script
                 $('input[name="q"]').focus()
             }
 
-            $('#db-feedback-submit').click(function (e) {
+            $('#db-feedback').submit(function (e) {
                 e.preventDefault()
 
-                $.post('', $('#db-feedback').serialize(), function (data) {
+                var $form = $(this)
+
+                $.post($form.attr('action'), $form.serialize(), function (data) {
                     console.log(data)
 
                     $('#db-feedback-title, #db-feedback-text, #db-feedback').addClass('d-none')
