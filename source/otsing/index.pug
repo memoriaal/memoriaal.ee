@@ -82,7 +82,7 @@ block script
                             if (p.emanimi) { text.push('<p class="mb-0">#{self.result.mother}: ' + p.emanimi + '</p>') }
                             if (p.sünd) { text.push('<p class="mb-0">#{self.result.born}: ' + p.sünd + '</p>') }
                             if (p.surm) { text.push('<p class="mb-0">#{self.result.dead}: ' + p.surm + '</p>') }
-                            if (p.id) { text.push('<p class="mb-0"><a href=\'javascript:openForm("' + p.id + '", "' + p.eesnimi + ' ' + p.perenimi + '")\'>#' + p.id + '</a></p>') }
+                            if (p.id) { text.push('<p class="mb-0"><a href=\'javascript:openForm("' + p.id + '","' + p.eesnimi + ' ' + p.perenimi + '")\'>#' + p.id + '</a></p>') }
                             text.push('</div>')
 
                             text.push('<div class="search-result-info col-7 col-sm-6">')
