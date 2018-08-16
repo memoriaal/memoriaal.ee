@@ -38,7 +38,7 @@ navigation:
 search:
     url: /otsing/
     text: |
-        ### Nimeline otsing kommunismiohvrite andmebaasis
+        ### Otsing kommunismiohvrite andmebaasist
         Otsingu akna kaudu saate tutvuda memoriaali andmebaasis oleva infoga kommunistliku terrori läbi kannatanud isikute kohta ning leiate juhised ohvrite nime leidmiseks nimetahvlitel.
     placeholder: sisesta nimi →
     button: Otsi

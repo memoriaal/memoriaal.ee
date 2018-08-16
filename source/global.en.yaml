@@ -38,7 +38,7 @@ navigation:
 search:
     url: /en/search/
     text: |
-        ### Search by name in the database of victims of communism
+        ### Search in the database of victims of communism
         You can peruse information in the Memorial’s database on individuals who have suffered under the communist terror via the search window and you will find instructions for how to find the names of victims on the name plaques.
     placeholder: enter name →
     button: Search
