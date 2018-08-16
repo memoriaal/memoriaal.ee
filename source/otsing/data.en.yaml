@@ -5,8 +5,6 @@ pictures:
 result:
     title: Search in the database of victims of communism
     count: entries
-    lastname: s
-    firstname: f
     father: father
     mother: mother
     born: born
@@ -14,7 +12,9 @@ result:
     plaque: plaque
     col: column
     row: rida
+    nameOnPlaque: nimi tahvlil
 feedback:
+    button: Feedback
     title: Feedback about %name%
     text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla egestas ex condimentum volutpat porta. Suspendisse vitae ipsum rutrum, faucibus leo molestie, iaculis risus. Sed hendrerit venenatis maximus. Vivamus molestie nisi nibh, at hendrerit nibh vehicula at. Sed nec posuere est. Duis imperdiet ornare tortor at lacinia.
     email: Contact E-mail

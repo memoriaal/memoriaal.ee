@@ -37,16 +37,6 @@ block content
 
 block script
     script.
-        var openForm = function (id, name) {
-            $('#db-feedback-id').val(id)
-            $('#db-feedback-name').val(name)
-            $('#db-feedback-title').html('#{ self.feedback.title }'.replace('%name%', name))
-
-            $('#db-feedback-title, #db-feedback-text, #db-feedback').removeClass('d-none')
-            $('#db-feedback-success').addClass('d-none')
-            $('#popup-background, #popup-content').removeClass('d-none')
-        }
-
         $(function () {
             var qs = function (key) {
                 key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&")
@@ -76,31 +66,33 @@ block script
 
                             text.push('<div id="' + p.id + '" class="search-result pt-2 pb-4">')
                             text.push('<div class="row">')
+
+                            text.push('<h3 class="search-result-name col-12 mb-2 mb-1">' + p.eesnimi + ' ' + p.perenimi + '</h3>')
+
                             text.push('<div class="col-5 col-sm-3">')
-                            if (p.perenimi) { text.push('<p class="mb-0">#{self.result.lastname}: ' + p.perenimi + '</p>') }
-                            if (p.eesnimi) { text.push('<p class="mb-0">#{self.result.firstname}: ' + p.eesnimi + '</p>') }
-                            if (p.isanimi) { text.push('<p class="mb-0">#{self.result.father}: ' + p.isanimi + '</p>') }
-                            if (p.emanimi) { text.push('<p class="mb-0">#{self.result.mother}: ' + p.emanimi + '</p>') }
                             if (p.sünd) { text.push('<p class="mb-0">#{self.result.born}: ' + p.sünd + '</p>') }
                             if (p.surm) { text.push('<p class="mb-0">#{self.result.dead}: ' + p.surm + '</p>') }
-                            if (p.id) { text.push('<p class="mb-0"><a href=\'javascript:openForm("' + p.id + '","' + p.eesnimi + ' ' + p.perenimi + '")\'>#' + p.id + '</a></p>') }
+                            if (p.isanimi) { text.push('<p class="mb-0">#{self.result.father}: ' + p.isanimi + '</p>') }
+                            if (p.emanimi) { text.push('<p class="mb-0">#{self.result.mother}: ' + p.emanimi + '</p>') }
+                            text.push('<p class="search-result-feedback mt-3 d-none" data-id="' + p.id + '" data-name="' + p.eesnimi + ' ' + p.perenimi + '">#{self.feedback.button}</p>')
                             text.push('</div>')
 
                             text.push('<div class="search-result-info col-7 col-sm-6">')
                             for (var ii = 0; ii < p.kirjed.length; ii++) {
                                 text.push('<p class="mb-1">')
-                                //- if (p.kirjed[ii].kirjekood) { text.push(p.kirjed[ii].kirjekood + ', ') }
                                 if (p.kirjed[ii].allikas) { text.push(' <span>' + p.kirjed[ii].allikas + '</span><br/>') }
                                 if (p.kirjed[ii].kirje) { text.push(p.kirjed[ii].kirje) }
                                 text.push('</p>')
                             }
                             text.push('</div>')
+
                             text.push('<div class="search-result-plaque col-12 col-sm-3">')
                             if (p.tahvel) { text.push('<p class="mb-0">#{self.result.plaque}:</p>') }
-                            if (p.tahvel) { text.push('<p class="mb-0 plaque-info">' + p.tahvel + '</p>') }
-                            if (p.tulp) { text.push('<p class="mb-0">#{self.result.col}: ' + p.tulp + ' / #{self.result.row}: ' + p.rida + '</p>') }
-                            if (p.tahvel) { text.push('<p class="mb-0">' + p.tahvlikirje + '</p>') }
+                            if (p.tahvel) { text.push('<p class="mb-2 plaque-info">' + p.tahvel + '</p>') }
+                            if (p.tulp) { text.push('<p class="mb-2">#{self.result.col}: ' + p.tulp + ' / #{self.result.row}: ' + p.rida + '</p>') }
+                            if (p.tahvlikirje) { text.push('<p class="mb-0">#{self.result.nameOnPlaque}:<br>' + p.tahvlikirje + '</p>') }
                             text.push('</div>')
+
                             text.push('</div>')
                             text.push('</div>')
 
@@ -114,6 +106,27 @@ block script
             } else {
                 $('input[name="q"]').focus()
             }
+
+            $('#search-results').on('mouseenter', '.search-result', function () {
+                $(this).find('.search-result-feedback').removeClass('d-none')
+            })
+
+            $('#search-results').on('mouseleave', '.search-result', function () {
+                $(this).find('.search-result-feedback').addClass('d-none')
+            })
+
+            $('#search-results').on('click', '.search-result-feedback', function () {
+                var id = $(this).data('id')
+                var name = $(this).data('name')
+
+                $('#db-feedback-id').val(id)
+                $('#db-feedback-name').val(name)
+                $('#db-feedback-title').html('#{ self.feedback.title }'.replace('%name%', name))
+
+                $('#db-feedback-title, #db-feedback-text, #db-feedback').removeClass('d-none')
+                $('#db-feedback-success').addClass('d-none')
+                $('#popup-background, #popup-content').removeClass('d-none')
+            })
 
             $('#db-feedback').submit(function (e) {
                 e.preventDefault()
