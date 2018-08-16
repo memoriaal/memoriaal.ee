@@ -16,9 +16,10 @@ block content
             h2#db-feedback-title.col-12= self.feedback.title
             p#db-feedback-text.col-12.col-md-10.offset-md-1.text-center= self.feedback.text
 
-            form#db-feedback.col-12.col-md-8.offset-md-2(name='db-feedback', method='POST', netlify)
+            form#db-feedback.col-12.col-md-8.offset-md-2(name='db-feedback', method='POST', netlify-honeypot='fax', netlify)
                 input#db-feedback-id(type='hidden', name='id')
                 input#db-feedback-name(type='hidden', name='name')
+                input#db-feedback-fax.d-none(type='tel', name='fax')
                 .form-group.mt-5
                     label.form-label.col-12.px-0(for='db-feedback-email')= self.feedback.email
                     input#db-feedback-email.col-12.px-0(type='email', name='contact-email')
@@ -28,8 +29,6 @@ block content
                 .form-group.mt-5
                     label.form-label.col-12.px-0(for='db-feedback-feedback')= self.feedback.feedback
                     textarea#db-feedback-feedback.col-12.px-0(name='feedback', rows=5)
-                .form-group.mt-5
-                    div(data-netlify-recaptcha)
                 .form-group.mt-5.text-right
                     button#db-feedback-cancel.btn.btn-secondary= self.feedback.cancel
                     button#db-feedback-submit.btn.btn-primary.ml-3(type='submit')= self.feedback.submit
