@@ -18,6 +18,7 @@ block content
 
             form#db-feedback.col-12.col-md-8.offset-md-2(name='db-feedback', method='POST', netlify-honeypot='fax', netlify)
                 input#db-feedback-id(type='hidden', name='id')
+                input#db-feedback-url(type='hidden', name='url')
                 input#db-feedback-name(type='hidden', name='name')
                 input#db-feedback-fax.d-none(type='tel', name='fax')
                 .form-group.mt-5
@@ -118,6 +119,7 @@ block script
                 var name = $(this).data('name')
 
                 $('#db-feedback-id').val(id)
+                $('#db-feedback-url').val('http://baas.memoriaal.ee/#' + id)
                 $('#db-feedback-name').val(name)
                 $('#db-feedback-title').html('#{ self.feedback.title }'.replace('%name%', name))
 
