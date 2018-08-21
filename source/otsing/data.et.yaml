@@ -12,6 +12,7 @@ result:
     col: tulp
     row: rida
     nameOnPlaque: nimi tahvlil
+    family: perekond
 feedback:
     button: Tagasiside
     title: Tagasisisde %name% kohta

@@ -79,11 +79,23 @@ block script
                             text.push('</div>')
 
                             text.push('<div class="search-result-info col-7 col-sm-6">')
-                            for (var ii = 0; ii < p.kirjed.length; ii++) {
-                                text.push('<p class="mb-1">')
-                                if (p.kirjed[ii].allikas) { text.push(' <span>' + p.kirjed[ii].allikas + '</span><br/>') }
-                                if (p.kirjed[ii].kirje) { text.push(p.kirjed[ii].kirje) }
-                                text.push('</p>')
+                            for (var ik = 0; ik < p.kirjed.length; ik++) {
+                                text.push('<p class="mt-2 mb-0"><strong>' + p.kirjed[ik].allikas + ':</strong></p>')
+                                if (p.kirjed[ik].kirje) { text.push('<p class="mb-1">') }
+                                if (p.kirjed[ik].kirje) { text.push(p.kirjed[ik].kirje) }
+                                if (p.kirjed[ik].kirje) { text.push('</p>') }
+                            }
+                            if (p.pereseos && p.pereseos.length > 0) {
+                                for (var ip = 0; ip < p.pereseos.length; ip++) {
+                                    text.push('<p class="mt-2 mb-0"><strong>' + p.pereseos[ip].nimekiri + ' (#{self.result.family}):</strong></p>')
+                                    for (var ipk = 0; ipk < p.pereseos[ip].kirjed.length; ipk++) {
+                                        if (p.pereseos[ip].kirjed[ipk].kirje) { text.push('<p class="mb-1">') }
+                                        if (p.pereseos[ip].kirjed[ipk].kirje) { text.push('<a href="#{self.search.url}?q=' + p.pereseos[ip].kirjed[ipk].persoon + '">') }
+                                        if (p.pereseos[ip].kirjed[ipk].kirje) { text.push(p.pereseos[ip].kirjed[ipk].kirje) }
+                                        if (p.pereseos[ip].kirjed[ipk].kirje) { text.push('</a>') }
+                                        if (p.pereseos[ip].kirjed[ipk].kirje) { text.push('</p>') }
+                                    }
+                                }
                             }
                             text.push('</div>')
 

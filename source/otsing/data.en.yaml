@@ -13,6 +13,7 @@ result:
     col: column
     row: rida
     nameOnPlaque: nimi tahvlil
+    family: perekond
 feedback:
     button: Feedback
     title: Feedback about %name%
