@@ -11,7 +11,7 @@ content:
         id: nimekiri
         title: LIST OF PERSONS WHO HAVE PERISHED
         text: |
-          The names of those Estonian people contained in the database who were murdered in the course of the terror, died in imprisonment or in exile, or are known to have been murdered as a result of a direct attack against their person by representatives of the Soviet regime are inscribed together with the dates of their birth and death on the Wall of Remembrance of the Memorial’s Journey. Click on the picture to peruse the list of persons inscribed on the Wall of Remembrance. Persons who have perished that are identified in the course of further continuing research will be continuously entered in the electronic database. Their names will be added periodically to the Journey’s Wall of Remembrance of the Memorial on additional plaques.
+            The names of those Estonian people contained in the database who were murdered in the course of the terror, died in imprisonment or in exile, or are known to have been murdered as a result of a direct attack against their person by representatives of the Soviet regime are inscribed together with the dates of their birth and death on the Wall of Remembrance of the Memorial’s Journey. Click on the picture to peruse the list of persons inscribed on the Wall of Remembrance. Persons who have perished that are identified in the course of further continuing research will be continuously entered in the electronic database. Their names will be added periodically to the Journey’s Wall of Remembrance of the Memorial on additional plaques.
 
     -
         id: kontroll-ja-taiendamine
@@ -20,6 +20,11 @@ content:
             We ask you to check the names of repressed persons known to you and if necessary, give us feedback concerning corrections and additions. Suggestions are also welcome in cases where the same person is likely referred to under two different names and the suspicion arises that different persons should be combined into one.
 
             We are very grateful for corrections and additions. They have already been of great assistance in drawing up the list of persons who have perished. We enter accepted corrections on a running basis, thus the list is continuously being updated and changed.
+
+            Contact: Suur-Ameerika 12, Tallinn 10119;
+            Tel. +372 6484962
+            <memoriaal@mnemosyne.ee>
+
     -
         id: andmebaasis-kasitlemata-isikud
         title: PERSONS NOT INCLUDED IN THE DATABASE OF VICTIMS OF COMMUNISM
