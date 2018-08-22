@@ -1,14 +1,14 @@
 #text.container-fluid.pt-3(style={ 'background-image': `url(${self.pictures[0]})` })
-    .row.my-0
+    #text-pagetitle.row.my-0
         h2.col-12
             if self.siteTitle !== self.title
                 a(href=self.root)= self.siteTitle
             else
                 br
-    .row.mt-4
+    #text-title.row.mt-4
         h1.col-12.col-lg-8
             a(href=self.path)= self.title
-    .row.mt-5.pb-1
+    #text-content.row.mt-5.pb-1
         block content
             .col-12.col-md-8.col-lg-9.col-xl-6
                 .row
