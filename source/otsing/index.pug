@@ -3,11 +3,11 @@ extends /_templates/layout.pug
 
 block content
     #search.col-12.col-md-10.col-lg-8.col-xl-6.pt-3.pb-2.mr-1
-        h3= self.result.title
+        h3.mb-3= self.result.title
         form.form.form-inline(action=self.search.url, method='GET')
             input.col-8.col-md-6.col-xl-4(type='search', name='q', placeholder=self.search.placeholder)
             button.col-4.col-md-3.col-xl-2= self.search.button
-        p#search-count.mb-3
+        p#search-count.mt-2.mb-4
         #search-results
 
     #popup-background.d-none
