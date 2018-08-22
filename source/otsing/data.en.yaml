@@ -13,11 +13,11 @@ result:
     col: column
     row: rida
     nameOnPlaque: nimi tahvlil
-    family: perekond
+    family: family
 feedback:
     button: Feedback
     title: Feedback about %name%
-    text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla egestas ex condimentum volutpat porta. Suspendisse vitae ipsum rutrum, faucibus leo molestie, iaculis risus. Sed hendrerit venenatis maximus. Vivamus molestie nisi nibh, at hendrerit nibh vehicula at. Sed nec posuere est. Duis imperdiet ornare tortor at lacinia.
+    text:
     email: Contact E-mail
     phone: Contact Phone
     feedback: Feedback

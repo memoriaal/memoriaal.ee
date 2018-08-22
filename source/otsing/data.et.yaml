@@ -15,11 +15,19 @@ result:
     family: perekond
 feedback:
     button: Tagasiside
-    title: Tagasisisde %name% kohta
-    text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla egestas ex condimentum volutpat porta. Suspendisse vitae ipsum rutrum, faucibus leo molestie, iaculis risus. Sed hendrerit venenatis maximus. Vivamus molestie nisi nibh, at hendrerit nibh vehicula at. Sed nec posuere est. Duis imperdiet ornare tortor at lacinia.
+    title: Tagasiside %name% kohta
+    text: |
+        Palun kontrollige, kas meil on represseeritu kohta teda järgmised andmed.
+
+        * Kas nimi ja sünni- ning surmaaasta on õige, kas meil on teada isa- ja emanimi.
+        * Küüditatute puhul, kas on kirjas, millal inimene vabastati. Kas teate, millal ta reaalselt tagasi tuli. Kas pereliikmed tulid koos, või tuli keegi varem.
+        * Arreteeritute puhul on oluline teada, kas laagrist vabanemisele
+        järgnes asumisele saatmine või sai inimene koju.
+        
+        Kui leiate andmebaasist kaks isikut, kes tegelikult on üks isik, andke meile teada.
     email: Kontakt e-post
     phone: Kontakt telefon
     feedback: Tagasiside
-    submit: Saada tagasisisde
+    submit: Saada tagasiside
     cancel: Tühista
     success: Täname tagasiside eest
