@@ -16,7 +16,7 @@ result:
     family: perekond
 feedback:
     button: Обратная связь
-    title: Tagasisisde %name% kohta
+    title: Tagasiside %name% kohta
     text: |
         Пожалуйста проверьте, имеем ли мы следующие данные о репрессированном лице.
 
