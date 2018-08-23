@@ -12,15 +12,22 @@ result:
     plaque: бляшка
     col: столб
     row: ряд
-    nameOnPlaque: nimi tahvlil
+    nameOnPlaque: имя на бляшкe
     family: perekond
 feedback:
-    button: Tagasiside
+    button: Обратная связь
     title: Tagasisisde %name% kohta
-    text: 
-    email: Kontakt e-post
-    phone: Kontakt telefon
-    feedback: Tagasiside
-    submit: Saada tagasisisde
-    cancel: Tühista
-    success: Täname tagasiside eest
+    text: |
+        Пожалуйста проверьте, имеем ли мы следующие данные о репрессированном лице.
+
+        - Правильны ли имя, даты рождения и смерти, известны ли нам имена отца и матери.
+        - Указана ли дата освобождения в случае депортированных лиц. Известно ли Вам, когда человек действительно вернулся домой.
+        - В случае арестованных лиц важно знать, был ли человек отправлен на поселение после освобождения из лагеря, или смог отправиться домой.
+
+        В случае обнаружения в базе данных двух лиц, которые в действительности являются одним человеком, напишите нам.
+    email: Электронная почта для связи
+    phone: Контактный телефон
+    feedback: Обратная связь
+    submit: Отправить
+    cancel: Отмена
+    success: Благодарим за обратную связь

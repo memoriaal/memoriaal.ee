@@ -14,7 +14,8 @@ block content
     #popup-content.p-3.d-none
         .row
             h2#db-feedback-title.col-12= self.feedback.title
-            p#db-feedback-text.col-12.col-md-10.offset-md-1.text-center= self.feedback.text
+            #db-feedback-text.col-12.col-md-10.offset-md-1
+                +markdown(self.feedback.text)
 
             form#db-feedback.col-12.col-md-8.offset-md-2(name='db-feedback', method='POST', netlify-honeypot='fax', netlify)
                 input#db-feedback-id(type='hidden', name='id')
