@@ -13,6 +13,7 @@ result:
     col: column
     row: rida
     nameOnPlaque: nimi tahvlil
+    nameOnEVOPlaque: nimi ohvitseride mälestusmärgil
     family: family
 feedback:
     button: Feedback

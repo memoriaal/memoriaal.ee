@@ -108,6 +108,8 @@ block script
                             if (p.tahvel) { text.push('<p class="mb-2 plaque-info">' + p.tahvel + '</p>') }
                             if (p.tulp) { text.push('<p class="mb-2">#{self.result.col}: ' + p.tulp + ' / #{self.result.row}: ' + p.rida + '</p>') }
                             if (p.tahvlikirje) { text.push('<p class="mb-0">#{self.result.nameOnPlaque}: ' + p.tahvlikirje + '</p>') }
+
+                            if (p.ohvitser) { text.push('<hr/><p class="mb-0">#{self.result.nameOnEVOPlaque}: ' + p.evokirje + '</p>') }
                             text.push('</div>')
 
                             text.push('</div>')

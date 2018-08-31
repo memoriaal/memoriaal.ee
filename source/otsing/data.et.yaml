@@ -12,6 +12,7 @@ result:
     col: tulp
     row: rida
     nameOnPlaque: nimi tahvlil
+    nameOnEVOPlaque: nimi ohvitseride mälestusmärgil
     family: perekond
 feedback:
     button: Tagasiside

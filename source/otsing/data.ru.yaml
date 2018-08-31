@@ -13,6 +13,7 @@ result:
     col: столб
     row: ряд
     nameOnPlaque: имя на бляшкe
+    nameOnEVOPlaque: nimi ohvitseride mälestusmärgil
     family: perekond
 feedback:
     button: Обратная связь
