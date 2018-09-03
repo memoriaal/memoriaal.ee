@@ -9,10 +9,10 @@ result:
     mother: мать
     born: рождение
     dead: смерть
-    plaque: бляшка
+    plaque: доска
     col: столб
     row: ряд
-    nameOnPlaque: имя на бляшкe
+    nameOnPlaque: имя на доске
     nameOnEVOPlaque: nimi ohvitseride mälestusmärgil
     family: perekond
 feedback:
