@@ -39,3 +39,8 @@ content:
             Memoriaali andmebaas
             Memoriaali andmebaasi haldab SA Eesti Mälu Instituut.
             Kontakt: <memoriaal@mnemosyne.ee>
+    -
+        id: asukoht
+        title: Asukoht
+        text: |
+            Bussipeatus Maarjamäe, bussid nr 1A, 5, 8, 34A, 38
