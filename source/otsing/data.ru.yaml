@@ -9,11 +9,11 @@ result:
     mother: мать
     born: рождение
     dead: смерть
-    plaque: доска
+    plaque: плита
     col: столб
     row: ряд
-    nameOnPlaque: имя на доске
-    nameOnEVOPlaque: nimi ohvitseride mälestusmärgil
+    nameOnPlaque: имя на плите
+    nameOnEVOPlaque: имя на памятнике кадровым офицерам Эстонии
     family: perekond
 feedback:
     button: Обратная связь
