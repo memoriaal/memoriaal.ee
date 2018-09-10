@@ -52,7 +52,7 @@ block script
             if (query) {
                 $('input[name="q"]').val(query)
 
-                $.ajax('https://94abc9318c712977e8c684628aa5ea0f.us-east-1.aws.found.io:9243/allpersons/_search?size=1000&from=0', {
+                $.ajax('https://94abc9318c712977e8c684628aa5ea0f.us-east-1.aws.found.io:9243/persons/_search?size=1000&from=0', {
                     data : JSON.stringify({ query: { multi_match: { query: query, operator: 'and', fields: ['id', 'perenimi', 'eesnimi'], type: 'cross_fields' } } }),
                     contentType : 'application/json',
                     type : 'POST',
@@ -94,9 +94,7 @@ block script
                                     text.push('<p class="my-0"><strong>' + p.pereseos[ip].nimekiri + ' (#{self.result.family}):</strong></p>')
                                     for (var ipk = 0; ipk < p.pereseos[ip].kirjed.length; ipk++) {
                                         if (p.pereseos[ip].kirjed[ipk].kirje) { text.push('<p class="mb-1">') }
-                                        if (p.pereseos[ip].kirjed[ipk].kirje) { text.push('<a href="#{self.search.url}?q=' + p.pereseos[ip].kirjed[ipk].persoon + '">') }
                                         if (p.pereseos[ip].kirjed[ipk].kirje) { text.push(p.pereseos[ip].kirjed[ipk].kirje) }
-                                        if (p.pereseos[ip].kirjed[ipk].kirje) { text.push('</a>') }
                                         if (p.pereseos[ip].kirjed[ipk].kirje) { text.push('</p>') }
                                     }
                                 }
