@@ -93,7 +93,7 @@ block script
                                     text.push('<hr class="my-3">')
                                     text.push('<p class="my-0"><strong>' + p.pereseos[ip].nimekiri + ' (#{self.result.family}):</strong></p>')
                                     for (var ipk = 0; ipk < p.pereseos[ip].kirjed.length; ipk++) {
-                                        if (p.pereseos[ip].kirjed[ipk].kirje) { text.push('<p class="mb-1">') }
+                                        if (p.pereseos[ip].kirjed[ipk].kirje) { text.push('<p class="mb-1">- ') }
                                         if (p.pereseos[ip].kirjed[ipk].kirje) { text.push(p.pereseos[ip].kirjed[ipk].kirje) }
                                         if (p.pereseos[ip].kirjed[ipk].kirje) { text.push('</p>') }
                                     }
