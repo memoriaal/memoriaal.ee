@@ -53,7 +53,7 @@ block script
                 $('input[name="q"]').val(query)
 
                 $.ajax('https://94abc9318c712977e8c684628aa5ea0f.us-east-1.aws.found.io:9243/allpersons/_search?size=1000&from=0', {
-                    data : JSON.stringify({ query: { multi_match: { query: query, operator: 'and', fields: [ 'perenimi', 'eesnimi', 'perenimed', 'eesnimed', 'sünd', 'surm', 'id', 'pereseos.kirjed.persoon' ], type: 'cross_fields' } }, sort: { 'perenimi.raw': 'asc', 'eesnimi.raw': 'asc' } }),
+                    data : JSON.stringify({ query: { multi_match: { query: query, operator: 'and', type: 'cross_fields' } }, sort: { 'perenimi.raw': 'asc', 'eesnimi.raw': 'asc' } }),
                     contentType : 'application/json',
                     type : 'POST',
                     cache: false,
