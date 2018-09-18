@@ -57,7 +57,11 @@ block script
             }
 
             var query = qs('q')
-            var filter = qs('f') || 'wall'
+            var filter = qs('f') || 'all'
+            
+            //- if (query == Number(query) && query.length === 10) {
+            //-   filter = 'all'
+            //- }
             
             $('input[value="'+filter+'"]').prop('checked', true)
 
