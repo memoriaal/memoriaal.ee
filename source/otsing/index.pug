@@ -6,13 +6,13 @@ block content
         h3.mb-3= self.search.title
         form.form(action=self.search.url, method='GET')
             input.col-8.col-md-6.col-xl-4(type='search', name='q', placeholder=self.search.placeholder)
-            .form-check.col-12
+            .form-check.col-12.my-2
                 input.form-check-input(type='radio', id='filter_'+self.search.radio.all, name='f', value='all')
                 label.form-check-label(for='filter_'+self.search.radio.all)= self.search.radio.all
-            .form-check.col-12
+            .form-check.col-12.my-2
                 input.form-check-input(type='radio', id='filter_'+self.search.radio.wall, name='f', value='wall')
                 label.form-check-label(for='filter_'+self.search.radio.wall)= self.search.radio.wall
-            .form-check.col-12
+            .form-check.col-12.my-2
                 input.form-check-input(type='radio', id='filter_'+self.search.radio.officers, name='f', value='officers')
                 label.form-check-label(for='filter_'+self.search.radio.officers)= self.search.radio.officers
             button.col-4.col-md-3.col-xl-2= self.search.button
@@ -69,7 +69,7 @@ block script
                         bool : {
                             must : {
                                 multi_match : {
-                                    query: 'mets',
+                                    query: query,
                                     fields: [ 'perenimi', 'eesnimi', 'perenimed', 'eesnimed', 'sünd', 'surm', 'id', 'pereseosID' ],
                                     operator: 'and',
                                     type: 'cross_fields'
