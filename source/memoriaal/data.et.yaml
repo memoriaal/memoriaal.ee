@@ -23,22 +23,18 @@ content:
             Ohvitseride mälestusmärgi tehniline lahendus: Margus Triibmann
     -
         id: haldus
-        title: Memoriaali haldus / kontakt
+        title: Memoriaali haldus
+        text: |
+            haldusega tegeleb Riigi Kinnisvara AS.
+            [www.rkas.ee](https://www.rkas.ee)
+    -
+        id: andmebaasi-haldus
+        title: Memoriaali andmebaasi haldus / kontakt
         text: |
             Memoriaali andmebaasi haldab SA Eesti Mälu Instituut.
             Kontakt: Suur-Ameerika 12, Tallinn 10119;
             Tel. +372 6484962
             <memoriaal@mnemosyne.ee>
-
-            haldusega tegeleb Riigi Kinnisvara AS.
-            [www.rkas.ee](https://www.rkas.ee)
-    -
-        id: andmebaasi-haldus
-        title: Memoriaali andmebaasi haldus
-        text: |
-            Memoriaali andmebaas
-            Memoriaali andmebaasi haldab SA Eesti Mälu Instituut.
-            Kontakt: <memoriaal@mnemosyne.ee>
     -
         id: asukoht
         title: Asukoht
