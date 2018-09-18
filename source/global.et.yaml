@@ -45,6 +45,6 @@ search:
 
     title: Otsing kommunismiohvrite andmebaasist
     radio:
-        all: Kõikide kommunismiohvrite seast
-        wall: Mälestustahvlitelt
-        officers: Ohvitseride mälestusseinalt
+        all: Kõikide represseeritute hulgast
+        wall: Kommunismiohvrite mälestusseinalt
+        officers: Kaadriohvitseride mälestusseinalt
