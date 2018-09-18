@@ -58,10 +58,12 @@ block script
 
             var query = qs('q')
             var filter = qs('f') || 'all'
+            var idQuery = (query == Number(query) && query.length === 10)
             
-            //- if (query == Number(query) && query.length === 10) {
-            //-   filter = 'all'
-            //- }
+            if (idQuery) {
+                filter = 'all'
+                //- $('input[type="radio"]').prop('disabled', true)
+            }
             
             $('input[value="'+filter+'"]').prop('checked', true)
 
@@ -167,7 +169,13 @@ block script
             }
 
             $('input[type="radio"]').on('click', function () {
-                if ($('input[name="q"]').val() && $(this).prop('value') !== filter) {
+                query = $('input[name="q"]').val()
+                idQuery = (query == Number(query) && query.length === 10)
+                if (idQuery) {
+                    $('input[value="all"]').prop('checked', true)
+                    return 
+                }
+                if ($(query && $(this).prop('value')) !== filter) {
                     $('#searchform').submit()
                 }
             })
