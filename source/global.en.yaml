@@ -42,3 +42,9 @@ search:
         You can peruse information in the Memorial’s database on individuals who have suffered under the communist terror via the search window and you will find instructions for how to find the names of victims on the name plaques.
     placeholder: enter name →
     button: Search
+
+    title: Otsing kommunismiohvrite andmebaasist
+    radio:
+        all: Kõikide kommunismiohvrite seast
+        wall: Mälestustahvlitelt
+        officers: Ohvitseride mälestusseinalt

@@ -42,3 +42,9 @@ search:
         Otsingu akna kaudu saate tutvuda memoriaali andmebaasis oleva infoga kommunistliku terrori läbi kannatanud isikute kohta ning leiate juhised nende nime leidmiseks nimetahvlitel.
     placeholder: sisesta nimi →
     button: Otsi
+
+    title: Otsing kommunismiohvrite andmebaasist
+    radio:
+        all: Kõikide kommunismiohvrite seast
+        wall: Mälestustahvlitelt
+        officers: Ohvitseride mälestusseinalt

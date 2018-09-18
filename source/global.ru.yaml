@@ -42,3 +42,9 @@ search:
         При помощи поискового окошка можно ознакомиться с информацией в базе данных мемориала, касающейся пострадавших от коммунистических репрессий. Там Вы найдете инструкцию для поиска желаемого имени на именных табличках мемориала.
     placeholder: введите имя →
     button: Искать
+
+    title: Otsing kommunismiohvrite andmebaasist
+    radio:
+        all: Kõikide kommunismiohvrite seast
+        wall: Mälestustahvlitelt
+        officers: Ohvitseride mälestusseinalt

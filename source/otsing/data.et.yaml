@@ -3,7 +3,9 @@ pictures:
     - /assets/images/bg/andmebaas.jpg
 result:
     title: Otsing kommunismiohvrite andmebaasist
-    count: kirjet
+    count:
+        one: kirje
+        multiple: kirjet
     father: isa
     mother: ema
     born: sünd

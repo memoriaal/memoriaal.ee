@@ -4,7 +4,9 @@ pictures:
     - /assets/images/bg/andmebaas.jpg
 result:
     title: Поиск в базе данных жертв коммунизма
-    count: записей
+    count:
+        one: запись
+        multiple: записей
     father: отец
     mother: мать
     born: рождение

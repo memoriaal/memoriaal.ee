@@ -4,7 +4,9 @@ pictures:
     - /assets/images/bg/andmebaas.jpg
 result:
     title: Search in the database of victims of communism
-    count: entries
+    count:
+        one: entry
+        multiple: entries
     father: father
     mother: mother
     born: born
