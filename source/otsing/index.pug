@@ -163,7 +163,9 @@ block script
             }
 
             $('input[type="radio"]').on('click', function () {
-                $('#searchform').submit()
+                if ($('input[name="q"]').val() && $(this).prop('value') !== filter) {
+                    $('#searchform').submit()
+                }
             })
             $('#search-results').on('mouseenter', '.search-result', function () {
                 $(this).find('.search-result-feedback').removeClass('d-none')
