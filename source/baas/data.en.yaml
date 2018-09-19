@@ -1,0 +1,29 @@
+path: search
+title: Search
+pictures:
+    - /assets/images/bg/andmebaas.jpg
+result:
+    title: Search in the database of victims of communism
+    count:
+        one: entry
+        multiple: entries
+    father: father
+    mother: mother
+    born: born
+    dead: death
+    plaque: plaque
+    col: column
+    row: rida
+    nameOnPlaque: nimi tahvlil
+    nameOnEVOPlaque: nimi ohvitseride mälestusmärgil
+    family: family
+feedback:
+    button: Feedback
+    title: Feedback about %name%
+    text:
+    email: Contact E-mail
+    phone: Contact Phone
+    feedback: Feedback
+    submit: Send feedback
+    cancel: Cancel
+    success: Thank You!

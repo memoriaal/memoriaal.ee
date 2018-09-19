@@ -4,7 +4,7 @@ extends /_templates/layout.pug
 block content
     #search.col-12.col-md-10.col-lg-8.col-xl-6.pt-3.pb-2.mr-1
         h3.mb-3= self.search.title
-        form.form(id='searchform', action=self.search.url, method='GET')
+        form.form(id='searchform', action='/baas/', method='GET')
             input.col-8.col-md-6.col-xl-4(type='search', name='q', placeholder=self.search.placeholder)
             .form-check.col-12.my-2
                 input.form-check-input(type='radio', id='filter_'+self.search.radio.all, name='f', value='all')
@@ -80,8 +80,7 @@ block script
                                     operator: 'and',
                                     type: 'cross_fields'
                                 }
-                            },
-                            filter : { term: { relevantne: '1' } }
+                            }
                         }
                     },
                     sort: { 'eesnimi.raw': 'asc', 'perenimi.raw': 'asc' },
