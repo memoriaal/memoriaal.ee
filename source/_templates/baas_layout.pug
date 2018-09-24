@@ -1,0 +1,38 @@
+block vars
+
+
+mixin markdown(text)
+    | !{ self.md(text) }
+
+
+doctype html
+html(lang=self.locale)
+    head
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        meta(property='og:url', content='https://www.memoriaal.ee' + self.path)
+        meta(property='og:title', content=self.title ? self.title + ' · ' + self.siteTitle : self.siteTitle)
+        meta(property='og:image', content=self.pictures[0])
+
+        title= self.title && self.title !== self.siteTitle ? self.title + ' · ' + self.siteTitle : self.siteTitle
+
+        link(href='https://cloud.typography.com/6935656/6118392/css/fonts.css', rel='stylesheet', type='text/css')
+        link(href='/assets/css/bootstrap.min.css', rel='stylesheet')
+        link(href='/style.css', rel='stylesheet')
+
+        block style
+
+        script(async, src='https://www.googletagmanager.com/gtag/js?id=UA-260765-40')
+        script.
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-260765-40');
+    body
+        block content
+        //- include text.pug
+
+        script(src='/assets/js/jquery-3.3.1.min.js')
+        script(src='/script.js')
+
+        block script

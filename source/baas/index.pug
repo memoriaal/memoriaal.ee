@@ -1,8 +1,8 @@
-extends /_templates/layout.pug
+extends /_templates/baas_layout.pug
 
 
 block content
-    #search.col-12.col-md-10.col-lg-8.col-xl-6.pt-3.pb-2.mr-1
+    #search.col-12
         h3.mb-3= self.search.title
         form.form(id='searchform', action='/baas/', method='GET')
             input.col-8.col-md-6.col-xl-4(type='search', name='q', placeholder=self.search.placeholder)
