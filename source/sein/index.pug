@@ -1,1 +1,142 @@
 extends /_templates/layout.pug
+
+block content
+    //- include /_templates/text.pug
+    .col-12.col-md-8.col-lg-9.col-xl-6
+        .row
+            #text-text.col.py-3
+                each c, idx in self.content
+                    if c.title
+                        .m-0(class={ 'mb-3': self.content.length > 1 })= c.title
+                        .text-block.d-none(id=c.id, class={ 'mb-3': idx!==self.content.length-1, 'mb-0': idx===self.content.length-1 })
+                            +markdown(c.text)
+                    else
+                        .m-0(class={ 'mb-3': self.content.length > 1 })
+                            +markdown(c.text)
+
+    .col-12.col-md-4.col-lg-3.col-xl-2
+        .row
+            #text-search.col.mt-1.mt-md-0.ml-md-1.py-3
+                +markdown(self.search.text)
+                form.form(action=self.search.url, method='GET')
+                    input.col-8(type='search', name='q', placeholder=self.search.placeholder)
+                    button.col-4= self.search.button
+
+    #search.col-12.col-md-10.col-lg-8.col-xl-8.pt-3.pb-2.mr-1
+        #search-results
+
+
+block script
+    script.
+        $(function () {
+            var qData = { 
+                query : {
+                    bool : {
+                        filter : { term: { tahvel: 'x' } }
+                    }
+                },
+                sort: { 'eesnimi.raw': 'asc', 'perenimi.raw': 'asc' },
+                _source: [ 'id', 'perenimi', 'eesnimi', 'sünd', 'surm' ]
+            }
+            $.ajax('https://94abc9318c712977e8c684628aa5ea0f.us-east-1.aws.found.io:9243/persons/_search?size=1000&from=0', {
+                data : JSON.stringify(qData),
+                contentType : 'application/json',
+                type : 'POST',
+                cache: false,
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Basic cmVhZGVyOnJlYWRlcg==')
+                },
+                success: function (data) {
+
+                    var hits = data.hits.hits.map(function(hit) { return hit._source })
+                    //- console.log(hits)
+                    for (var i = 0; i < hits.length; i++) {
+                        var text = []
+                        var p = hits[i]
+
+                        text.push('<div id="' + p.id + '" class="row search-result pt-2 pb-4">')
+
+                        text.push('<p class="col-12 mb-2 mb-1">' 
+                                  + (i+1) + '. #' + p.id + ' ' 
+                                  + (p.eesnimi ? p.eesnimi : '') + ' ' 
+                                  + p.perenimi + ' ' 
+                                  + (p.sünd ? p.sünd : '?') + ' — ' 
+                                  + (p.surm ? p.surm : '✝') +  '</p>')
+                        text.push('</div>')
+
+                        $('#search-results').append(text.join(''))
+                    }
+                },
+                error: function( error) {
+                    console.log(error)
+                }
+            })
+
+            $('input[type="radio"]').on('click', function () {
+                query = $('input[name="q"]').val()
+                idQuery = (query == Number(query) && query.length === 10)
+                if (idQuery) {
+                    $('input[value="all"]').prop('checked', true)
+                    return 
+                }
+                if ($(query && $(this).prop('value')) !== filter) {
+                    $('#searchform').submit()
+                }
+            })
+            $('#search-results').on('mouseenter', '.search-result', function () {
+                $(this).find('.search-result-feedback').removeClass('d-none')
+            })
+
+            $('#search-results').on('mouseleave', '.search-result', function () {
+                $(this).find('.search-result-feedback').addClass('d-none')
+            })
+
+        })
+
+
+block style
+    style.
+        @media print {
+            * {
+                color: #000 !important;
+                background: none !important;
+                overflow: visible !important;
+            }
+
+            #text {
+                height: 100% !important;
+                padding: 0 !important;
+                background: none !important;
+            }
+
+            #text-pagetitle, #text-title {
+                display: none !important;
+            }
+
+            #text-content {
+                margin-top: 0 !important;
+            }
+
+            #search {
+                width: 100% !important;
+                max-width: 100% !important;
+                flex-basis: 100% !important;
+            }
+
+            #search button {
+                display: none !important;
+            }
+
+            #search input {
+                margin-bottom: .5rem !important;
+                padding: 0 !important;
+            }
+
+            #search .search-result .search-result-name {
+                border-bottom: 1px solid #808080 !important;
+            }
+
+            #navigation {
+                display: none !important;
+            }
+        }
