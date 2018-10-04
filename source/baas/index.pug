@@ -76,7 +76,7 @@ block script
                             must : {
                                 multi_match : {
                                     query: query,
-                                    fields: [ 'perenimi', 'eesnimi', 'perenimed', 'eesnimed', 'sünd', 'surm', 'id', 'pereseosID' ],
+                                    fields: [ 'perenimi', 'eesnimi', 'perenimed', 'eesnimed', 'sünd', 'surm', 'id', 'pereseosID', 'kirjed.kirje' ],
                                     operator: 'and',
                                     type: 'cross_fields'
                                 }
