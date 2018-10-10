@@ -11,3 +11,5 @@ content:
     -
         id: lisatahvel
         title: Pärast memoriaali valmimist väljaselgitatud kommunismiohvrite nimed, mis kantakse memoriaali lisatahvlitele
+        text: |
+            { #search-results }

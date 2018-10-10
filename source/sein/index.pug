@@ -1,35 +1,10 @@
 extends /_templates/layout.pug
 
-block content
-    //- include /_templates/text.pug
-    .col-12.col-md-8.col-lg-9.col-xl-6
-        .row
-            #text-text.col.py-3
-                each c, idx in self.content
-                    if c.title
-                        .m-0(class={ 'mb-3': self.content.length > 1 })= c.title
-                        .text-block.d-none(id=c.id, class={ 'mb-3': idx!==self.content.length-1, 'mb-0': idx===self.content.length-1 })
-                            +markdown(c.text)
-                    else
-                        .m-0(class={ 'mb-3': self.content.length > 1 })
-                            +markdown(c.text)
-
-    .col-12.col-md-4.col-lg-3.col-xl-2
-        .row
-            #text-search.col.mt-1.mt-md-0.ml-md-1.py-3
-                +markdown(self.search.text)
-                form.form(action=self.search.url, method='GET')
-                    input.col-8(type='search', name='q', placeholder=self.search.placeholder)
-                    button.col-4= self.search.button
-
-    #search.col-12.col-md-10.col-lg-8.col-xl-8.pt-3.pb-2.mr-1
-        #search-results
-
 
 block script
     script.
         $(function () {
-            var qData = { 
+            var qData = {
                 query : {
                     bool : {
                         filter : { term: { tahvel: 'x' } }
@@ -56,10 +31,10 @@ block script
 
                         text.push('<div id="' + p.id + '" class="row search-result pt-2">')
 
-                        text.push('<p class="col-12 mb-2 mb-1">' 
-                                  + (p.eesnimi ? p.eesnimi : '') + ' ' 
-                                  + p.perenimi + ' ' 
-                                  + (p.sünd ? p.sünd : '?') + ' — ' 
+                        text.push('<p class="col-12 mb-2 mb-1">'
+                                  + (p.eesnimi ? p.eesnimi : '') + ' '
+                                  + p.perenimi + ' '
+                                  + (p.sünd ? p.sünd : '?') + ' — '
                                   + (p.surm ? p.surm : '✝') +  '</p>')
                         text.push('</div>')
 
@@ -76,7 +51,7 @@ block script
                 idQuery = (query == Number(query) && query.length === 10)
                 if (idQuery) {
                     $('input[value="all"]').prop('checked', true)
-                    return 
+                    return
                 }
                 if ($(query && $(this).prop('value')) !== filter) {
                     $('#searchform').submit()
