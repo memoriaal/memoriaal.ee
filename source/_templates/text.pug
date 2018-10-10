@@ -21,11 +21,6 @@
                             else
                                 .m-0(class={ 'mb-3': self.content.length > 1 })
                                     +markdown(c.text)
-            .col-12.col-md-4.col-lg-3.col-xl-2
+            .col-12.col-md-4.col-lg-3.col-xl-3
                 .row
-                    #text-search.col.mt-1.mt-md-0.ml-md-1.py-3
-                        +markdown(self.search.text)
-                        form.form(action=self.search.url, method='GET')
-                            .form-row.mx-0
-                                input.col-8(type='search', name='q', placeholder=self.search.placeholder)
-                                button.col-4= self.search.button
+                    include /_templates/search.pug
