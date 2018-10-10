@@ -1,15 +1,15 @@
 #text-search.col.mt-1.mt-md-0.ml-md-1.py-3
     +markdown(self.search.text)
     form#searchform.form(action=self.search.url, method='GET')
-        .form-row.mx-0.my-4
+        .form-row.mx-0.my-3
             input.col-8(type='search', name='q', placeholder=self.search.placeholder)
             button.col-4= self.search.button
-        .form-check.col-12.my-2
+        .form-check.col-12.mb-1
             input#filter_all.form-check-input(type='radio', name='f', value='all', checked)
             label.form-check-label(for='filter_all')= self.search.radio.all
-        .form-check.col-12.my-2
+        .form-check.col-12.mb-1
             input#filter_wall.form-check-input(type='radio', name='f', value='wall')
             label.form-check-label(for='filter_wall')= self.search.radio.wall
-        .form-check.col-12.my-2
+        .form-check.col-12
             input#filter_officers.form-check-input(type='radio', name='f', value='officers')
             label.form-check-label(for='filter_officers')= self.search.radio.officers
