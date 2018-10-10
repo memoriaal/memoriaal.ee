@@ -5,10 +5,10 @@
             input.col-8(type='search', name='q', placeholder=self.search.placeholder)
             button.col-4= self.search.button
         .form-check.col-12.mb-1
-            input#filter_all.form-check-input(type='radio', name='f', value='all', checked)
+            input#filter_all.form-check-input(type='radio', name='f', value='all')
             label.form-check-label(for='filter_all')= self.search.radio.all
         .form-check.col-12.mb-1
-            input#filter_wall.form-check-input(type='radio', name='f', value='wall')
+            input#filter_wall.form-check-input(type='radio', name='f', value='wall', checked)
             label.form-check-label(for='filter_wall')= self.search.radio.wall
         .form-check.col-12
             input#filter_officers.form-check-input(type='radio', name='f', value='officers')
