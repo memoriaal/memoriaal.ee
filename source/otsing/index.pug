@@ -2,22 +2,29 @@ extends /_templates/layout.pug
 
 
 block content
-    #search.col-12.col-md-10.col-lg-8.col-xl-8.pt-3.pb-2.mr-1
-        h3.mb-3= self.search.title
-        form.form(id='searchform', action=self.search.url, method='GET')
-            input.col-8.col-md-6.col-xl-4(type='search', name='q', placeholder=self.search.placeholder)
-            .form-check.col-12.my-2
-                input.form-check-input(type='radio', id='filter_'+self.search.radio.all, name='f', value='all')
-                label.form-check-label(for='filter_'+self.search.radio.all)= self.search.radio.all
-            .form-check.col-12.my-2
-                input.form-check-input(type='radio', id='filter_'+self.search.radio.wall, name='f', value='wall')
-                label.form-check-label(for='filter_'+self.search.radio.wall)= self.search.radio.wall
-            .form-check.col-12.my-2
-                input.form-check-input(type='radio', id='filter_'+self.search.radio.officers, name='f', value='officers')
-                label.form-check-label(for='filter_'+self.search.radio.officers)= self.search.radio.officers
-            button.col-4.col-md-3.col-xl-2= self.search.button
-        p#search-count.mt-2.mb-4
-        #search-results
+    #text-text.col-12.col-md-9.col-lg-9
+        .row
+            .col.py-3
+                p#search-count.mt-2.mb-4
+                #search-results
+    .col-12.col-md-3.col-lg-3
+        .row
+            #text-search.col.mt-1.mt-md-0.ml-md-1.py-3
+                +markdown(self.search.text)
+                form#searchform.form(action=self.search.url, method='GET')
+                    .form-row.mx-0.my-4
+                        input.col-8(type='search', name='q', placeholder=self.search.placeholder)
+                        button.col-4= self.search.button
+                    .form-check.col-12.my-2
+                        input#filter_all.form-check-input(type='radio', name='f', value='all')
+                        label.form-check-label(for='filter_all')= self.search.radio.all
+                    .form-check.col-12.my-2
+                        input#filter_wall.form-check-input(type='radio', name='f', value='wall')
+                        label.form-check-label(for='filter_wall')= self.search.radio.wall
+                    .form-check.col-12.my-2
+                        input#filter_officers.form-check-input(type='radio', name='f', value='officers')
+                        label.form-check-label(for='filter_officers')= self.search.radio.officers
+
 
     #popup-background.d-none
     #popup-content.p-3.d-none
@@ -59,18 +66,18 @@ block script
             var query = qs('q')
             var filter = qs('f') || 'all'
             var idQuery = (query == Number(query) && query.length === 10)
-            
+
             if (idQuery) {
                 filter = 'all'
                 //- $('input[type="radio"]').prop('disabled', true)
             }
-            
+
             $('input[value="'+filter+'"]').prop('checked', true)
 
             if (query) {
                 $('input[name="q"]').val(query)
 
-                var qData = { 
+                var qData = {
                     query : {
                         bool : {
                             must : {
@@ -174,7 +181,7 @@ block script
                 idQuery = (query == Number(query) && query.length === 10)
                 if (idQuery) {
                     $('input[value="all"]').prop('checked', true)
-                    return 
+                    return
                 }
                 if ($(query && $(this).prop('value')) !== filter) {
                     $('#searchform').submit()
