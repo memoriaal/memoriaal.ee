@@ -16,6 +16,11 @@ navigation:
         title: Wall of Remembrance of the Journey
         text: The names of over 22,000 people who never returned home are on the name plaques lining the Journey.
     -
+        url: /en/database/
+        picture: /assets/images/nav/andmebaas.jpg
+        title: The Memorial’s Database
+        text: The Estonian Institute of Historical Memory Foundation manages and administers the Memorial’s database.
+    -
         url: /en/officers/
         picture: /assets/images/nav/ohvitserid.jpg
         title: Monument to Estonian Regular Officers
@@ -30,11 +35,6 @@ navigation:
         picture: /assets/images/nav/kohakivid.jpg
         title: Location Stones and Information Texts
         text: The notorious penal institutions and execution sites of the communist terror are sites of memory that symbolise the sufferings of their forebears for new generations.
-    -
-        url: /en/database/
-        picture: /assets/images/nav/andmebaas.jpg
-        title: The Memorial’s Database
-        text: The Estonian Institute of Historical Memory Foundation manages and administers the Memorial’s database.
 search:
     url: /en/search/
     text: |
