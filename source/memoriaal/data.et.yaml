@@ -4,9 +4,15 @@ pictures:
 content:
     -
         text: |
-            Kommunismiohvrite memoriaal on pühendatud kõigile Nõukogude Liidu terrori all kannatanud Eesti inimestele. Kommunistlik terrorirežiim kehtestati Eesti okupeerimisega 17. juunil 1940 ja see lõppes Eesti iseseisvuse taastamisega 20. augustil 1991. Selle tagajärjel kaotas Eesti iga viienda oma veidi üle miljonist elanikust, kellest rohkem kui 75 000 mõrvati, vangistati või küüditati.
+            Kommunistlik terrorirežiim kehtestati Eesti okupeerimisega 17. juunil 1940 ja see lõppes Eesti iseseisvuse taastamisega 20.&nbsp;augustil 1991. Selle tagajärjel kaotas Eesti iga viienda oma veidi üle miljonist elanikust, kellest rohkem kui 75&nbsp;000 mõrvati,
+            vangistati või küüditati. Kommunismiohvrite memoriaal on pühendatud kõigile neile Nõukogude Liidu terrori all kannatanud Eesti inimestele.
 
             Memoriaalil on kaks osa – Teekond ohvrite nimetahvlitega ja sümboolne Koduaed koos terroripaiku tähistavate kohakivide ning teabetekstidega. Memoriaali juurde kuulub kommunistliku terrori ohvriks langenud Eesti ohvitseride mälestusmärk.
+
+            Memoriaali teekonna mälestusseinale on kantud nende Eesti inimeste nimed, kes on terrori käigus mõrvatud, vangistuses või asumisel surnud või on teadaolevalt mõrvatud Nõukogude võimuesindajate vahetu isikuvastase ründe tagajärjel. Teekonna mälestusseinal ei ole kirjas neid tuhandeid ohvreid, kelle saatus on teadmata ja kes ei jõudnud tagasi koju. See on mälestuseks ka neile.
+
+            Lisaks on memoriaali osaks andmebaas, kuhu on kantud aastatel 1940–1991 Nõukogude Liidu okupatsioonivõimu poolt kohtuväliselt represseeritud või alusetult süüdimõistetud, nii vahetu kommunistliku terrori käigus hukkunud isikud kui vangistusest või asumiselt vabanenud, samuti küüditamisele kuulunud isikud, keda ei küüditatud.
+
     -
         id: autorid
         title: Memoriaali autorid
@@ -39,5 +45,5 @@ content:
         id: asukoht
         title: Asukoht
         text: |
-            Bussipeatus Maarjamäe, bussid nr 1A, 5, 8, 34A, 38
-            Autoga tulles on parkla Pirita teel memoriaali sissekäigust Pirita poole. Samuti on võimalik parkida ka ülemises parklas. Hoidke suunda FC Levadia Maarjamäe jalgpallikompleksi ja Saksa sõjaväekalmistu järgi.
+            Bussid nr 1A, 5, 8, 34A, 38 bussipeatus Maarjamäe, buss nr 5 ka bussipeatus Saare.
+            Autoga tulles on parkla Pirita teel memoriaali sissekäigust Pirita poole. Samuti on võimalik parkida ülemises parklas. Hoidke suunda FC Levadia Maarjamäe jalgpallikompleksi ja Saksa sõjaväekalmistu järgi.

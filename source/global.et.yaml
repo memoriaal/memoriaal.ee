@@ -16,6 +16,11 @@ navigation:
         title: Teekonna mälestussein
         text: Teekonda palistavatel nimetahvlitel on enam kui 22 000 inimese nimed, kes kunagi koju tagasi ei pöördunud.
     -
+        url: /andmebaas/
+        picture: /assets/images/nav/andmebaas.jpg
+        title: Memoriaali andmebaas
+        text: Memoriaali andmebaasi haldab SA Eesti Mälu Instituut.
+    -
         url: /ohvitserid/
         picture: /assets/images/nav/ohvitserid.jpg
         title: Eesti kaadriohvitseride mälestusmärk
@@ -30,11 +35,6 @@ navigation:
         picture: /assets/images/nav/kohakivid.jpg
         title: Kohakivid ja teabetekstid
         text: Kommunistliku terrori kurikuulsad kinnipidamis- ja hukkamiskohad on mälupaigad, mis sümboliseerivad uutele põlvkondadele esivanemate kannatusi.
-    -
-        url: /andmebaas/
-        picture: /assets/images/nav/andmebaas.jpg
-        title: Memoriaali andmebaas
-        text: Memoriaali andmebaasi haldab SA Eesti Mälu Instituut.
 search:
     url: /otsing/
     text: |
