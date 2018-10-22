@@ -52,11 +52,6 @@ block script
             var filter = qs('f') || 'all'
             var idQuery = (query == Number(query) && query.length === 10)
 
-            if (idQuery) {
-                filter = 'all'
-                //- $('input[type="radio"]').prop('disabled', true)
-            }
-
             $('input[value="'+filter+'"]').prop('checked', true)
 
             if (query) {
@@ -85,6 +80,11 @@ block script
                         'tahvel', 'tulp', 'rida', 'tahvlikirje',
                         'ohvitser', 'evokirje'
                     ]
+                }
+
+                if (idQuery) {
+                    filter = 'all'
+                    qData['query']['bool']['must']['multi_match']['fields'] = ['id']
                 }
                 if (filter === 'wall') {
                     qData['query']['bool']['filter'] = { term: { kivi: '1' } }
