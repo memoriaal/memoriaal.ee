@@ -32,7 +32,8 @@ content:
         title: Memoriaali haldus
         text: |
             haldusega tegeleb Riigi Kinnisvara AS.
-            [www.rkas.ee](https://www.rkas.ee)
+            <info@rkas.ee>
+            [www.rkas.ee](http://rkas.ee/riigi-kinnisvarast/kontakt)
     -
         id: andmebaasi-haldus
         title: Memoriaali andmebaasi haldus / kontakt
