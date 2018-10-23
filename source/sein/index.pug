@@ -3,6 +3,11 @@ extends /_templates/layout.pug
 
 block script
     script.
+        function capitalize(sentence) {
+          return sentence.toLowerCase().replace(/[^\s_\-/]*/g, function (word) {
+            return word.replace(/./, function (ch) { return ch.toUpperCase(); } );
+          } );
+        }
         $(function () {
             var qData = {
                 query : {
@@ -32,7 +37,7 @@ block script
                         text.push('<div id="' + p.id + '" class="row search-result pt-2">')
 
                         text.push('<p class="col-12 mb-2 mb-1">'
-                                  + (p.eesnimi ? p.eesnimi : '') + ' '
+                                  + (p.eesnimi ? capitalize(p.eesnimi) + ' ' : '')
                                   + p.perenimi + ' '
                                   + (p.sünd ? p.sünd : '?') + ' — '
                                   + (p.surm ? p.surm : '✝') +  '</p>')
