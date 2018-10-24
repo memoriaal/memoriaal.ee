@@ -41,3 +41,14 @@ content:
             The Memorial's Database
             The Estonian Institute of Historical Memory Foundation manages and administers the Memorial’s database.
             Kontakt: <memoriaal@mnemosyne.ee>
+    -
+        id: asukoht
+        title: Location
+        text: |
+            The Memorial is located in Tallinn, Maarjamägi. Main entrance from the Pirita road.
+
+            Bus station „Maarjamägi“ (Pirita road), take a bus nr 1A, 5, 8, 34A or 38.
+
+            Parking of cars and busses is allowed on Pirita road`s parking lots near the main entrance of the memorial. Also you can use the upper parking zone. In that case please hold the direction of the football stadium of FC Levadia and the German War Cemetery (Kose road).
+
+            [See the map](https://goo.gl/maps/BS4wghXs5EM2)
