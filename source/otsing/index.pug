@@ -30,6 +30,9 @@ block content
                     label.form-label.col-12.px-0(for='db-feedback-phone')= self.feedback.phone
                     input#db-feedback-phone.col-12.px-0(type='tel', name='contact-phone')
                 .form-group.mt-5
+                    label.form-label.col-12.px-0(for='db-feedback-fullname')= self.feedback.fullname
+                    input#db-feedback-fullname.col-12.px-0(type='tel', name='contact-fullname')
+                .form-group.mt-5
                     label.form-label.col-12.px-0(for='db-feedback-feedback')= self.feedback.feedback
                     textarea#db-feedback-feedback.col-12.px-0(name='feedback', rows=5)
                 .form-group.mt-5.text-right

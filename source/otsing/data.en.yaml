@@ -23,6 +23,7 @@ feedback:
     text:
     email: Contact E-mail
     phone: Contact Phone
+    fullname: Your Name
     feedback: Feedback
     submit: Send feedback
     cancel: Cancel
