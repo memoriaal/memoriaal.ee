@@ -4,15 +4,13 @@ pictures:
 content:
     -
         text: |
-            Kommunistlik terrorirežiim kehtestati Eesti okupeerimisega 17. juunil 1940 ja see lõppes Eesti iseseisvuse taastamisega 20.&nbsp;augustil 1991. Selle tagajärjel kaotas Eesti iga viienda oma veidi üle miljonist elanikust, kellest rohkem kui 75&nbsp;000 mõrvati,
-            vangistati või küüditati. Kommunismiohvrite memoriaal on pühendatud kõigile neile Nõukogude Liidu terrori all kannatanud Eesti inimestele.
+            Kommunistlik terrorirežiim kehtestati Eesti okupeerimisega 17. juunil 1940 ja see lõppes Eesti iseseisvuse taastamisega 20. augustil 1991. Selle tagajärjel kaotas Eesti iga viienda oma veidi üle miljonist elanikust, kellest rohkem kui 75 000 mõrvati, vangistati või küüditati. Kommunismiohvrite memoriaal on pühendatud neile kõigile.
 
-            Memoriaalil on kaks osa – Teekond ohvrite nimetahvlitega ja sümboolne Koduaed koos terroripaiku tähistavate kohakivide ning teabetekstidega. Memoriaali juurde kuulub kommunistliku terrori ohvriks langenud Eesti ohvitseride mälestusmärk.
+            Memoriaalil on kaks osa – „Teekond“ terrori läbi hukkunute nimetahvlitega ja „Koduaed“, millele lisanduvad terroripaiku tähistavad kohakivid ning teabetekstid. Memoriaali juurde kuulub ka kommunistliku terrori ohvriks langenud Eesti ohvitseride mälestusmärk.
 
-            Memoriaali teekonna mälestusseinale on kantud nende Eesti inimeste nimed, kes on terrori käigus mõrvatud, vangistuses või asumisel surnud või on teadaolevalt mõrvatud Nõukogude võimuesindajate vahetu isikuvastase ründe tagajärjel. Teekonna mälestusseinal ei ole kirjas neid tuhandeid ohvreid, kelle saatus on teadmata ja kes ei jõudnud tagasi koju. See on mälestuseks ka neile.
+            „Teekonna“ mälestusseinale on kantud nende Eesti inimeste nimed, kes on terrori käigus hukkunud, s.t mõrvatud või surnud vangistuses või asumisel. Mälestusseinal ei ole nende tuhandete ohvrite nimesid, kes ei jõudnud tagasi koju ja kelle saatus on teadmata. See sein on mälestuseks ka neile.
 
-            Lisaks on memoriaali osaks andmebaas, kuhu on kantud aastatel 1940–1991 Nõukogude Liidu okupatsioonivõimu poolt kohtuväliselt represseeritud või alusetult süüdimõistetud, nii vahetu kommunistliku terrori käigus hukkunud isikud kui vangistusest või asumiselt vabanenud, samuti küüditamisele kuulunud isikud, keda ei küüditatud.
-
+            Memoriaali elektrooniline osa on kommunismiohvrite andmebaas, kuhu on kantud kõik aastatel 1940–1991 kommunistliku terrori läbi kannatanud isikud, sealhulgas hukkunud, Nõukogude Liidu okupatsioonivõimu poolt kohtuväliselt represseeritud või alusetult süüdimõistetud, kes vabanesid ja samuti küüditamisele kuulunud isikud, keda okupatsioonivõimudel küüditada ei õnnestunud.
     -
         id: autorid
         title: Memoriaali autorid
@@ -20,31 +18,19 @@ content:
             Arhitektuur ja maastikuarhitektuur:
             autorid: Kalle Vellevoog, Jaan Tiidemann, Tiiu Truus
             meeskond: Martin Prommik, Kersti Nigols, Liis Voksepp, Annika Liivo, Marianna Zvereva
-
             Skulptuur: Kirke Kangro
-            Andmebaasid: Mihkel Putrinš
-            Digiväljundid: Argo Roots
+
             Haljastus: Lidia Zarudnaja
             Graafiline disain: Martin Pedanik
+            Digiväljundid: Argo Roots
             Ohvitseride mälestusmärgi tehniline lahendus: Margus Triibmann
-    -
-        id: haldus
-        title: Memoriaali haldus
-        text: |
-            haldusega tegeleb Riigi Kinnisvara AS.
-            <info@rkas.ee>
-            [www.rkas.ee](http://rkas.ee/riigi-kinnisvarast/kontakt)
-    -
-        id: andmebaasi-haldus
-        title: Memoriaali andmebaasi haldus / kontakt
-        text: |
-            Memoriaali andmebaasi haldab SA Eesti Mälu Instituut.
-            Kontakt: Suur-Ameerika 12, Tallinn 10119;
-            Tel. +372 6484962
-            <memoriaal@mnemosyne.ee>
+
+            Kommunismiohvrite andmebaas:
+            koostanud: Eesti Mälu Instituut
+            andmebaasi tehniline teostus: Mihkel Putrinš 
     -
         id: asukoht
-        title: Asukoht
+        title: Juhised memoriaali külastamiseks
         text: |
             Memoriaal asub Tallinnas Maarjamäel. Peasissepääs Pirita tee poolt.
             Bussid nr 1A, 5, 8, 34A, 38 bussipeatus Maarjamäe, buss nr 5 ka bussipeatus Saare.
