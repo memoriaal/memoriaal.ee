@@ -5,9 +5,13 @@ pictures:
 content:
     -
         text: |
-            The memorial to victims of communism is dedicated to all Estonian people who suffered under the terror inflicted by the Soviet Union. The communist terror regime was established with the occupation of Estonia on 17 June 1940 and ended with the restoration of Estonia’s independence on 20 August 1991. As a consequence of this, Estonia lost one of every five persons from its population of slightly over one million, of whom more than 75,000 were murdered, imprisoned or deported.
+            The communist regime of terror was established with the occupation of Estonia on 17 June 1940 and ended with the restoration of Estonia’s independence on 20 August 1991. As the consequence of this, Estonia lost every fifth person of its population of slightly over a million, of which more than 75,000 were murdered, imprisoned or deported. The Memorial to the victims of communism is dedicated to all of them.
 
-            The Memorial has two parts – the Journey with the name plaques of the victims, and the symbolic Home Garden with informative texts and location stones marking sites of terror. A monument to Estonian military officers who fell victim to communist terror is part of the Memorial.
+            The memorial consists of two parts – the Journey with plaques bearing the names of those who perished in the terror, and the Home Garden, to which are added location stones with information texts marking the locations where the terror was carried out. A monument to Estonian officers who fell victim to the communist terror is also part of the Memorial.
+
+            The names of those people of Estonia who perished in the course of the terror, that is the persons who were murdered or died in imprisonment or in banishment, are entered on the memorial wall of the Journey. The names of those thousands of victims who did not make it back home and whose fate is not known are not on the memorial wall. This wall is in memory of them as well.
+
+            Part of the Memorial is an electronic memorial, where all persons who suffered in the communist terror in 1940–1991 are entered, including those who perished, who were extrajudicially repressed or groundlessly convicted by the Soviet Union’s occupying regime and were released, and also persons who were subject to deportation but whom the occupation authorities did not succeed in deporting.
     -
         id: autorid
         title: Authors of the Memorial
@@ -15,40 +19,31 @@ content:
             Architecture and landscape architecture:
             Authors: Kalle Vellevoog, Jaan Tiidemann, Tiiu Truus
             Team: Martin Prommik, Kersti Nigols, Liis Voksepp, Annika Liivo, Marianna Zvereva
-
             Sculpture: Kirke Kangro
-            Databases: Mihkel Putrinš
-            Digital output: Argo Roots
-            Greenery: Lidia Zarudnaya
+
+
+            Greenery: Lidia Zarudnaja
             Graphic design: Martin Pedanik
             Technical design for the Officers’ Monument: Margus Triibmann
+
+            Preparation of texts: Eesti Mälu Instituut
+
+            Database of victims of communism and the electronic memorial:
+            Compiled and administered by: Estonian Institute of Historical Memory
+            Technical solutions for the database: Mihkel Putrinš
+            Digital solutions: Argo Roots
     -
-        id: haldus
-        title: Management of the Memorial
+        id: guide
+        title: Visiting the memorial with a guide
         text: |
-            The Estonian Institute of Historical Memory Foundation manages and administers the Memorial’s database.
-            Contact: Suur-Ameerika 12, Tallinn 10119;
-            Tel. +372 6484962
-            <memoriaal@mnemosyne.ee>
-
-            Riigi Kinnisvara AS handles the maintenance of the Memorial.
-            <klienditugi@rkas.ee>
-            [www.rkas.ee](http://rkas.ee/about-rkas/contact)
+            The Estonian Institute of Historical Memory offers the opportunity to visit the Memorial with a guide (in Estonian, Russian and English). If you are interested, please contact us at the e-mail address info@mnemosyne.ee or by telephone at +372 648 4962.
     -
-        id: andmebaasi-haldus
-        title: Management of the Memorial's Database
+        id: directions
+        title: Directions for visiting the memorial
         text: |
-            The Memorial's Database
-            The Estonian Institute of Historical Memory Foundation manages and administers the Memorial’s database.
-            Kontakt: <memoriaal@mnemosyne.ee>
-    -
-        id: asukoht
-        title: Location
-        text: |
-            The Memorial is located in Tallinn, Maarjamägi. Main entrance from the Pirita road.
+            The Memorial is located at Maarjamäe in Tallinn. The main entrance is from Pirita Road.
 
-            Bus station „Mälestusvälja“ (Pirita road), take a bus nr 1A, 5, 8, 34A or 38.
+            Buses nos. 1A, 5, 8, 34A and 38 stop at the Mälestusvälja bus stop near the Memorial.
+            When coming by car, there is a parking lot on Pirita Road situated towards Pirita from the main entrance to the Memorial. The other parking lot and entrance to the Memorial are located at the seaward end of Lepa Street, which is accessible by way of Kose Road and Saare Street, following the direction signs to the FC Levadia Maarjamäe football complex.
 
-            Parking of cars and busses is allowed on Pirita road`s parking lots near the main entrance of the memorial. Also you can use the upper parking zone. In that case please hold the direction of the football stadium of FC Levadia and the German War Cemetery (Kose road).
-
-            [See the map](https://goo.gl/maps/BS4wghXs5EM2)
+            [Location on the map](https://goo.gl/maps/BS4wghXs5EM2)
