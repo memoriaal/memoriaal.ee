@@ -1,22 +1,22 @@
-title: Memoriaali andmebaas
+title: Elektrooniline memoriaal
 pictures:
     - /assets/images/bg/andmebaas.jpg
 content:
     -
         text: |
-            Kommunismiohvrite andmebaasi kantakse:
+            Elektroonilisele memoriaalile kantakse:
               1) aastatel 1940–1991 Nõukogude Liidu okupatsioonivõimu poolt kohtuväliselt represseeritud või alusetult süüdimõistetud ning vastavalt Eesti Vabariigi seadusele „Seadus kohtuväliselt represseeritud ja alusetult süüdimõistetud isikute rehabiliteerimise kohta“ rehabiliteerimisele kuulunud isikud;
               2) poliitilistel põhjustel mõrvatud isikud;
               3) küüditamisele kuulunud isikud, keda okupatsioonivõimudel küüditada ei õnnestunud. Memoriaalil mälestatavate isikute kategooriad määrasid kindlaks memoriaali rajamist korraldanud justiitsministeeriumi moodustatud töörühmad, kuhu olid kaasatud spetsialistid ja represseeritute esindusühingud.
 
-            Seega sisaldab andmebaas nii kommunistliku terrori käigus hukkunute kui vangistusest või asumiselt vabanenute andmeid, samuti andmeid nende ohvrite kohta, kelle saatus on teadmata.
+            Seega sisaldab elektrooniline memoriaal nii kommunistliku terrori käigus hukkunute kui vangistusest või asumiselt vabanenute andmeid, samuti andmeid nende ohvrite kohta, kelle saatus on teadmata.
     -
         id: baasiehitus
-        title: Andmebaasi ülesehitus
+        title: Elektroonilise memoriaali ülesehitus
         text: |
-            Andmebaasis on isikute juurde koondatud erinevates publitseeritud ja publitseerimata allikates sisalduvad andmed represseerimise kohta ([andmebaasi kirjetes märgitud allikate nimekiri](/andmebaas/#allikad)), samuti andmed, mis on laekunud inimestelt tagasisidena. Informatsioon esitatakse muutmata kujul, sellisena nagu see allikas sisaldub.
+            Elektroonilisel memoriaalil on isikute juurde koondatud erinevates kirjalikes allikates sisalduvad andmed represseerimise kohta (vt allikate nimekirja siit), samuti andmed, mis on laekunud inimestelt tagasisidena. Informatsioon esitatakse muutmata kujul, sellisena nagu see allikas sisaldub.
 
-            Isikute põhiandmed (nimi, sünni ja surma-aasta) on andmebaasi otsingu tulemusena leitavad lehekülje vasakul serval ja need on esitatud käesolevaks hetkeks kasutada olevate allikate või tagasiside põhjal. Otsitavale isikule lisaks on esitatud andmed ka tema represseerimisele kuulunud perekonnaliikmete kohta nii, nagu see on ära toodud Eesti Represseeritute Registri Büroo avaldatud raamatutes.
+            Isikute põhiandmed (nimi, sünni ja surma-aasta) on elektroonilise memoriaali otsingu tulemusena leitavad lehekülje vasakul serval ja need on esitatud käesolevaks hetkeks kasutada olevate allikate või tagasiside põhjal. Otsitavale isikule lisaks on esitatud andmed ka tema represseerimisele kuulunud perekonnaliikmete kohta nii, nagu see on ära toodud Eesti Represseeritute Registri Büroo avaldatud raamatutes.
 
     -
         id: allikad
@@ -137,7 +137,7 @@ content:
 
     -
         id: andmebaasis-kasitlemata-isikud
-        title: Kommunismiohvrite andmebaasis käsitlemata isikud
+        title: Elektroonilisel memoriaalil käsitlemata isikud
         text: |
             - 1940/1941 metsavennana või Omakaitse liikmena lahingutes Nõukogude võimuga langenud võitlejad;
             - sõjaohvritena lahingutegevuse tagajärjel hukkunud;
@@ -151,14 +151,14 @@ content:
         id: kontroll-ja-taiendamine
         title: Andmete kontroll ja täiendamine
         text: |
-            Palun kontrollige, kas andmebaasis on represseeritu kohta teada järgmised andmed.
+            Palun kontrollige, kas elektroonilisel memoriaalil on isiku kohta teada järgmised andmed:
             - Kas nimi ja sünni- ning surma-aasta on õiged ja isa või ema nimi on olemas?
             - Küüditatute puhul, kas on kirjas, millal inimene vabastati? Kas teate, millal ta reaalselt tagasi tuli? Kas pereliikmed tulid koos, või tuli keegi varem?
-            - Arreteeritute puhul on oluline teada, kas vangilaagrist vabanemisele järgnes asumisele saatmine või sai inimene vabaks.
+            - Arreteeritute puhul on oluline teada, kas vangilaagrist vabanemisele järgnes asumisele saatmine või kodumaale pöördumine.
 
-            Kui leiate andmebaasist kaks isikukirjet, kes tegelikult käivad ühe isiku kohta, andke meile teada.
+            Kui leiate elektrooniliselt memoriaalilt kaks isikukirjet, kes tegelikult käivad ühe isiku kohta, andke meile teada.
 
-            Kui Teie poolt pakutud muudatus puudutab persooni põhiandmeid - nimi või sünni- ning surmaaasta - saatke õigeid andmeid kinnitav dokument aadressile memoriaal@mnemosyne.ee
+            Kui Teie poolt pakutud muudatus puudutab persooni põhiandmeid (nimi või sünni- ning surma-aasta) saatke õigeid andmeid kinnitav dokument aadressile <memoriaal@mnemosyne.ee>
 
             Oleme paranduste ja täienduste eest väga tänulikud! Aktsepteeritud parandused viime sisse jooksvalt, seega täieneb ja muutub nimekiri pidevalt.
 
@@ -166,3 +166,4 @@ content:
               - Suur-Ameerika 12, Tallinn 10119;
               - Tel. +372 6484962
               - <memoriaal@mnemosyne.ee>
+              - <www.mnemosyne.ee>
