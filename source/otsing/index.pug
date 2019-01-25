@@ -188,7 +188,7 @@ block script
                 var name = $(this).data('name')
 
                 $('#db-feedback-id').val(id)
-                $('#db-feedback-url').val('http://baas.memoriaal.ee/#' + id)
+                $('#db-feedback-url').val('https://www.memoriaal.ee/baas/?q=' + id + '&f=all')
                 $('#db-feedback-name').val(name)
                 $('#db-feedback-title').html('#{ self.feedback.title }'.replace('%name%', name))
 
