@@ -36,7 +36,7 @@ block script
 
                         text.push('<div id="' + p.id + '" class="row search-result pt-2">')
 
-                        text.push('<p class="col-12 mb-2 mb-1">'
+                        text.push('<p class="col-12 mb-2 mb-1">#' + (i+1) + ' '
                                   + (p.eesnimi ? capitalize(p.eesnimi) + ' ' : '')
                                   + p.perenimi + ' '
                                   + (p.sünd ? p.sünd : '?') + ' — '
