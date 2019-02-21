@@ -12,9 +12,7 @@ block script
             var qData = {
                 query : {
                     bool : {
-                        should : [
-                            { filter : { term: { tiib: 'X' } } }
-                        ]
+                        filter : { term: { tahvel: 'x' } }
                     }
                 },
                 sort: { 'perenimi.raw': 'asc', 'eesnimi.raw': 'asc' },
