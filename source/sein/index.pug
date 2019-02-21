@@ -13,8 +13,8 @@ block script
                 query : {
                     bool : {
                       should : [
-                        filter : { term: { tiib: 'X' } },
-                        filter : { term: { tiib: 'L' } }
+                        { filter : { term: { tiib: 'X' } } },
+                        { filter : { term: { tiib: 'L' } } }
                       ]
                     }
                 },
