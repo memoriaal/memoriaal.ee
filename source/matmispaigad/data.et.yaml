@@ -8,7 +8,7 @@ content:
             Kuid paljud matmispaigad on ka meie inimeste mäludes. Kogume need kokku ning talletame elektroonilisel memoriaalil.
 
     -
-        # id: kontroll-ja-taiendamine
+        id: kontroll-ja-taiendamine
         title: Andmete kontroll ja täiendamine
         text: |
             Palun kontrollige, kas elektroonilisel memoriaalil on isiku kohta teada järgmised andmed:
