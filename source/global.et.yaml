@@ -36,15 +36,15 @@ navigation:
         title: Kohakivid ja teabetekstid
         text: Kommunistliku terrori kurikuulsad kinnipidamis- ja hukkamiskohad on mälupaigad, mis sümboliseerivad uutele põlvkondadele esivanemate kannatusi.
     -
-        url: /toeta/
-        picture: /assets/images/nav/koduaed.jpg
-        title: Toeta Eesti Mälu Instituuti
-        text: Et töö memoriaaliga oleks mõjus, põhjalik ja jätkusuutlik, kutsume nii eraisikuid kui ettevõtteid instituuti toetama.
-    -
         url: /matmispaigad/
         picture: /assets/images/nav/matmispaigad.jpg
         title: Matmispaigad Võõrsil
         text: Matmispaigad Võõrsil
+    -
+        url: /toeta/
+        picture: /assets/images/nav/memoriaal.jpg
+        title: Toeta Memoriaali andmebaasi täiendamist
+        text: Et töö memoriaaliga oleks mõjus, põhjalik ja jätkusuutlik, kutsume nii eraisikuid kui ettevõtteid instituuti selles töös toetama.
 search:
     url: /otsing/
     text: |
