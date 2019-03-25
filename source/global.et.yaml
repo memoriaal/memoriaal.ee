@@ -40,6 +40,11 @@ navigation:
         picture: /assets/images/nav/koduaed.jpg
         title: Toeta Eesti Mälu Instituuti
         text: Et töö memoriaaliga oleks mõjus, põhjalik ja jätkusuutlik, kutsume nii eraisikuid kui ettevõtteid instituuti toetama.
+    -
+        url: /matmispaigad/
+        picture: /assets/images/nav/matmispaigad.jpg
+        title: Matmispaigad Võõrsil
+        text: Matmispaigad Võõrsil
 search:
     url: /otsing/
     text: |
