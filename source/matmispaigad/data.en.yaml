@@ -7,10 +7,8 @@ content:
             Valdav osa kommunistliku terrori ohvritest puhkab täna nimetutes ristideta haudades.
             Kuid paljud matmispaigad on ka meie inimeste mäludes. Kogume need kokku ning talletame elektroonilisel memoriaalil.
 
-    -
-        id: kontroll-ja-taiendamine
-        title: Andmete kontroll ja täiendamine
-        text: |
+            ## Andmete kontroll ja täiendamine
+
             Palun kontrollige, kas elektroonilisel memoriaalil on isiku kohta teada järgmised andmed:
             - Kas nimi ja sünni- ning surma-aasta on õiged ja isa või ema nimi on olemas?
             - Küüditatute puhul, kas on kirjas, millal inimene vabastati? Kas teate, millal ta reaalselt tagasi tuli? Kas pereliikmed tulid koos, või tuli keegi varem?
@@ -27,4 +25,4 @@ content:
               - Suur-Ameerika 12, Tallinn 10119;
               - Tel. +372 6484962
               - <memoriaal@mnemosyne.ee>
-              - <www.mnemosyne.ee>
+              - [mnemosyne.ee](http://www.mnemosyne.ee)
