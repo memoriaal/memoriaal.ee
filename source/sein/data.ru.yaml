@@ -16,6 +16,6 @@ content:
             Изменения данных погибших, которые уже увековечены на стенах памяти, будут указаны только в электронной базе данных. Данные на стенах памяти сохранятся в первоначальном виде.
     -
         id: lisatahvel
-        title: Pärast memoriaali valmimist väljaselgitatud kommunismiohvrite nimed, mis kantakse memoriaali lisatahvlitele
+        title: Имена жертв коммунизма, идентифицированные после завершения мемориала и показанные на дополнительных мемориальных досках
         text: |
             { #search-results }
