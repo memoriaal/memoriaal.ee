@@ -1,7 +1,7 @@
 const https = require('https')
 
 
-exports.handler = async (event) => {
+exports.handler = (event, context, callback) => {
     const options = {
         hostname: '94abc9318c712977e8c684628aa5ea0f.us-east-1.aws.found.io',
         port: 9243,
@@ -21,18 +21,18 @@ exports.handler = async (event) => {
         })
 
         response.on('end', function () {
-            return {
+            callback(null, {
                 statusCode: 200,
                 body: body
-            }
+            })
         })
     })
 
     request.on('error', function () {
-        return {
+        callback(null, {
             statusCode: 500,
             body: body
-        }
+        })
     })
 
     request.write(event.body)
