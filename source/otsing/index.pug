@@ -94,14 +94,11 @@ block script
                 } else if (filter === 'officers') {
                     qData['query']['bool']['filter'] = { term: { ohvitser: '1' } }
                 }
-                $.ajax('https://94abc9318c712977e8c684628aa5ea0f.us-east-1.aws.found.io:9243/persons/_search?size=1000&from=0', {
+                $.ajax('/.netlify/functions/search', {
                     data : JSON.stringify(qData),
                     contentType : 'application/json',
                     type : 'POST',
                     cache: false,
-                    beforeSend: function (xhr) {
-                        xhr.setRequestHeader('Authorization', 'Basic cmVhZGVyOnJlYWRlcg==')
-                    },
                     success: function (data) {
                         $('#search-count').html(data.hits.total + (data.hits.total === 1 ? ' #{self.result.count.one}' : ' #{self.result.count.multiple}'))
 
