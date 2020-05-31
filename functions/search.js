@@ -23,6 +23,10 @@ exports.handler = (event, context, callback) => {
         response.on('end', function () {
             callback(null, {
                 statusCode: 200,
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type': 'application/json'
+                },
                 body: body
             })
         })
@@ -31,6 +35,10 @@ exports.handler = (event, context, callback) => {
     request.on('error', function () {
         callback(null, {
             statusCode: 500,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json'
+            },
             body: body
         })
     })
