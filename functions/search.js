@@ -28,7 +28,13 @@ exports.handler = async (event) => {
         })
     })
 
-    request.on('error', reject)
+    request.on('error', function () {
+        return {
+            statusCode: 500,
+            body: body
+        }
+    })
+
     request.write(event.body)
     request.end()
 }
