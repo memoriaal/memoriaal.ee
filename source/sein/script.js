@@ -14,7 +14,7 @@ $(function () {
         sort: { 'perenimi.raw': 'asc', 'eesnimi.raw': 'asc' },
         _source: [ 'id', 'perenimi', 'eesnimi', 'sünd', 'surm' ]
     }
-    $.ajax('https://94abc9318c712977e8c684628aa5ea0f.us-east-1.aws.found.io:9243/persons/_search?size=1000&from=0', {
+    $.ajax('/.netlify/functions/search', {
         data : JSON.stringify(qData),
         contentType : 'application/json',
         type : 'POST',
