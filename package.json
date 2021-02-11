@@ -4,7 +4,7 @@
   "description": "Eesti Kommunismiohvrid 1940–1991",
   "private": true,
   "dependencies": {
-    "entu-ssg": "5.2.5"
+    "entu-ssg": "5.2.8"
   },
   "scripts": {
     "build": "entu-ssg entu-ssg.yaml full",
