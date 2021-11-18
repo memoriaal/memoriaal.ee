@@ -22,12 +22,11 @@ html(lang=self.locale)
 
         block style
 
-        script(async, src='https://www.googletagmanager.com/gtag/js?id=UA-260765-40')
+        script(defer, data-domain='memoriaal.ee', src='https://plausible.io/js/plausible.js')
         script.
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'UA-260765-40');
+            window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }
+            plausible('Host', { props: { host: window.location.host } })
+
     body
         include text.pug
         include navigation.pug
