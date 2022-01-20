@@ -58,11 +58,11 @@ $(function () {
             $('#searchform').submit()
         }
     })
-    $('#search-results').on('mouseenter', '.search-result', function () {
-        $(this).find('.search-result-feedback').removeClass('d-none')
-    })
+    // $('#search-results').on('mouseenter', '.search-result', function () {
+    //     $(this).find('.search-result-feedback').removeClass('d-none')
+    // })
 
-    $('#search-results').on('mouseleave', '.search-result', function () {
-        $(this).find('.search-result-feedback').addClass('d-none')
-    })
+    // $('#search-results').on('mouseleave', '.search-result', function () {
+    //     $(this).find('.search-result-feedback').addClass('d-none')
+    // })
 })

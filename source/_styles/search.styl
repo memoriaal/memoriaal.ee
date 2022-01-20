@@ -17,6 +17,10 @@
         border none
         border-top 1px solid rgb(199, 199, 199)
 
+    .search-result:hover
+        .search-result-feedback
+            transform: translateX(0)
+
     .search-result
         p
             font-weight 700
@@ -31,6 +35,8 @@
             text-transform lowercase
             text-decoration underline
             cursor pointer
+            transition 0.3s
+            transform: translateX(-100%)
 
         .search-result-info
             p
