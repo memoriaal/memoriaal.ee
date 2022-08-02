@@ -1,21 +1,15 @@
 {
   "name": "memoriaal",
   "version": "1.0.0",
-  "description": "Eesti Kommunismiohvrid 1940–1991",
   "private": true,
-  "dependencies": {
-    "entu-ssg": "^5.3.0"
-  },
+  "description": "Eesti Kommunismiohvrid 1940–1991",
+  "author": "Argo Roots <argo@roots.ee>",
+  "license": "MIT",
   "scripts": {
-    "build": "entu-ssg entu-ssg.yaml full",
-    "dev": "node ./node_modules/entu-ssg/src/serve.js ./entu-ssg.yaml full"
+    "build": "entu-ssg build entu-ssg.yaml full",
+    "dev": "entu-ssg serve entu-ssg.yaml full"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/memoriaal/memoriaal.ee.git"
-  },
-  "bugs": {
-    "url": "https://github.com/memoriaal/memoriaal.ee/issues"
-  },
-  "homepage": "https://www.memoriaal.ee"
+  "devDependencies": {
+    "entu-ssg": "5.5.0"
+  }
 }
