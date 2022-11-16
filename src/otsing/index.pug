@@ -106,6 +106,7 @@ block script
                             var text = []
                             var p = data.hits.hits[i]._source
 
+                            console.log(JSON.stringify(p, 0, 2))
                             text.push('<div id="' + p.id + '" class="search-result pt-2 pb-4">')
                             text.push('<div class="row">')
 
