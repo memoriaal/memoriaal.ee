@@ -107,7 +107,7 @@ block script
                             var text = []
                             var p = data.hits.hits[i]._source
 
-                            console.log(JSON.stringify(p, 0, 2))
+                            //- console.log(JSON.stringify(p, 0, 2))
                             text.push('<div id="' + p.id + '" class="search-result pt-2 pb-4">')
                             text.push('<div class="row">')
 
@@ -138,8 +138,8 @@ block script
                                         pered[pereseos.raamatupere] = []
                                     }
                                     pered[pereseos.raamatupere].push({
-                                        kirjekood: pered[pereseos.kirjekood],
-                                        kirje: pered[pereseos.kirje]
+                                        kirjekood: pereseos.kirjekood,
+                                        kirje: pereseos.kirje
                                     })
                                 }
                                 for (const [perekood, pere] of Object.entries(pered)) {
@@ -152,17 +152,17 @@ block script
                                         text.push('</p>')
                                     }
                                 }
-                                for (var ip = 0; ip < p.pereseosed.length; ip++) {
-                                    text.push('<hr class="my-3">')
-                                    text.push('<p class="my-0"><strong>' + p.pereseosed[ip].raamatupere + ' (#{self.result.family}):</strong></p>')
-                                    //- for (var ipk = 0; ipk < p.pereseosed[ip].kirjed.length; ipk++) {
-                                        if (p.pereseosed[ip].kirjekood) {
-                                            text.push('<p class="mb-1">- ')
-                                            text.push(p.pereseosed[ip].kirjekood + ': ' + p.pereseosed[ip].kirje)
-                                            text.push('</p>')
-                                        }
-                                    //- }
-                                }
+                                //- for (var ip = 0; ip < p.pereseosed.length; ip++) {
+                                //-     text.push('<hr class="my-3">')
+                                //-     text.push('<p class="my-0"><strong>' + p.pereseosed[ip].raamatupere + ' (#{self.result.family}):</strong></p>')
+                                //-     //- for (var ipk = 0; ipk < p.pereseosed[ip].kirjed.length; ipk++) {
+                                //-         if (p.pereseosed[ip].kirjekood) {
+                                //-             text.push('<p class="mb-1">- ')
+                                //-             text.push(p.pereseosed[ip].kirjekood + ': ' + p.pereseosed[ip].kirje)
+                                //-             text.push('</p>')
+                                //-         }
+                                //-     //- }
+                                //- }
                             }
                             text.push('</div>')
 
