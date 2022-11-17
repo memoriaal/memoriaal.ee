@@ -70,12 +70,13 @@ block script
                                     operator: 'and',
                                     type: 'cross_fields'
                                 }
-                            }
+                            },
+                            filter: { term: { isperson: 1 } }
                         }
                     },
                     sort: { 'eesnimi.raw': 'asc', 'perenimi.raw': 'asc' },
                     _source: [
-                        'kivi', 'emem', 'evo',
+                        'kivi', 'emem', 'evo', 'evokirje',
                         'perenimi', 'eesnimi', 'isanimi', 'emanimi', 'perenimed', 'eesnimed',
                         'sünd', 'surm', 'id',
                         'kirjed.kirje', 'kirjed.kirjekood', 'kirjed.viide', 'kirjed.allikas', 'kirjed.allika_nimetus',
@@ -151,7 +152,7 @@ block script
                                 if (p.tahvlikirje.kirje) { text.push('<p class="mb-0">#{self.result.nameOnPlaque}: ' + p.tahvlikirje.kirje + '</p>') }
                             }
 
-                            if (p.evo === '1') { text.push('<hr/><p class="mb-0">#{self.result.nameOnEVOPlaque}: ' + p.kirje + '</p>') }
+                            if (p.evo === '1') { text.push('<hr/><p class="mb-0">#{self.result.nameOnEVOPlaque}: ' + p.evokirje + '</p>') }
                             text.push('</div>')
 
                             text.push('</div>')

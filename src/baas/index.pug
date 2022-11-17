@@ -91,7 +91,7 @@ block script
                         'pereseosID', 'pereseos.kirjed.kirje', 'pereseos.nimekiri',
                         'tahvel', 'tulp', 'rida', 'tahvlikirje',
                         'ohvitser', 'evokirje',
-                        'relevantne'
+                        'isperson'
                     ]
                 }
                 if (filter === 'wall') {
@@ -114,7 +114,7 @@ block script
                             var text = []
                             var p = data.hits.hits[i]._source
 
-                            text.push('<div id="' + p.id + '" class="search-result pt-2 pb-4 ' + (p.relevantne === "1" ? 'relevantne' : 'mitterelevantne') + '">')
+                            text.push('<div id="' + p.id + '" class="search-result pt-2 pb-4 ' + (p.isperson === "1" ? 'relevantne' : 'mitterelevantne') + '">')
                             text.push('<div class="row">')
 
                             text.push('<h3 class="search-result-name col-12 mb-2 mb-1">' + (p.eesnimi ? p.eesnimi : '') + ' ' + p.perenimi + '</h3>')
