@@ -130,6 +130,26 @@ block script
                                 if (p.kirjed[ik].kirje) { text.push('</p>') }
                             }
                             if (p.pereseosed && p.pereseosed.length > 0) {
+                                let pered = {}
+                                for (var ip = 0; ip < p.pereseosed.length; ip++) {
+                                    let pereseos = p.pereseosed[ip]
+                                    if(!pered.hasOwnProperty(pereseos.raamatupere)) {
+                                        pered[pereseos.raamatupere] = []
+                                    }
+                                    pered[pereseos.raamatupere].append({
+                                        kirjekood: pered[pereseos.kirjekood],
+                                        kirje: pered[pereseos.kirje]
+                                    })
+                                }
+                                for (const [perekood, pere] of Object.entries(pered)) {
+                                    text.push('<hr class="my-3">')
+                                    for (const pereliige of pere) {
+                                        text.push('<p class="my-0"><strong>' + perekood + ' (#{self.result.family}):</strong></p>')
+                                        text.push('<p class="mb-1">- ')
+                                        text.push(pereliige.kirjekood + ': ' + pereliige.kirje)
+                                        text.push('</p>')
+                                    }
+                                }
                                 for (var ip = 0; ip < p.pereseosed.length; ip++) {
                                     text.push('<hr class="my-3">')
                                     text.push('<p class="my-0"><strong>' + p.pereseosed[ip].raamatupere + ' (#{self.result.family}):</strong></p>')
