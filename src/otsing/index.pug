@@ -81,7 +81,7 @@ block script
                         'sünd', 'surm', 'id',
                         'kirjed.kirje', 'kirjed.kirjekood', 'kirjed.viide', 'kirjed.allikas', 'kirjed.allika_nimetus',
                         'pereseosed.persoon', 'pereseosed.kirje',
-                        'pereseosed.kirjed.kirjekood', 'pereseosed.kirjed.kirje', 'pereseosed.kirjed.viide', 'pereseosed.kirjed.allikas', 'pereseosed.kirjed.allika_nimetus',
+                        'pereseosed.kirjekood', 'pereseosed.allikas', 'pereseosed.raamatupere',
                         'tahvlikirje.kirjekood', 'tahvlikirje.kirje', 'tahvlikirje.tahvel', 'tahvlikirje.tulp', 'tahvlikirje.rida'
                     ]
                 }
@@ -132,12 +132,14 @@ block script
                             if (p.pereseosed && p.pereseosed.length > 0) {
                                 for (var ip = 0; ip < p.pereseosed.length; ip++) {
                                     text.push('<hr class="my-3">')
-                                    text.push('<p class="my-0"><strong>' + p.pereseosed[ip].nimekiri + ' (#{self.result.family}):</strong></p>')
-                                    for (var ipk = 0; ipk < p.pereseosed[ip].kirjed.length; ipk++) {
-                                        if (p.pereseosed[ip].kirjed[ipk].kirje) { text.push('<p class="mb-1">- ') }
-                                        if (p.pereseosed[ip].kirjed[ipk].kirje) { text.push(p.pereseosed[ip].kirjed[ipk].kirje) }
-                                        if (p.pereseosed[ip].kirjed[ipk].kirje) { text.push('</p>') }
-                                    }
+                                    text.push('<p class="my-0"><strong>' + p.pereseosed[ip].raamatupere + ' (#{self.result.family}):</strong></p>')
+                                    //- for (var ipk = 0; ipk < p.pereseosed[ip].kirjed.length; ipk++) {
+                                        if (p.pereseosed[ip].kirjekood) {
+                                            text.push('<p class="mb-1">- ')
+                                            text.push(p.pereseosed[ip].kirjekood + ': ' + p.pereseosed[ip].kirje)
+                                            text.push('</p>')
+                                        }
+                                    //- }
                                 }
                             }
                             text.push('</div>')
