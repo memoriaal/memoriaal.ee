@@ -85,7 +85,7 @@ block script
                     },
                     sort: { 'eesnimi.raw': 'asc', 'perenimi.raw': 'asc' },
                     _source: [
-                        'isperson', 'kivi', 'emem', 'evo', 'wwiiref', 'evokirje',
+                        'isperson', 'kivi', 'emem', 'evo', 'wwii', 'evokirje',
                         'perenimi', 'eesnimi', 'isanimi', 'emanimi', 'perenimed', 'eesnimed',
                         'sünd', 'surm', 'id',
                         'kirjed.kirje', 'kirjed.kirjekood', 'kirjed.viide', 'kirjed.allikas', 'kirjed.allika_nimetus',
@@ -120,7 +120,7 @@ block script
                             var text = []
                             var p = data.hits.hits[i]._source
 
-                            //- console.log(JSON.stringify(p, 0, 2))
+                            console.log(p)
 
                             let c3class = (p.emem === 1 ? 'relevantne' : 'mitterelevantne')
                             if (p.isperson === 0) { c3class = 'nonperson' }
