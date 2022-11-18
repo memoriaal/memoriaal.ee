@@ -76,7 +76,7 @@ block script
                             must : {
                                 multi_match : {
                                     query: query,
-                                    fields: [ 'perenimi', 'eesnimi', 'perenimed', 'eesnimed', 'sünd', 'surm', 'id', 'pereseosID', 'kirjed.kirje' ],
+                                    fields: [ 'perenimi', 'eesnimi', 'sünd', 'surm', 'id', 'pereseosID', 'kirjed.kirje' ],
                                     operator: 'and',
                                     type: 'cross_fields'
                                 }
@@ -85,21 +85,25 @@ block script
                     },
                     sort: { 'eesnimi.raw': 'asc', 'perenimi.raw': 'asc' },
                     _source: [
+                        'isperson', 'kivi', 'emem', 'evo', 'wwiiref', 'evokirje',
                         'perenimi', 'eesnimi', 'isanimi', 'emanimi', 'perenimed', 'eesnimed',
                         'sünd', 'surm', 'id',
-                        'kirjed.kirje', 'kirjed.allikas',
-                        'pereseosID', 'pereseos.kirjed.kirje', 'pereseos.nimekiri',
+                        'kirjed.kirje', 'kirjed.kirjekood', 'kirjed.viide', 'kirjed.allikas', 'kirjed.allika_nimetus',
                         'pereseosed.persoon', 'pereseosed.kirje',
                         'pereseosed.kirjekood', 'pereseosed.allikas', 'pereseosed.raamatupere',
-                        'tahvel', 'tulp', 'rida', 'tahvlikirje',
-                        'evo', 'evokirje',
-                        'isperson'
+                        'tahvlikirje.kirjekood', 'tahvlikirje.kirje', 'tahvlikirje.tahvel', 'tahvlikirje.tulp', 'tahvlikirje.rida'
                     ]
                 }
-                if (filter === 'wall') {
-                    qData['query']['bool']['filter'] = { term: { kivi: '1' } }
+
+                if (idQuery) {
+                    filter = 'all'
+                    qData['query']['bool']['must']['multi_match']['fields'] = ['id']
+                } else if (filter === 'wall') {
+                    qData['query']['bool']['filter'] = { term: { kivi: 1 } }
                 } else if (filter === 'officers') {
-                    qData['query']['bool']['filter'] = { term: { evo: '1' } }
+                    qData['query']['bool']['filter'] = { term: { evo: 1 } }
+                } else if (filter === 'refugees') {
+                    qData['query']['bool']['filter'] = { term: { wwiiref: 1 } }
                 }
                 $.ajax('/.netlify/functions/search', {
                     data : JSON.stringify(qData),
@@ -118,7 +122,15 @@ block script
 
                             console.log(JSON.stringify(p, 0, 2))
 
-                            text.push('<div id="' + p.id + '" class="search-result pt-2 pb-4 ' + (p.isperson === 1 ? 'relevantne' : 'mitterelevantne') + '">')
+                            let c3class = (p.emem === 1 ? 'relevantne' : 'mitterelevantne')
+                            if (p.isperson === 0) { c3class = 'nonperson' }
+
+                            text.push('<div id="' + p.id + '" class="search-result pt-2 pb-4 ' + c3class + '">')
+                            text.push('<div class="labels">')
+                            if (p.emem) { text.push('<span class="label">emem</span>') }
+                            if (p.evo) { text.push('<span class="label">evo</span>') }
+                            if (p.wwiiref) { text.push('<span class="label">wwiiref</span>') }
+                            text.push('</span>')
                             text.push('<div class="row">')
 
                             text.push('<h3 class="search-result-name col-12 mb-2 mb-1">' + (p.eesnimi ? p.eesnimi : '') + ' ' + p.perenimi + '</h3>')
@@ -138,28 +150,48 @@ block script
                                 if (p.kirjed[ik].kirje) { text.push(p.kirjed[ik].kirje) }
                                 if (p.kirjed[ik].kirje) { text.push('</p>') }
                             }
-                            if (p.pereseos && p.pereseos.length > 0) {
-                                for (var ip = 0; ip < p.pereseos.length; ip++) {
+                            if (p.pereseosed && p.pereseosed.length > 0) {
+                                let pered = {}
+                                for (var ip = 0; ip < p.pereseosed.length; ip++) {
+                                    let pereseos = p.pereseosed[ip]
+                                    //- console.log('PERESEOS:', pereseos)
+                                    if(!pered.hasOwnProperty(pereseos.raamatupere)) {
+                                        pered[pereseos.raamatupere] = []
+                                    }
+                                    pered[pereseos.raamatupere].push({
+                                        kirjekood: pereseos.kirjekood,
+                                        kirje: pereseos.kirje
+                                    })
+                                }
+                                for (const [perekood, pere] of Object.entries(pered)) {
+                                    //- console.log(perekood, pere)
                                     text.push('<hr class="my-3">')
-                                    text.push('<p class="my-0"><strong>' + p.pereseos[ip].nimekiri + ' (#{self.result.family}):</strong></p>')
-                                    for (var ipk = 0; ipk < p.pereseos[ip].kirjed.length; ipk++) {
-                                        if (p.pereseos[ip].kirjed[ipk].kirje) { text.push('<p class="mb-1">- ') }
-                                        if (p.pereseos[ip].kirjed[ipk].kirje) { text.push(p.pereseos[ip].kirjed[ipk].kirje) }
-                                        if (p.pereseos[ip].kirjed[ipk].kirje) { text.push('</p>') }
+                                    text.push('<p class="my-0"><strong>' + perekood + ' (#{self.result.family}):</strong></p>')
+                                    for (const pereliige of pere) {
+                                        text.push('<p class="mb-1">- ')
+                                        text.push(pereliige.kirjekood + ': ' + pereliige.kirje)
+                                        text.push('</p>')
                                     }
                                 }
                             }
                             text.push('</div>')
 
-                            text.push('<div class="search-result-plaque col-12 col-sm-3">')
-                            if (p.tahvlikirje.tahvel) { text.push('<p class="mb-0">#{self.result.plaque}:</p>') }
-                            if (p.tahvlikirje.tahvel) { text.push('<p class="mb-2 plaque-info">' + p.tahvlikirje.tahvel + '</p>') }
-                            if (p.tahvlikirje.tulp) { text.push('<p class="mb-2">#{self.result.col}: ' + p.tahvlikirje.tulp + ' / #{self.result.row}: ' + p.tahvlikirje.rida + '</p>') }
-                            if (p.tahvlikirje.kirje) { text.push('<p class="mb-0">#{self.result.nameOnPlaque}: ' + p.tahvlikirje.kirje + '</p>') }
+                            if (p.tahvlikirje) {
+                                text.push('<div class="search-result-plaque col-12 col-sm-3">')
+                                if (p.tahvlikirje.tahvel) {
+                                    text.push('<p class="mb-0">#{self.result.plaque}:</p>')
+                                    text.push('<p class="mb-2 plaque-info">' + p.tahvlikirje.tahvel + '</p>')
+                                }
+                                if (p.tahvlikirje.tulp) { text.push('<p class="mb-2">#{self.result.col}: ' + p.tahvlikirje.tulp + ' / #{self.result.row}: ' + p.tahvlikirje.rida + '</p>') }
+                                if (p.tahvlikirje.kirje) {
+                                    text.push('<p class="mb-0">#{self.result.nameOnPlaque}: ' + p.tahvlikirje.kirje + '</p>')
+                                }
+                            }
 
-                            if (p.evo === 1) { text.push('<hr/><p class="mb-0">#{self.result.nameOnEVOPlaque}: ' + p.evokirje + '</p>') }
+                            if (p.evo === 1) {
+                                text.push('<hr/><p class="mb-0">#{self.result.nameOnEVOPlaque}: ' + p.evokirje + '</p>')
+                            }
                             text.push('</div>')
-
                             text.push('</div>')
                             text.push('</div>')
 
