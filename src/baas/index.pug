@@ -120,7 +120,7 @@ block script
                             var text = []
                             var p = data.hits.hits[i]._source
 
-                            console.log(JSON.stringify(p, 0, 2))
+                            //- console.log(JSON.stringify(p, 0, 2))
 
                             let c3class = (p.emem === 1 ? 'relevantne' : 'mitterelevantne')
                             if (p.isperson === 0) { c3class = 'nonperson' }
@@ -144,6 +144,7 @@ block script
                             text.push('</div>')
 
                             text.push('<div class="search-result-info col-7 col-sm-6">')
+                            p.kirjed = p.kirjed || []
                             for (var ik = 0; ik < p.kirjed.length; ik++) {
                                 text.push('<p class="mt-2 mb-0"><strong>' + p.kirjed[ik].allikas + ':</strong></p>')
                                 if (p.kirjed[ik].kirje) { text.push('<p class="mb-1">') }
