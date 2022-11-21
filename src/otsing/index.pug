@@ -66,7 +66,7 @@ block script
                             must : {
                                 multi_match : {
                                     query: query,
-                                    fields: [ 'perenimi', 'eesnimi', 'perenimed', 'eesnimed', 'sünd', 'surm', 'id', 'pereseosID' ],
+                                    fields: [ 'perenimi', 'eesnimi', 'perenimed', 'eesnimed', 'id', 'pereseosed.persoon' ],
                                     operator: 'and',
                                     type: 'cross_fields'
                                 }
@@ -74,7 +74,7 @@ block script
                             filter: { term: { emem: 1 } }
                         }
                     },
-                    sort: { 'eesnimi.raw': 'asc', 'perenimi.raw': 'asc' },
+                    //- sort: { 'eesnimi.raw': 'asc', 'perenimi.raw': 'asc' },
                     _source: [
                         'isperson', 'kivi', 'emem', 'evo', 'wwii', 'evokirje',
                         'perenimi', 'eesnimi', 'isanimi', 'emanimi', 'perenimed', 'eesnimed',
