@@ -101,13 +101,14 @@ block script
                     type : 'POST',
                     cache: false,
                     success: function (data) {
+                        console.log(data.error || 'All green')
                         $('#search-count').html(data.hits.total.value + (data.hits.total.value === 1 ? ' #{self.result.count.one}' : ' #{self.result.count.multiple}'))
 
                         for (var i = 0; i < data.hits.hits.length; i++) {
                             var text = []
                             var p = data.hits.hits[i]._source
 
-                            console.log(JSON.stringify(p, 0, 2))
+                            //- console.log(JSON.stringify(p, 0, 2))
                             text.push('<div id="' + p.id + '" class="search-result pt-2 pb-4">')
                             text.push('<div class="row">')
 

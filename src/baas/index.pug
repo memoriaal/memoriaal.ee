@@ -129,7 +129,7 @@ block script
                             var text = []
                             var p = data.hits.hits[i]._source
 
-                            //- console.log(p)
+                            console.log(p)
 
                             let c3class = (p.emem === 1 ? 'relevantne' : 'mitterelevantne')
                             if (p.isperson === 0) { c3class = 'nonperson' }
