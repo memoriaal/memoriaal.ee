@@ -55,7 +55,8 @@ search:
 
     title: Otsing kommunismiohvrite andmebaasist
     radio:
-        all: Elektrooniliselt memoriaalilt
+        all: Kõigi kirjete seast
+        emem: Elektrooniliselt memoriaalilt
         wall: Mälestusseinalt
         officers: Kaadriohvitseride mälestusmärgilt
         refugees: II Mailmasõja põgenike andmebaasist

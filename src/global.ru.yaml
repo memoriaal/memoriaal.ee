@@ -45,7 +45,8 @@ search:
 
     title: Поиск в электронном мемориале
     radio:
-        all: в электронном мемориале
+        all: From all records
+        emem: в электронном мемориале
         wall: на стене памяти
         officers: на памятнике офицерам
         refugees: From the Refugees of WWII
