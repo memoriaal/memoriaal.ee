@@ -76,7 +76,7 @@ block script
                             must : {
                                 multi_match : {
                                     query: query,
-                                    fields: [ 'perenimi', 'eesnimi', 'sünd', 'surm', 'id', 'pereseosed.kirje', 'kirjed.kirje' ],
+                                    fields: [ 'perenimi', 'eesnimi', 'id', 'pereseosed.kirje', 'kirjed.kirje' ],
                                     operator: 'and',
                                     type: 'cross_fields'
                                 }
@@ -114,7 +114,7 @@ block script
                         xhr.setRequestHeader('Authorization', 'Basic cmVhZGVyOnJlYWRlcg==')
                     },
                     success: function (data) {
-                        console.log(data)
+                        console.log(data.error)
                         $('#search-count').html(data.hits.total.value + (data.hits.total.value === 1 ? ' #{self.result.count.one}' : ' #{self.result.count.multiple}'))
 
                         for (var i = 0; i < data.hits.hits.length; i++) {
