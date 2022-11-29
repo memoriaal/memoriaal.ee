@@ -56,6 +56,12 @@ block content
 block script
     script.
         $(function () {
+            function copy2clipboard(t) {
+                const persoon = t.parentElement.innerText.substring(2)
+                navigator.clipboard.writeText(persoon)
+                console.log(t)
+            }
+
             var qs = function (key) {
                 key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&")
                 var match = location.search.match(new RegExp("[?&]"+key+"=([^&]+)(&|$)"))
