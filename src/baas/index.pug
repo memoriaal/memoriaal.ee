@@ -59,7 +59,7 @@ block script
             const person = t.getAttribute('person')
             navigator.clipboard.writeText(person)
             t.firstChild.nextSibling.classList.remove('transparent')
-            setTimeout(t.firstChild.nextSibling.classList.add('transparent'), 2000)
+            setTimeout(()=>{t.firstChild.nextSibling.classList.add('transparent')}, 400)
             //- console.log(person)
         }
         $(function () {
