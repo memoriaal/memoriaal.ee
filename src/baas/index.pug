@@ -56,8 +56,8 @@ block content
 block script
     script.
         var copy2clipboard = function (t) {
-            const person = t.getAttribute('person')
-            navigator.clipboard.writeText(person)
+            const clip = t.getAttribute('clip')
+            navigator.clipboard.writeText(clip)
             t.firstChild.nextSibling.classList.remove('transparent')
             setTimeout(()=>{t.firstChild.nextSibling.classList.add('transparent')}, 400)
             //- console.log(person)
@@ -156,7 +156,9 @@ block script
                             if (p.surm) { text.push('<p class="mb-0">#{self.result.dead}: ' + p.surm + '</p>') }
                             if (p.isanimi) { text.push('<p class="mb-0">#{self.result.father}: ' + p.isanimi + '</p>') }
                             if (p.emanimi) { text.push('<p class="mb-0">#{self.result.mother}: ' + p.emanimi + '</p>') }
-                            text.push('<p class="mb-0"># ' + p.id + ' <span class="crossfade" person="' + p.id + '" onClick="copy2clipboard(this)"><img height="20em" src="/images/clip 512.png"/><img height="20em" src="/images/clip-n-check 512.png" class="transparent"/></span>' + '</p>')
+                            text.push('<p class="mb-0"># ' + p.id)
+                            text.push('<span class="crossfade" clip="' + p.id + '" onClick="copy2clipboard(this)"><img src="/images/clip 512.png"/><img src="/images/clip-n-check 512.png" class="transparent"/></span>')
+                            text.push('</p>')
                             text.push('</div>')
 
                             text.push('<div class="search-result-info col-7 col-sm-6">')
