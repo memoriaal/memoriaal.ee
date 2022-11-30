@@ -1,3 +1,22 @@
+#crossfade {
+  position:relative;
+  height:281px;
+  width:450px;
+  margin:0 auto;
+    img {
+        position:absolute;
+        left: 0;
+        -webkit-transition: opacity 1s ease-in-out;
+        -moz-transition: opacity 1s ease-in-out;
+        -o-transition: opacity 1s ease-in-out;
+        transition: opacity 1s ease-in-out;
+    }
+
+    img.transparent {
+        opacity:0;
+    }
+}
+
 @media print {
     * {
         color: #000 !important;
