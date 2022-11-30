@@ -58,8 +58,8 @@ block script
         var copy2clipboard = function (t) {
             const person = t.getAttribute('person')
             navigator.clipboard.writeText(person)
-            t.firstChild.nextSibling.classList.toggle('transparent')
-            setTimeout(t.firstChild.nextSibling.classList.toggle('transparent'), 2000)
+            t.firstChild.nextSibling.classList.remove('transparent')
+            setTimeout(t.firstChild.nextSibling.classList.add('transparent'), 2000)
             //- console.log(person)
         }
         $(function () {
