@@ -5,6 +5,7 @@
     width: 1.5em;
     margin: 0 auto;
     img {
+        filter: invert(50%);
         position:absolute;
         width: inherit;
         left: 0;
@@ -15,6 +16,7 @@
     }
 
     img.transparent {
+        filter: invert(50%) sepia(100%) hue-rotate(90deg) saturate(3);
         opacity :0;
     }
 }
