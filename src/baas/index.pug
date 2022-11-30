@@ -56,7 +56,7 @@ block content
 block script
     script.
         $(function () {
-            function copy2clipboard(t) {
+            var copy2clipboard = function (t) {
                 const persoon = t.parentElement.innerText.substring(2)
                 navigator.clipboard.writeText(persoon)
                 console.log(t)
