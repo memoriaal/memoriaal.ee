@@ -1,11 +1,16 @@
 const https = require('https')
 
+const refDate = (new Date(2072, 3, 3)).setHours(0,0,0,0)
+const nowDate = (new Date()).setHours(0,0,0,0)
+const nOd = Math.round(Math.abs(nowDate-refDate)/1000/3600/24)
+const dayParity = nOd % 2
+const INDEX = 'emem_persons_' + dayParity
 
 exports.handler = (event, context, callback) => {
     const options = {
         hostname: '94abc9318c712977e8c684628aa5ea0f.us-east-1.aws.found.io',
         port: 9243,
-        path: '/emem_persons/_search?size=10000&from=0',
+        path: '/' + INDEX + '/_search?size=10000&from=0',
         method: 'POST',
         headers: {
             'Authorization': 'Basic cmVhZGVyOnJlYWRlcg==',
