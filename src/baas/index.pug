@@ -174,7 +174,12 @@ block script
                             text.push('<div class="search-result-info col-7 col-sm-6">')
                             p.kirjed = p.kirjed || []
                             for (var ik = 0; ik < p.kirjed.length; ik++) {
-                                text.push('<p class="mt-2 mb-0"><strong>' + p.kirjed[ik].allikas + ':</strong></p>')
+                                let a1 = a2 = ''
+                                if (p.kirjed[ik].viide) {
+                                    a1 = '<a href="' + p.kirjed[ik].viide + '" target="_blank">'
+                                    a2 = '</a>'
+                                }
+                                text.push('<p class="mt-2 mb-0"><strong>' + a1 + p.kirjed[ik].allikas + a2 + ':</strong></p>')
                                 if (p.kirjed[ik].kirje) { text.push('<p class="mb-1">') }
                                 if (p.kirjed[ik].kirje) { text.push(p.kirjed[ik].kirje) }
                                 if (p.kirjed[ik].kirje) { text.push('</p>') }
