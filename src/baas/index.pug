@@ -100,7 +100,7 @@ block script
                     _source: [
                         'isperson', 'kivi', 'emem', 'evo', 'wwii', 'evokirje',
                         'perenimi', 'eesnimi', 'isanimi', 'emanimi', 'perenimed', 'eesnimed',
-                        'sünd', 'surm', 'id',
+                        'sünd', 'surm','sünnikoht','surmakoht', 'id',
                         'kirjed.kirje', 'kirjed.kirjekood', 'kirjed.viide', 'kirjed.allikas', 'kirjed.allika_nimetus',
                         'pereseosed.persoon', 'pereseosed.kirje',
                         'pereseosed.kirjekood', 'pereseosed.allikas', 'pereseosed.raamatupere',
@@ -152,7 +152,12 @@ block script
                             text.push('<h3 class="search-result-name col-12 mb-2 mb-1">' + (p.eesnimi ? p.eesnimi : '') + ' ' + p.perenimi + '</h3>')
 
                             text.push('<div class="col-5 col-sm-3">')
-                            if (p.sünd) { text.push('<p class="mb-0">#{self.result.born}: ' + p.sünd + '</p>') }
+                            if (p.sünd) {
+                                text.push('<p class="mb-0">#{self.result.born}: ' + p.sünd)
+                                if (p.sünnikoht) { text.push('<span>: ' + p.sünd + '</span>') }
+                                text.push('</p>')
+                            }
+
                             if (p.surm) { text.push('<p class="mb-0">#{self.result.dead}: ' + p.surm + '</p>') }
                             if (p.isanimi) { text.push('<p class="mb-0">#{self.result.father}: ' + p.isanimi + '</p>') }
                             if (p.emanimi) { text.push('<p class="mb-0">#{self.result.mother}: ' + p.emanimi + '</p>') }
