@@ -154,11 +154,16 @@ block script
                             text.push('<div class="col-5 col-sm-3">')
                             if (p.sünd) {
                                 text.push('<p class="mb-0">#{self.result.born}: ' + p.sünd)
-                                if (p.sünnikoht) { text.push('<span>: ' + p.sünnikoht + '</span>') }
+                                if (p.sünnikoht) { text.push('<span> ' + p.sünnikoht + '</span>') }
                                 text.push('</p>')
                             }
 
-                            if (p.surm) { text.push('<p class="mb-0">#{self.result.dead}: ' + p.surm + '</p>') }
+                            if (p.surm) {
+                                text.push('<p class="mb-0">#{self.result.dead}: ' + p.surm)
+                                if (p.surmakoht) { text.push('<span> ' + p.surmakoht + '</span>') }
+                                text.push('</p>')
+                            }
+
                             if (p.isanimi) { text.push('<p class="mb-0">#{self.result.father}: ' + p.isanimi + '</p>') }
                             if (p.emanimi) { text.push('<p class="mb-0">#{self.result.mother}: ' + p.emanimi + '</p>') }
                             text.push('<p class="mb-0"># ' + p.id)
