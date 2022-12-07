@@ -167,7 +167,16 @@ block script
 
                             if (p.isanimi) { text.push('<p class="mb-0">#{self.result.father}: ' + p.isanimi + '</p>') }
                             if (p.emanimi) { text.push('<p class="mb-0">#{self.result.mother}: ' + p.emanimi + '</p>') }
-                            text.push('<p class="mb-0"># ' + p.id)
+                            let pub_a = pub_b = ''
+                            if (p.wwii) {
+                                pub_a = '<a href="https://wwii-refugees.ee/?q=' + p.id + '">'
+                                pub_b = '</a>'
+                            }
+                            if (p.emem) {
+                                pub_a = '<a href="https://www.memoriaal.ee/otsing/?q=' + p.id + '">'
+                                pub_b = '</a>'
+                            }
+                            text.push('<p class="mb-0"># ' + pub_a + p.id + pub_b)
                             text.push('<span class="crossfade" clip="' + p.id + '" onClick="copy2clipboard(this)"><img src="/images/clip 512.png"/><img src="/images/clip-n-check 512.png" class="transparent"/></span>')
                             text.push('</p>')
                             text.push('</div>')
