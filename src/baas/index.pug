@@ -123,7 +123,12 @@ block script
                 } else if (filter === 'refugees') {
                     qData['query']['bool']['filter'] = { term: { wwii: 1 } }
                 } else if (filter === 'none') {
-                    qData['query']['bool']['filter'] = { term: { emem: 0, kivi: 0, evo: 0, wwii: 0 } }
+                    qData['query']['bool']['filter'] = [
+                        {term: {emem: 0}},
+                        {term: {kivi: 0}},
+                        {term: {evo: 0}},
+                        {term: {wwii: 0}}
+                    ]
                 }
                 $.ajax('/.netlify/functions/search', {
                     data : JSON.stringify(qData),
