@@ -21,6 +21,9 @@ block content
             .form-check.col-12.my-2
                 input.form-check-input(type='radio', id='filter_'+self.search.radio.refugees, name='f', value='refugees')
                 label.form-check-label(for='filter_'+self.search.radio.refugees)= self.search.radio.refugees
+            .form-check.col-12.my-2
+                input.form-check-input(type='radio', id='filter_'+self.search.radio.none, name='f', value='none')
+                label.form-check-label(for='filter_'+self.search.radio.none)= self.search.radio.none
             button.col-4.col-md-3.col-xl-2= self.search.button
         p#search-count.mt-2.mb-4
         #search-results
