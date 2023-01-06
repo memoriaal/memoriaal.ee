@@ -157,7 +157,7 @@ block script
                             }
                             text.push('</div>')
 
-                            if (p.tahvlikirje) {
+                            if (p.tahvlikirje && p.kivi) {
                                 text.push('<div class="search-result-plaque col-12 col-sm-3">')
                                 if (p.tahvlikirje.tahvel) {
                                     text.push('<p class="mb-0">#{self.result.plaque}:</p>')
