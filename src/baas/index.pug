@@ -210,27 +210,14 @@ block script
                                 if (p.kirjed[ik].kirje) { text.push('</p>') }
                             }
                             if (p.pereseosed && p.pereseosed.length > 0) {
-                                let pered = {}
+                                text.push('<hr class="my-3">')
                                 for (var ip = 0; ip < p.pereseosed.length; ip++) {
-                                    let pereseos = p.pereseosed[ip]
-                                    //- console.log('PERESEOS:', pereseos)
-                                    if(!pered.hasOwnProperty(pereseos.raamatupere)) {
-                                        pered[pereseos.raamatupere] = []
-                                    }
-                                    pered[pereseos.raamatupere].push({
-                                        kirjekood: pereseos.kirjekood,
-                                        kirje: pereseos.kirje
-                                    })
-                                }
-                                for (const [perekood, pere] of Object.entries(pered)) {
-                                    //- console.log(perekood, pere)
-                                    text.push('<hr class="my-3">')
-                                    text.push('<p class="my-0"><strong>' + perekood + ' (#{self.result.family}):</strong></p>')
-                                    for (const pereliige of pere) {
+                                    let pereseos = p.pereseosed[ip].seos
+                                    let perekirjed = p.pereseosed[ip].kirjed
+                                    text.push('<p class="my-0"><strong>' + pereseos + ' (#{self.result.family}):</strong></p>')
                                         text.push('<p class="mb-1">- ')
-                                        text.push(pereliige.kirjekood + ': ' + pereliige.kirje)
+                                        text.push(perekirjed[0].kirjekood + ': ' + perekirjed[0].kirje)
                                         text.push('</p>')
-                                    }
                                 }
                             }
                             text.push('</div>')
