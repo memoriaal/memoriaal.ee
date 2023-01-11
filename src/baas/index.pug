@@ -140,12 +140,15 @@ block script
                         xhr.setRequestHeader('Authorization', 'Basic cmVhZGVyOnJlYWRlcg==')
                     },
                     success: function (data) {
+                        const count = data.hits.total.value
                         console.log(data.error || 'All green')
-                        $('#search-count').html(data.hits.total.value + (data.hits.total.value === 1 ? ' #{self.result.count.one}' : ' #{self.result.count.multiple}'))
+                        $('#search-count').html(count + (count === 1 ? ' #{self.result.count.one}' : ' #{self.result.count.multiple}'))
 
-                        for (var i = 0; i < data.hits.hits.length; i++) {
+                        const hits = data.hits.hits
+                        console.log(hits)
+                        for (var i = 0; i < count; i++) {
                             var text = []
-                            var p = data.hits.hits[i]._source
+                            var p = hits[i]._source
 
                             console.log(p)
 
