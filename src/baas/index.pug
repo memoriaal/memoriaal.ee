@@ -218,9 +218,11 @@ block script
                                     let pereseos = p.pereseosed[ip].seos
                                     let perekirjed = p.pereseosed[ip].kirjed
                                     text.push('<p class="my-0"><strong>' + pereseos + ' (#{self.result.family}):</strong></p>')
+                                    for (var ik = 0; ik < perekirjed.length; ik++) {
                                         text.push('<p class="mb-1">- ')
-                                        text.push(perekirjed[0].kirjekood + ': ' + perekirjed[0].kirje)
+                                        text.push(perekirjed[ik].kirjekood + ': ' + perekirjed[ik].kirje)
                                         text.push('</p>')
+                                    }
                                 }
                             }
                             text.push('</div>')
