@@ -81,7 +81,7 @@ block script
                         'sünd', 'surm', 'id',
                         'kirjed.kirje', 'kirjed.kirjekood', 'kirjed.viide', 'kirjed.allikas', 'kirjed.allika_nimetus',
                         'pereseosed.persoon', 'pereseosed.kirje',
-                        'pereseosed.kirjekood', 'pereseosed.allikas', 'pereseosed.raamatupere',
+                        'pereseosed.seos', 'pereseosed.suund', 'pereseosed.kirjed',
                         'tahvlikirje.kirjekood', 'tahvlikirje.kirje', 'tahvlikirje.tahvel', 'tahvlikirje.tulp', 'tahvlikirje.rida'
                     ]
                 }
@@ -132,28 +132,23 @@ block script
                                 if (p.kirjed[ik].kirje) { text.push('</p>') }
                             }
                             if (p.pereseosed && p.pereseosed.length > 0) {
-                                let pered = {}
+                                text.push('<div class="pere"><label>Represseeritud pereliikmed</label>')
                                 for (var ip = 0; ip < p.pereseosed.length; ip++) {
-                                    let pereseos = p.pereseosed[ip]
-                                    //- console.log('PERESEOS:', pereseos)
-                                    if(!pered.hasOwnProperty(pereseos.raamatupere)) {
-                                        pered[pereseos.raamatupere] = []
+                                    let pereseos = p.pereseosed[ip].seos
+                                    if (p.pereseosed[ip].suund === '-1') {
+                                        pereseos = '(' + pereseos + ')'
                                     }
-                                    pered[pereseos.raamatupere].push({
-                                        kirjekood: pereseos.kirjekood,
-                                        kirje: pereseos.kirje
-                                    })
-                                }
-                                for (const [perekood, pere] of Object.entries(pered)) {
-                                    //- console.log(perekood, pere)
-                                    text.push('<hr class="my-3">')
-                                    text.push('<p class="my-0"><strong>' + perekood + ' (#{self.result.family}):</strong></p>')
-                                    for (const pereliige of pere) {
+                                    let perekirjed = p.pereseosed[ip].kirjed
+                                    text.push('<p class="my-0"><a href="?q=' + p.pereseosed[ip].persoon + '">' + p.pereseosed[ip].persoon + ' ' + pereseos + '</a></p>')
+                                    text.push('<div class="pereliige">')
+                                    for (var ik = 0; ik < perekirjed.length; ik++) {
                                         text.push('<p class="mb-1">- ')
-                                        text.push(pereliige.kirjekood + ': ' + pereliige.kirje)
+                                        text.push(perekirjed[ik].kirjekood + ': ' + perekirjed[ik].kirje)
                                         text.push('</p>')
                                     }
+                                    text.push('</div>')
                                 }
+                                text.push('</div>')
                             }
                             text.push('</div>')
 

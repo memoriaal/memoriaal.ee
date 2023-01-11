@@ -1,10 +1,6 @@
 const https = require('https')
 
-const refDate = (new Date(2072, 3, 3)).setHours(0,0,0,0)
-const nowDate = (new Date()).setHours(0,0,0,0)
-const nOd = Math.round(Math.abs(nowDate-refDate)/1000/3600/24)
-const dayParity = nOd % 2
-const INDEX = 'emem_persons' // + '_' + dayParity
+const INDEX = 'test_index'
 
 exports.handler = (event, context, callback) => {
     const options = {
