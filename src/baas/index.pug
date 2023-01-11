@@ -145,7 +145,7 @@ block script
                         $('#search-count').html(count + (count === 1 ? ' #{self.result.count.one}' : ' #{self.result.count.multiple}'))
 
                         const hits = data.hits.hits
-                        console.log(hits)
+                        console.log(hits.map(h => h._source))
                         for (var i = 0; i < count; i++) {
                             var text = []
                             var p = hits[i]._source
