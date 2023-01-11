@@ -106,7 +106,7 @@ block script
                         'sünd', 'surm','sünnikoht','surmakoht', 'id',
                         'kirjed.kirje', 'kirjed.kirjekood', 'kirjed.viide', 'kirjed.allikas', 'kirjed.allika_nimetus',
                         'pereseosed.persoon', 'pereseosed.kirje',
-                        'pereseosed.persoon', 'pereseosed.seos', 'pereseosed.kirjed',
+                        'pereseosed.persoon', 'pereseosed.seos', 'pereseosed.suund', 'pereseosed.kirjed',
                         'tahvlikirje.kirjekood', 'tahvlikirje.kirje', 'tahvlikirje.tahvel', 'tahvlikirje.tulp', 'tahvlikirje.rida',
                         'updated_at'
                     ]
@@ -216,6 +216,9 @@ block script
                                 text.push('<hr class="my-3">')
                                 for (var ip = 0; ip < p.pereseosed.length; ip++) {
                                     let pereseos = p.pereseosed[ip].seos
+                                    if (p.pereseosed[ip].seos == '-1') {
+                                        pereseos = '(' + pereseos + ')'
+                                    }
                                     let perekirjed = p.pereseosed[ip].kirjed
                                     text.push('<p class="my-0"><strong>' + pereseos + '</strong></p>')
                                     for (var ik = 0; ik < perekirjed.length; ik++) {
