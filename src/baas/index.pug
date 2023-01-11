@@ -214,6 +214,7 @@ block script
                             }
                             if (p.pereseosed && p.pereseosed.length > 0) {
                                 text.push('<hr class="my-3">')
+                                text.push('<div class="pereliige">')
                                 for (var ip = 0; ip < p.pereseosed.length; ip++) {
                                     let pereseos = p.pereseosed[ip].seos
                                     if (p.pereseosed[ip].suund === '-1') {
@@ -229,6 +230,7 @@ block script
                                     }
                                     text.push('</div>')
                                 }
+                                text.push('</div>')
                             }
                             text.push('</div>')
 
