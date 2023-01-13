@@ -222,7 +222,6 @@ block script
                                     let perekirjed = p.pereseosed[ip].kirjed
                                     text.push('<li class="my-0"><a href="?q=' + p.pereseosed[ip].persoon + '">' + p.pereseosed[ip].persoon + ' ' + pereseos + '</a>')
                                     text.push(' : ' + p.pereseosed[ip].kirje)
-                                    text.push('</li>')
                                     text.push('<div class="pereliige">')
                                     for (var ik = 0; ik < perekirjed.length; ik++) {
                                         text.push('<p class="mb-1">- ')
@@ -230,6 +229,7 @@ block script
                                         text.push('</p>')
                                     }
                                     text.push('</div>')
+                                    text.push('</li>')
                                 }
                                 text.push('</div>')
                             }
