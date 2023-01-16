@@ -236,7 +236,7 @@ block script
                             text.push('</div>')
 
                             if (p.tahvlikirje) {
-                                text.push('<div class="search-result-plaque col-12 col-sm-3">')
+                                text.push('<div class="search-result-plaque"' + (p.kivi ? "" : " obsolete") + '" col-12 col-sm-3">')
                                 if (p.tahvlikirje.tahvel) {
                                     text.push('<p class="mb-0">#{self.result.plaque}:</p>')
                                     text.push('<p class="mb-2 plaque-info">' + p.tahvlikirje.tahvel + '</p>')
