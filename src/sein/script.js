@@ -8,7 +8,7 @@ $(function () {
     var qData = {
         query : {
             bool : {
-                filter : { term: { tahvel: 'x' } }
+                filter : { term: { tahvel: 'X' } }
             }
         },
         sort: { 'perenimi.raw': 'asc', 'eesnimi.raw': 'asc' },
