@@ -23,6 +23,7 @@ $(function () {
             xhr.setRequestHeader('Authorization', 'Basic cmVhZGVyOnJlYWRlcg==')
         },
         success: function (data) {
+            console.log(data.error || 'All green', {data})
 
             var hits = data.hits.hits.map(function(hit) { return hit._source })
             //- console.log(hits)
