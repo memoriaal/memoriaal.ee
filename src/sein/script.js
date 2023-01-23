@@ -7,8 +7,8 @@ function capitalize(sentence) {
 $(function () {
     var qData = {
         query : {
-            bool : {
-                filter : { term: { tahvel: 'X' } }
+            match : {
+                "tahvlikirje.tahvel": "X"
             }
         },
         sort: { 'perenimi.raw': 'asc', 'eesnimi.raw': 'asc' },
