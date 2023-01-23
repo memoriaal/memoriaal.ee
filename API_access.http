@@ -1,0 +1,38 @@
+@hostname = 94abc9318c712977e8c684628aa5ea0f.us-east-1.aws.found.io
+@port = 9243
+@index = emem_persons
+@host = {{hostname}}:{{port}}
+
+###
+# 10 esimest
+GET {{host}}/{{index}}/_search?size=10&from=0&pretty HTTP/1.1
+Authorization: Basic cmVhZGVyOnJlYWRlcg==
+Content-Type: application/json
+
+
+###
+# persoonikoodi järgi
+GET {{host}}/{{index}}/_doc/0000218291 HTTP/1.1
+Authorization: Basic cmVhZGVyOnJlYWRlcg==
+Content-Type: application/json
+
+
+###
+# "match" päring
+GET {{host}}/{{index}}/_search?size=10&from=0&pretty HTTP/1.1
+Authorization: Basic cmVhZGVyOnJlYWRlcg==
+Content-Type: application/json
+
+{
+  "query" : {"match" : { "tahvlikirje.tahvel": "X" } },
+  "sort": [
+    {
+      "perenimi.raw": {
+        "order": "asc"
+      },
+      "eesnimi.raw": {
+        "order": "asc"
+      }
+    }
+  ]
+}
