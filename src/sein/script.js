@@ -31,7 +31,7 @@ $(function () {
                 var text = []
                 var p = hits[i]
 
-                text.push('<div id="' + p.id + '" class="row search-result pt-2" onClick="navigator.clipboard.writeText(' + p.id + ')">')
+                text.push('<div id="' + p.id + '" class="row search-result pt-2" onClick="navigator.clipboard.writeText(' + p.id + '.padstart(10,0))">')
 
                 text.push('<p class="col-12 mb-2 mb-1">#' + (i+1) + ' '
                           + (p.eesnimi ? capitalize(p.eesnimi) + ' ' : '')
