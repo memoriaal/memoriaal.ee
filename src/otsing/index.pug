@@ -106,6 +106,9 @@ block script
                         $('#search-count').html(data.hits.total.value + (data.hits.total.value === 1 ? ' #{self.result.count.one}' : ' #{self.result.count.multiple}'))
                         var hits = data.hits.hits.map(function(hit) { return hit._source })
                         console.log(hits)
+                        if (idQuery) {
+                            console.log('idQuery', data.hits.hits[0]._source)
+                        }
                         for (var i = 0; i < data.hits.hits.length; i++) {
                             var text = []
                             var p = data.hits.hits[i]._source
