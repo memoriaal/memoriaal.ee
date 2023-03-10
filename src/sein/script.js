@@ -26,7 +26,7 @@ $(function () {
             console.log(data.error || 'All green', {qData, data})
 
             var hits = data.hits.hits.map(function(hit) { return hit._source })
-            //- console.log(hits)
+            console.log(hits)
             for (var i = 0; i < hits.length; i++) {
                 var text = []
                 var p = hits[i]
