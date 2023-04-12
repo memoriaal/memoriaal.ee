@@ -68,16 +68,11 @@ $(function () {
     })
 
     $('#search-results').on('click', '.search-result', function () {
-        var modal = $('#myModal')
-        var closeBtn = $('.close')
-        // Set display = 'block' for modal
-        var modal = $('#myModal')
-        modal.css('display', 'block')
-        // When the user clicks on <span> (x), close the modal
-        closeBtn.onclick = function() {
-            modal.style.display = "none";
-        }
+        $('#myModal').css('display', 'block')
     })
+    $('.close').onclick = function() {
+        $('#myModal').css('display', 'none')
+    }
 
     // $('#search-results').on('mouseleave', '.search-result', function () {
     //     $(this).find('.search-result-feedback').addClass('d-none')
