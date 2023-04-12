@@ -66,9 +66,17 @@ $(function () {
             $('#searchform').submit()
         }
     })
-    // $('#search-results').on('mouseenter', '.search-result', function () {
-    //     $(this).find('.search-result-feedback').removeClass('d-none')
-    // })
+
+    $('#search-results').on('click', '.search-result', function () {
+        var modal = $('myModal')
+        var closeBtn = $('.close')
+        // open the modal
+        modal.style.display = "block"
+        // When the user clicks on <span> (x), close the modal
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+    })
 
     // $('#search-results').on('mouseleave', '.search-result', function () {
     //     $(this).find('.search-result-feedback').addClass('d-none')
