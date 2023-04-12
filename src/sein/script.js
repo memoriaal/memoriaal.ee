@@ -69,6 +69,7 @@ $(function () {
 
     $('#search-results').on('click', '.search-result', function () {
         $('#myModal').css('display', 'block')
+        $('#myModal .modal-content p').text($(this).attr('id'))
     })
     $('.close').onclick = function() {
         $('#myModal').css('display', 'none')
