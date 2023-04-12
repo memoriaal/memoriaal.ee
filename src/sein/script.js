@@ -70,8 +70,9 @@ $(function () {
     $('#search-results').on('click', '.search-result', function () {
         var modal = $('#myModal')
         var closeBtn = $('.close')
-        // open the modal
-        modal.style.display = "block"
+        // Set display = 'block' for modal
+        var modal = $('#myModal')
+        modal.css('display', 'block')
         // When the user clicks on <span> (x), close the modal
         closeBtn.onclick = function() {
             modal.style.display = "none";
