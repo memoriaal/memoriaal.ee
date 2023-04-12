@@ -68,7 +68,7 @@ $(function () {
     })
 
     $('#search-results').on('click', '.search-result', function () {
-        var modal = $('myModal')
+        var modal = $('#myModal')
         var closeBtn = $('.close')
         // open the modal
         modal.style.display = "block"
