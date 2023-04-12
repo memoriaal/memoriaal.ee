@@ -13,6 +13,11 @@
             .col-12.col-md-8.col-lg-9.col-xl-6
                 .row
                     #text-text.col.py-3
+                        #myModal.modal
+                            .modal-content
+                                span.close &times;
+                                p Some text in the Modal...
+
                         each c, idx in self.content
                             if c.id
                                 a.text-link.py-2.d-block(href='#' + c.id)= c.title
