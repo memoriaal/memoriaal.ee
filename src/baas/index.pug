@@ -228,8 +228,7 @@ block script
                                         pereseos = '(' + pereseos + ')'
                                     }
                                     let perekirjed = p.pereseosed[ip].kirjed
-                                    text.push('<li class="my-0 pereliige" onclick="this.parentNode.querySelector(\'#perekirjed-' + p.pereseosed[ip].persoon + '\').showModal()">')
-                                    ><a href="?q=' + p.pereseosed[ip].persoon + '">' + p.pereseosed[ip].persoon + ' ' + pereseos + '</a>')
+                                    text.push('<li class="my-0 pereliige" onclick="this.parentNode.querySelector(\'#perekirjed-' + p.pereseosed[ip].persoon + '\').showModal()"><a href="?q=' + p.pereseosed[ip].persoon + '">' + p.pereseosed[ip].persoon + ' ' + pereseos + '</a>')
                                     text.push(' : ' + p.pereseosed[ip].kirje)
                                     //- dialog. not modal
                                     text.push('<dialog class="perekirjed" id="perekirjed-' + p.pereseosed[ip].persoon + '">')
