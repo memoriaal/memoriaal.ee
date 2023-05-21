@@ -232,11 +232,13 @@ block script
                                     text.push(' : ' + p.pereseosed[ip].kirje)
                                     //- dialog. not modal
                                     text.push('<dialog class="perekirjed" id="perekirjed-' + p.pereseosed[ip].persoon + '">DIALOG')
+                                    text.push('<ul class="perekirjed">')
                                     for (var ik = 0; ik < perekirjed.length; ik++) {
                                         text.push('<li class="mb-1">- ')
                                         text.push(perekirjed[ik].kirjekood + ': ' + perekirjed[ik].kirje)
                                         text.push('</li>')
                                     }
+                                    text.push('</ul>')
                                     //- close button
                                     text.push('<button class="close" onclick="this.parentNode.close()">')
                                     text.push('</dialog>')
