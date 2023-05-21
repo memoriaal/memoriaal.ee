@@ -230,6 +230,7 @@ block script
                                     let perekirjed = p.pereseosed[ip].kirjed
                                     text.push('<li class="my-0 pereliige" onclick="this.parentNode.querySelector(\'#perekirjed-' + p.pereseosed[ip].persoon + '\').showModal()"><a href="?q=' + p.pereseosed[ip].persoon + '">' + p.pereseosed[ip].persoon + ' ' + pereseos + '</a>')
                                     text.push(' : ' + p.pereseosed[ip].kirje)
+                                    text.push('</li>')
                                     text.push('<dialog class="perekirjed" id="perekirjed-' + p.pereseosed[ip].persoon + '">')
                                     text.push('<button class="close" data-modal-close-target="perekirjed-' + p.pereseosed[ip].persoon + '">X</button>')
                                     text.push('<ul class="perekirjed">')
@@ -241,7 +242,6 @@ block script
                                     text.push('</ul>')
                                     //- close button
                                     text.push('</dialog>')
-                                    text.push('</li>')
                                 }
                                 text.push('</div>')
                             }
