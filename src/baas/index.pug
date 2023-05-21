@@ -228,8 +228,8 @@ block script
                                         pereseos = '(' + pereseos + ')'
                                     }
                                     let perekirjed = p.pereseosed[ip].kirjed
-                                    text.push('<li class="my-0 pereliige" onclick="document.querySelector(\'#perekirjed-' + p.pereseosed[ip].persoon + '\').showModal()"><a href="?q=' + p.pereseosed[ip].persoon + '">' + p.pereseosed[ip].persoon + ' ' + pereseos + '</a>')
-                                    text.push(' : ' + p.pereseosed[ip].kirje)
+                                    text.push('<li class="my-0 pereliige"><a href="?q=' + p.pereseosed[ip].persoon + '">' + p.pereseosed[ip].persoon + ' ' + pereseos + '</a>')
+                                    text.push(' : <span onclick="document.querySelector(\'#perekirjed-' + p.pereseosed[ip].persoon + '\').showModal()">' + p.pereseosed[ip].kirje + '</span>')
                                     text.push('</li>')
                                     text.push('<dialog class="perekirjed" id="perekirjed-' + p.pereseosed[ip].persoon + '">')
                                     text.push('<button class="close" onclick="document.querySelector(\'#perekirjed-' + p.pereseosed[ip].persoon + '\').close()">X</button>')
