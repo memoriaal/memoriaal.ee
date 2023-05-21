@@ -231,7 +231,8 @@ block script
                                     text.push('<li class="my-0 pereliige" onclick="this.parentNode.querySelector(\'#perekirjed-' + p.pereseosed[ip].persoon + '\').show()"><a href="?q=' + p.pereseosed[ip].persoon + '">' + p.pereseosed[ip].persoon + ' ' + pereseos + '</a>')
                                     text.push(' : ' + p.pereseosed[ip].kirje)
                                     //- dialog. not modal
-                                    text.push('<dialog class="perekirjed" id="perekirjed-' + p.pereseosed[ip].persoon + '">DIALOG')
+                                    text.push('<dialog class="perekirjed" id="perekirjed-' + p.pereseosed[ip].persoon + '">')
+                                    text.push('<button class="close" onclick="this.parentNode.close()">X</button>')
                                     text.push('<ul class="perekirjed">')
                                     for (var ik = 0; ik < perekirjed.length; ik++) {
                                         text.push('<li class="mb-1">- ')
@@ -240,15 +241,7 @@ block script
                                     }
                                     text.push('</ul>')
                                     //- close button
-                                    text.push('<button class="close" onclick="this.parentNode.close()">')
                                     text.push('</dialog>')
-                                    text.push('<ul class="perekirjed folded">')
-                                    for (var ik = 0; ik < perekirjed.length; ik++) {
-                                        text.push('<li class="mb-1">- ')
-                                        text.push(perekirjed[ik].kirjekood + ': ' + perekirjed[ik].kirje)
-                                        text.push('</li>')
-                                    }
-                                    text.push('</ul>')
                                     text.push('</li>')
                                 }
                                 text.push('</div>')
@@ -275,19 +268,6 @@ block script
                             text.push('</div>')
 
                             $('#search-results').append(text.join(''))
-                        }
-                        var acc = document.getElementsByClassName('pereliige')
-                        console.log('Search results loaded', acc.length, acc)
-                        var i
-                        for (i = 0; i < acc.length; i++) {
-                            console.log(acc[i].lastChild.classList)
-                            acc[i].addEventListener('click', function() {
-                                this.classList.toggle('active')
-                                this.lastChild.classList.toggle('folded')
-                            })
-                            acc[i].lastChild.addEventListener('click', function() {
-                                this.classList.toggle('folded')
-                            })
                         }
                     },
                     error: function( error) {
