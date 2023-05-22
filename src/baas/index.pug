@@ -215,7 +215,7 @@ block script
                                     a1 = '<a href="' + p.kirjed[ik].viide + '" target="_blank">'
                                     a2 = '</a>'
                                 }
-                                text.push('<p class="mt-2 mb-0"><strong>' + a1 + p.kirjed[ik].allikas + a2 + '<span class="crossfade" clip="' + p.kirjed[ik].kirjekood + '" onClick="copy2clipboard(this)">' + p.kirjed[ik].kirjekood + '<img src="/images/clip 512.png"/><img src="/images/clip-n-check 512.png" class="transparent"/></span>' + ':</strong></p>')
+                                text.push('<p class="mt-2 mb-0"><strong>' + a1 + p.kirjed[ik].allikas + a2 + ' ' + p.kirjed[ik].kirjekood + '<span class="crossfade" clip="' + p.kirjed[ik].kirjekood + '" onClick="copy2clipboard(this)"><img src="/images/clip 512.png"/><img src="/images/clip-n-check 512.png" class="transparent"/></span>' + ':</strong></p>')
                                 if (p.kirjed[ik].kirje) { text.push('<p class="mb-1">') }
                                 if (p.kirjed[ik].kirje) { text.push(p.kirjed[ik].kirje) }
                                 if (p.kirjed[ik].kirje) { text.push('</p>') }
