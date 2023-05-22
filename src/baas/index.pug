@@ -151,11 +151,12 @@ block script
                         $('#search-count').html(count + (count === 1 ? ' #{self.result.count.one}' : ' #{self.result.count.multiple}'))
 
                         const hits = data.hits.hits
-                        //- console.log(hits.map(h => h._source))
+
                         // if it's an id query with a redirect field, redirect to that person
                         if (idQuery && hits[0]._source.redirect) {
                             window.location.href = '?q=' + hits[0]._source.redirect
                         }
+
                         for (var i = 0; i < count; i++) {
                             var text = []
                             var p = hits[i]._source

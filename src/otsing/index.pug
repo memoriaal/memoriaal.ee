@@ -76,6 +76,7 @@ block script
                     },
                     sort: { 'eesnimi.raw': 'asc', 'perenimi.raw': 'asc' },
                     _source: [
+                        'redirect',
                         'isperson', 'kivi', 'emem', 'evo', 'wwii', 'evokirje',
                         'perenimi', 'eesnimi', 'isanimi', 'emanimi', 'perenimed', 'eesnimed',
                         'sünd', 'surm', 'id',
@@ -104,7 +105,9 @@ block script
                     success: function (data) {
                         console.log(data.error || 'All green')
                         $('#search-count').html(data.hits.total.value + (data.hits.total.value === 1 ? ' #{self.result.count.one}' : ' #{self.result.count.multiple}'))
-                        if (idQuery && data.hits.hits[0]._source.redirect) {
+                        const hits = data.hits.hits
+
+                        if (idQuery && hits[0]._source.redirect) {
                             window.location.href = '?q=' + data.hits.hits[0]._source.redirect
                         }
                         for (var i = 0; i < data.hits.hits.length; i++) {
