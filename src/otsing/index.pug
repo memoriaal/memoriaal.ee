@@ -108,11 +108,11 @@ block script
                         const hits = data.hits.hits
 
                         if (idQuery && hits[0]._source.redirect) {
-                            window.location.href = '?q=' + data.hits.hits[0]._source.redirect
+                            window.location.href = '?q=' + hits[0]._source.redirect
                         }
-                        for (var i = 0; i < data.hits.hits.length; i++) {
+                        for (var i = 0; i < hits.length; i++) {
                             var text = []
-                            var p = data.hits.hits[i]._source
+                            var p = hits[i]._source
 
                             //- console.log(JSON.stringify(p, 0, 2))
                             text.push('<div id="' + p.id + '" class="search-result pt-2 pb-4">')
