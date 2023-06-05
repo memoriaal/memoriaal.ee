@@ -6,6 +6,7 @@
   "author": "Argo Roots <argo@roots.ee>",
   "license": "MIT",
   "scripts": {
+    "compile gallery": "node ./scripts/compile-gallery.js",
     "build": "entu-ssg build entu-ssg.yaml full",
     "dev": "entu-ssg serve entu-ssg.yaml full"
   },

@@ -41,10 +41,10 @@ navigation:
         title: Matmispaigad võõrsil
         text: Matmispaigad võõrsil
     -
-        url: /toeta/
+        url: /galerii/
         picture: /images/nav/memoriaal.jpg
-        title: Toeta Memoriaali andmebaasi täiendamist
-        text: Et töö memoriaaliga oleks mõjus, põhjalik ja jätkusuutlik, kutsume nii eraisikuid kui ettevõtteid instituuti selles töös toetama.
+        title: Galerii
+        text: Lorem Ipsum
 search:
     url: /otsing/
     text: |
