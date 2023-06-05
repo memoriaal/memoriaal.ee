@@ -1,0 +1,10 @@
+title: Galerii
+pictures:
+    - /images/bg/andmebaas.jpg
+gallery_folder: /images/galerii
+content:
+    -
+        text: |
+            Lorem ipsum
+            dolor sit amet,
+            consectetur adipiscing elit.
