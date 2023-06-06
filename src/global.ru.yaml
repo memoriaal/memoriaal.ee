@@ -35,6 +35,11 @@ navigation:
         picture: /images/nav/kohakivid.jpg
         title: Камни с обозначением мест заключения и депортаций
         text: Обозначенные печально известные места расправ и заключения коммунистического террора символизируют для новых поколений страдания предков.
+    -
+        url: /ru/gallery/
+        picture: /images/nav/memoriaal.jpg
+        title: Галерея
+        text: Lorem Ipsum
 search:
     url: /ru/poisk/
     text: |

@@ -1,4 +1,6 @@
-title: Galerii
+# translate to russian
+path: gallery
+title: Галерея
 data:
     gallery: ./galerii.yaml
 pictures:

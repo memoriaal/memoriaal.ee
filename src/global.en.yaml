@@ -35,6 +35,11 @@ navigation:
         picture: /images/nav/kohakivid.jpg
         title: Location Stones and Information Texts
         text: The notorious penal institutions and execution sites of the communist terror are sites of memory that symbolise the sufferings of their forebears for new generations.
+    -
+        url: /en/gallery/
+        picture: /images/nav/memoriaal.jpg
+        title: Gallery
+        text: Lorem Ipsum
 search:
     url: /en/search/
     text: |
