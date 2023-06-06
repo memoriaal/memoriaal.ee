@@ -1,7 +1,9 @@
 title: Galerii
+data:
+    gallery: ./galerii.yaml
 pictures:
     - /images/bg/andmebaas.jpg
-gallery_folder: /images/galerii
+gallery_folder: /images/galerii/public/
 content:
     -
         text: |
