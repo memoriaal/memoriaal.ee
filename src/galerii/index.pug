@@ -39,33 +39,23 @@ html(lang=self.locale)
                     a(href=self.path)= self.title
             #text-content.row.mt-5.pb-1
                 block content
-                    .col-12.col-md-8.col-lg-9.col-xl-6
-                        .row
-                            #text-text.col.py-3
-                                each c, idx in self.content
-                                    if c.id
-                                        a.text-link.py-2.d-block(href='#' + c.id)= c.title
-                                        .text-block.d-none(id=c.id, class={ 'mb-3': idx!==self.content.length-1, 'mb-0': idx===self.content.length-1 })
-                                            +markdown(c.text)
-                                    else
-                                        .m-0(class={ 'mb-3': self.content.length > 1 })
-                                            +markdown(c.text)
-                    .col-12.col-md-4.col-lg-3.col-xl-3
-                        .row
+                    .col-12.col-md-12.col-lg-11.col-xl-9
+                        #gallery.row
+                            // a pic gallery with lightbox
+                            // https://ashleydw.github.io/lightbox/
+                            // pics are in responsive grid with 4 columns on large screens
                             each pic in self.data.gallery
                                 - var picture_file = self.gallery_folder + pic.file
                                 - var picture_title = pic.title
                                 - var picture_author = pic.author
-                                .col-6.col-md-12
-                                    a(href=picture_file, data-toggle='lightbox', data-gallery='gallery', title=picture_title)
-                                        img.img-fluid(src=picture_file, alt=picture_title)
-                                        .text-center
-                                            span.text-muted= picture_author
-                                    //- a(href=picture_file)
-                                    //-     img.img-fluid(src=picture_file)
-                                //- .col-6.col-md-12
-                                //-     a(href=pic)
-                                //-         img.img-fluid(src=pic)
+
+                                .col-6.col-md-4.col-lg-3.mb-4
+                                    a(href=picture_file, data-lightbox='gallery', data-title=picture_title)
+                                        img.img-fluid(src=picture_file, alt=picture_title, title=picture_title)
+                                        if picture_title
+                                            p.text-left.title.mt-2= picture_title
+                                        if picture_author
+                                            p.text-right.author.mt-2= picture_author
 
 
         include /_templates/navigation.pug
