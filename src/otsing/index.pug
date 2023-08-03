@@ -116,6 +116,9 @@ block script
                             var text = []
                             var p = hits[i]._source
 
+                            // skip records with redirect
+                            if (p.redirect) { continue }
+
                             //- console.log(JSON.stringify(p, 0, 2))
                             text.push('<div id="' + p.id + '" class="search-result pt-2 pb-4">')
                             text.push('<div class="row">')

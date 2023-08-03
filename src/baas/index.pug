@@ -116,6 +116,10 @@ block script
                     ]
                 }
 
+                if (!idQuery) {  // filter out results with redirect = ''
+                    qData['query']['bool']['must_not'] = { term: { redirect: '' } }
+                }
+
                 if (idQuery) {
                     filter = 'all'
                     qData['query']['bool']['must']['multi_match']['fields'] = ['id']
@@ -162,6 +166,8 @@ block script
                             var p = hits[i]._source
 
                             console.log(p)
+                            // skip records with redirect
+                            if (p.redirect) { continue }
 
                             let c3class = (p.emem||p.kivi||p.evo||p.wwii === 1 ? 'relevantne' : 'mitterelevantne')
                             if (p.isperson === 0) { c3class = 'nonperson' }
