@@ -91,6 +91,8 @@ block script
                 if (idQuery) {
                     filter = 'all'
                     qData['query']['bool']['must']['multi_match']['fields'] = ['id']
+                } else {  // else filter out results with redirect = ''
+                    qData['query']['bool']['must_not'] = { term: { redirect: '' } }
                 }
                 if (filter === 'wall') {
                     qData['query']['bool']['filter'] = { term: { kivi: 1 } }
