@@ -261,21 +261,13 @@ block script
                             if (p.episoodid && p.episoodid.length > 0) {
                                 text.push('<div class="episoodid"><label>Episoodid</label>')
                                 for (var ie = 0; ie < p.episoodid.length; ie++) {
-                                    text.push('<li class="my-0 episood"><a href="?q=' + p.episoodid[ie].kirjekood + '">' + p.episoodid[ie].kirjekood + '</a>')
-                                    text.push(' : <span onclick="document.querySelector(\'#episood-' + p.episoodid[ie].kirjekood + '\').showModal()">' + p.episoodid[ie].nimetus + '</span>')
+                                    const episood = p.episoodid[ie]
+                                    text.push('<li class="my-0 episood">' + episood.kirjekood)
+                                    text.push(' : <span>' + episood.nimetus + '</span>')
+                                    if (episood.aeg) { text.push(' <span>' + episood.aeg + '</span>') }
+                                    if (episood.asukoht) { text.push(' <span>' + episood.asukoht + '</span>') }
+                                    if (episood.väärtus) { text.push(': <span>' + episood.väärtus + '</span>') }
                                     text.push('</li>')
-                                    text.push('<dialog class="episood" id="episood-' + p.episoodid[ie].kirjekood + '">')
-                                    text.push('<button class="close" onclick="document.querySelector(\'#episood-' + p.episoodid[ie].kirjekood + '\').close()">X</button>')
-                                    text.push('<ul class="episood">')
-                                    text.push('<li class="mb-1">')
-                                    text.push(p.episoodid[ie].aeg + ': ' + p.episoodid[ie].asukoht)
-                                    text.push('</li>')
-                                    text.push('<li class="mb-1">')
-                                    text.push(p.episoodid[ie].väärtus)
-                                    text.push('</li>')
-                                    text.push('</ul>')
-                                    //- close button
-                                    text.push('</dialog>')
                                 }
                                 text.push('</div>')
                             }
