@@ -4,30 +4,39 @@ extends /_templates/baas_layout.pug
 block content
     #search.col-12
         h3.mb-3= self.search.title
-        form.form(id='searchform', action='/baas/', method='GET')
-            input.col-8.col-md-6.col-xl-4(type='search', name='q', placeholder=self.search.placeholder)
-            .form-check.col-12.my-2
-                input.form-check-input(type='radio', id='filter_'+self.search.radio.all, name='f', value='all')
-                label.form-check-label(for='filter_'+self.search.radio.all)= self.search.radio.all
-            .form-check.col-12.my-2
-                input.form-check-input(type='radio', id='filter_'+self.search.radio.emem, name='f', value='emem')
-                label.form-check-label(for='filter_'+self.search.radio.emem)= self.search.radio.emem
-            .form-check.col-12.my-2
-                input.form-check-input(type='radio', id='filter_'+self.search.radio.wall, name='f', value='wall')
-                label.form-check-label(for='filter_'+self.search.radio.wall)= self.search.radio.wall
-            .form-check.col-12.my-2
-                input.form-check-input(type='radio', id='filter_'+self.search.radio.officers, name='f', value='officers')
-                label.form-check-label(for='filter_'+self.search.radio.officers)= self.search.radio.officers
-            .form-check.col-12.my-2
-                input.form-check-input(type='radio', id='filter_'+self.search.radio.refugees, name='f', value='refugees')
-                label.form-check-label(for='filter_'+self.search.radio.refugees)= self.search.radio.refugees
-            .form-check.col-12.my-2
-                input.form-check-input(type='radio', id='filter_'+self.search.radio.mv, name='f', value='mv')
-                label.form-check-label(for='filter_'+self.search.radio.mv)= self.search.radio.mv
-            .form-check.col-12.my-2
-                input.form-check-input(type='radio', id='filter_'+self.search.radio.none, name='f', value='none')
-                label.form-check-label(for='filter_'+self.search.radio.none)= self.search.radio.none
-            button.col-4.col-md-3.col-xl-2= self.search.button
+        form#searchForm.form.row(action='/baas/', method='GET')
+            .col-12
+                input#mainSearchInput.emem-text-input.col-lg-10.col-md-7.col-sm-8(type='search', name='q', placeholder=self.search.placeholder)
+                button#mainSearchButton.col-lg-2.col-md-5.col-sm-4= self.search.button
+            #episoodifilter.form-check.col-md-6.col-sm-12
+                .form-check.col-md-12.my-2
+                    label.form-check-label.col-4.padding(for='episood_elukoht')= 'Elukoht'
+                    input.form-check-input.emem-text-input.col-8(type='search', id='episood_elukoht', name='episood_elukoht', placeholder='Elukoht', value='')
+                .form-check.col-md-12.my-2
+                    label.form-check-label.col-4.padding(for='episood_vangilaager')= 'Vangilaager'
+                    input.form-check-input.emem-text-input.col-8(type='search', id='episood_vangilaager', name='episood_vangilaager', placeholder='Vangilaager', value='')
+            .form-check.col-md-6.col-sm-12
+                .form-check.col-12.my-2
+                    input.form-check-input(type='radio', id='filter_'+self.search.radio.all, name='f', value='all')
+                    label.form-check-label(for='filter_'+self.search.radio.all)= self.search.radio.all
+                .form-check.col-12.my-2
+                    input.form-check-input(type='radio', id='filter_'+self.search.radio.emem, name='f', value='emem')
+                    label.form-check-label(for='filter_'+self.search.radio.emem)= self.search.radio.emem
+                .form-check.col-12.my-2
+                    input.form-check-input(type='radio', id='filter_'+self.search.radio.wall, name='f', value='wall')
+                    label.form-check-label(for='filter_'+self.search.radio.wall)= self.search.radio.wall
+                .form-check.col-12.my-2
+                    input.form-check-input(type='radio', id='filter_'+self.search.radio.officers, name='f', value='officers')
+                    label.form-check-label(for='filter_'+self.search.radio.officers)= self.search.radio.officers
+                .form-check.col-12.my-2
+                    input.form-check-input(type='radio', id='filter_'+self.search.radio.refugees, name='f', value='refugees')
+                    label.form-check-label(for='filter_'+self.search.radio.refugees)= self.search.radio.refugees
+                .form-check.col-12.my-2
+                    input.form-check-input(type='radio', id='filter_'+self.search.radio.mv, name='f', value='mv')
+                    label.form-check-label(for='filter_'+self.search.radio.mv)= self.search.radio.mv
+                .form-check.col-12.my-2
+                    input.form-check-input(type='radio', id='filter_'+self.search.radio.none, name='f', value='none')
+                    label.form-check-label(for='filter_'+self.search.radio.none)= self.search.radio.none
         p#search-count.mt-2.mb-4
         #search-results
 
