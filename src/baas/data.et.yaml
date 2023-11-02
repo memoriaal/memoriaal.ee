@@ -1,6 +1,9 @@
 title: Baas
 pictures:
     - /images/bg/andmebaas.jpg
+q:
+    episood_elukoht: Elukoht
+    episood_vangilaager: Vangilaager
 result:
     title: Otsing kommunismiohvrite andmebaasist
     count:

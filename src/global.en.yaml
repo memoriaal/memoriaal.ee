@@ -40,7 +40,7 @@ search:
     text: |
         ### Search in the electronic memorial
         By using the search window, you can find information in the electronic memorial on persons who suffered in the communist terror and you will find instructions for finding their names on the name plaques.
-    placeholder: enter name →
+    placeholder: enter search term →
     button: Search
 
     title: Search in the electronic memorial

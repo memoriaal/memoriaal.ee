@@ -2,6 +2,9 @@ path: poisk
 title: Поиск
 pictures:
     - /images/bg/andmebaas.jpg
+q:
+    episood_elukoht: Место жительства
+    episood_vangilaager: Лагерь
 result:
     title: Поиск в базе данных жертв коммунизма
     count:
