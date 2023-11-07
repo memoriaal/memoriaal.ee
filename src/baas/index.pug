@@ -10,11 +10,11 @@ block content
                 button#mainSearchButton.col-lg-2.col-md-5.col-sm-4= self.search.button
             #episoodifilter.form-check.col-lg-8.col-md-6.col-sm-12
                 .form-check.col-md-12.my-2
-                    label.form-check-label.col-4.padding(for='episood_elukoht')= self.q.episood_elukoht
-                    input.form-check-input.emem-text-input.col-8(type='search', id='episood_elukoht', name='episood_elukoht', placeholder=self.q.episood_elukoht, value='')
+                    label.form-check-label.col-4.padding(for='episoodElukoht')= self.q.episood_elukoht
+                    input.form-check-input.emem-text-input.col-8(type='search', id='episoodElukoht', name='ee', placeholder=self.q.episood_elukoht, value='')
                 .form-check.col-md-12.my-2
-                    label.form-check-label.col-4.padding(for='episood_vangilaager')= self.q.episood_vangilaager
-                    input.form-check-input.emem-text-input.col-8(type='search', id='episood_vangilaager', name='episood_vangilaager', placeholder=self.q.episood_vangilaager, value='')
+                    label.form-check-label.col-4.padding(for='episoodVangilaager')= self.q.episood_vangilaager
+                    input.form-check-input.emem-text-input.col-8(type='search', id='episoodVangilaager', name='ev', placeholder=self.q.episood_vangilaager, value='')
             .form-check.col-lg-4.col-md-6.col-sm-12
                 .form-check.col-12.my-2
                     input.form-check-input(type='radio', id='filter_'+self.search.radio.all, name='f', value='all')
@@ -70,23 +70,13 @@ block content
 
 block script
     script.
-        var copy2clipboard = function (t) {
-            const clip = t.getAttribute('clip')
-            navigator.clipboard.writeText(clip)
-            t.firstChild.nextSibling.classList.remove('transparent')
-            setTimeout(()=>{t.firstChild.nextSibling.classList.add('transparent')}, 400)
-            //- console.log(person)
-        }
         $(function () {
-            var qs = function (key) {
-                key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&")
-                var match = location.search.match(new RegExp("[?&]"+key+"=([^&]+)(&|$)"))
-                return match && decodeURIComponent(match[1].replace(/\+/g, " "))
-            }
+            const query = qs('q')
+            const filter = qs('f') || 'all'
+            const episoodElukoht = qs('ee')
+            const episoodVangilaager = qs('ev')
 
-            var query = qs('q')
-            var filter = qs('f') || 'all'
-            var idQuery = (query == Number(query) && query.length === 10)
+            const idQuery = (query == Number(query) && query.length === 10)
 
             if (idQuery) {
                 filter = 'all'
@@ -95,22 +85,32 @@ block script
 
             $('input[value="'+filter+'"]').prop('checked', true)
 
+            if (episoodElukoht) {
+                $('#episoodElukoht').val(episoodElukoht)
+            }
+            if (episoodVangilaager) {
+                $('#episoodVangilaager').val(episoodVangilaager)
+            }
             if (query) {
                 $('input[name="q"]').val(query)
 
-                var qData = {
-                    query : {
-                        bool : {
-                            must : {
-                                multi_match : {
-                                    query: query,
-                                    fields: [ 'perenimi', 'eesnimi', 'id', 'pereseosed.kirje', 'kirjed.kirje' ],
-                                    operator: 'and',
-                                    type: 'cross_fields'
-                                }
-                            }
-                        }
-                    },
+                const multiMatch = {
+                    multi_match: {
+                        query: query,
+                        fields: ['perenimi', 'eesnimi', 'id', 'pereseosed.kirje', 'kirjed.kirje'],
+                        operator: 'and',
+                        type: 'cross_fields'
+                    }
+                }
+                const nested = {
+                    nested: {
+                        path: 'episoodid',
+                        query: { bool: { must: [] } }
+                    }
+                }
+
+                const qData = {
+                    query : { bool : { must : [ multiMatch ] } },
                     sort: { 'eesnimi.raw': 'asc', 'perenimi.raw': 'asc' },
                     _source: [
                         'redirect',
@@ -128,6 +128,19 @@ block script
 
                 if (!idQuery) {  // filter out results with redirect = ''
                     qData['query']['bool']['must_not'] = { term: { redirect: '' } }
+                    // Täppisotsingut teostame ainult siis, kui ei otsita ID järgi
+                    let hasNested = false
+                    if (qs('ee')) {
+                        nested['nested']['query']['bool']['must'].push({ match: { 'episoodid.asukoht': qs('ee') } })
+                        hasNested = true
+                    }
+                    if (qs('ev')) {
+                        nested['nested']['query']['bool']['must'].push({ match: { 'episoodid.vangilaager': qs('ev') } })
+                        hasNested = true
+                    }
+                    if (hasNested) {
+                        qData['query']['bool']['must'].push(nested)
+                    }
                 }
 
                 if (idQuery) {
