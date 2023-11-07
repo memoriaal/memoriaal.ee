@@ -93,60 +93,62 @@ block script
             }
             if (query) {
                 $('input[name="q"]').val(query)
+            }
 
-                const multiMatch = {
-                    multi_match: {
-                        query: query,
-                        fields: ['perenimi', 'eesnimi', 'id', 'pereseosed.kirje', 'kirjed.kirje'],
-                        operator: 'and',
-                        type: 'cross_fields'
-                    }
+            const multiMatch = {
+                multi_match: {
+                    query: query,
+                    fields: ['perenimi', 'eesnimi', 'id', 'pereseosed.kirje', 'kirjed.kirje'],
+                    operator: 'and',
+                    type: 'cross_fields'
                 }
-                const nested = {
-                    nested: {
-                        path: 'episoodid',
-                        query: { bool: { must: [] } }
-                    }
+            }
+            const nested = {
+                nested: {
+                    path: 'episoodid',
+                    query: { bool: { must: [] } }
                 }
+            }
+            const qData = {
+                query : { bool : { must : [] } },
+                sort: { 'eesnimi.raw': 'asc', 'perenimi.raw': 'asc' },
+                _source: [
+                    'redirect',
+                    'isperson', 'kivi', 'emem', 'evo', 'wwii', 'evokirje', 'mv',
+                    'perenimi', 'eesnimi', 'isanimi', 'emanimi', 'perenimed', 'eesnimed',
+                    'sünd', 'surm','sünnikoht','surmakoht', 'id',
+                    'kirjed.kirje', 'kirjed.kirjekood', 'kirjed.viide', 'kirjed.allikas', 'kirjed.allika_nimetus',
+                    'pereseosed.persoon', 'pereseosed.kirje',
+                    'pereseosed.seos', 'pereseosed.suund', 'pereseosed.kirjed',
+                    'tahvlikirje.kirjekood', 'tahvlikirje.kirje', 'tahvlikirje.tahvel', 'tahvlikirje.tulp', 'tahvlikirje.rida',
+                    'episoodid.kirjekood', 'episoodid.aeg', 'episoodid.asukoht', 'episoodid.nimetus', 'episoodid.väärtus',
+                    'updated_at'
+                ]
+            }
 
-                const qData = {
-                    query : { bool : { must : [ multiMatch ] } },
-                    sort: { 'eesnimi.raw': 'asc', 'perenimi.raw': 'asc' },
-                    _source: [
-                        'redirect',
-                        'isperson', 'kivi', 'emem', 'evo', 'wwii', 'evokirje', 'mv',
-                        'perenimi', 'eesnimi', 'isanimi', 'emanimi', 'perenimed', 'eesnimed',
-                        'sünd', 'surm','sünnikoht','surmakoht', 'id',
-                        'kirjed.kirje', 'kirjed.kirjekood', 'kirjed.viide', 'kirjed.allikas', 'kirjed.allika_nimetus',
-                        'pereseosed.persoon', 'pereseosed.kirje',
-                        'pereseosed.seos', 'pereseosed.suund', 'pereseosed.kirjed',
-                        'tahvlikirje.kirjekood', 'tahvlikirje.kirje', 'tahvlikirje.tahvel', 'tahvlikirje.tulp', 'tahvlikirje.rida',
-                        'episoodid.kirjekood', 'episoodid.aeg', 'episoodid.asukoht', 'episoodid.nimetus', 'episoodid.väärtus',
-                        'updated_at'
-                    ]
+            if (idQuery) {
+                filter = 'all'
+                multiMatch['multi_match']['fields'] = ['id']
+                qData['query']['bool']['must'].push(multiMatch)
+            } else {  // filter out results with redirect = ''
+                if (query.length > 0) {
+                    qData['query']['bool']['must'].push(multiMatch)
                 }
-
-                if (!idQuery) {  // filter out results with redirect = ''
-                    qData['query']['bool']['must_not'] = { term: { redirect: '' } }
-                    // Täppisotsingut teostame ainult siis, kui ei otsita ID järgi
-                    let hasNested = false
-                    if (qs('ee')) {
-                        nested['nested']['query']['bool']['must'].push({ match: { 'episoodid.asukoht': qs('ee') } })
-                        hasNested = true
-                    }
-                    if (qs('ev')) {
-                        nested['nested']['query']['bool']['must'].push({ match: { 'episoodid.vangilaager': qs('ev') } })
-                        hasNested = true
-                    }
-                    if (hasNested) {
-                        qData['query']['bool']['must'].push(nested)
-                    }
+                qData['query']['bool']['must_not'] = { term: { redirect: '' } }
+                // Täppisotsingut teostame ainult siis, kui ei otsita ID järgi
+                let hasNested = false
+                if (qs('ee')) {
+                    nested['nested']['query']['bool']['must'].push({ match: { 'episoodid.asukoht': qs('ee') } })
+                    hasNested = true
                 }
-
-                if (idQuery) {
-                    filter = 'all'
-                    qData['query']['bool']['must']['multi_match']['fields'] = ['id']
-                } else if (filter === 'emem') {
+                if (qs('ev')) {
+                    nested['nested']['query']['bool']['must'].push({ match: { 'episoodid.vangilaager': qs('ev') } })
+                    hasNested = true
+                }
+                if (hasNested) {
+                    qData['query']['bool']['must'].push(nested)
+                }
+                if (filter === 'emem') {
                     qData['query']['bool']['filter'] = { term: { emem: 1 } }
                 } else if (filter === 'wall') {
                     qData['query']['bool']['filter'] = { term: { kivi: 1 } }
@@ -164,164 +166,165 @@ block script
                         {term: {wwii: 0}}
                     ]
                 }
-                $.ajax('/.netlify/functions/baas_search', {
-                    data : JSON.stringify(qData),
-                    contentType : 'application/json',
-                    type : 'POST',
-                    cache: false,
-                    beforeSend: function (xhr) {
-                        xhr.setRequestHeader('Authorization', 'Basic cmVhZGVyOnJlYWRlcg==')
-                    },
-                    success: function (data) {
-                        const count = data.hits.total.value
-                        console.log(data.error || 'All green')
-                        $('#search-count').html(count + (count === 1 ? ' #{self.result.count.one}' : ' #{self.result.count.multiple}'))
-
-                        const hits = data.hits.hits
-
-                        // if it's an id query with a redirect field, redirect to that person
-                        if (idQuery && hits[0]._source.redirect) {
-                            window.location.href = '?q=' + hits[0]._source.redirect
-                        }
-
-                        for (var i = 0; i < count; i++) {
-                            var text = []
-                            var p = hits[i]._source
-
-                            console.log(p)
-                            // skip records with redirect
-                            if (p.redirect) { continue }
-
-                            let c3class = (p.emem||p.kivi||p.evo||p.wwii === 1 ? 'relevantne' : 'mitterelevantne')
-                            if (p.isperson === 0) { c3class = 'nonperson' }
-
-                            text.push('<div id="' + p.id + '" class="search-result pt-2 pb-4 ' + c3class + '">')
-                            text.push('<div class="labels">')
-                            if (p.kivi) { text.push('<span class="kivi">kivi</span>') }
-                            if (p.emem) { text.push('<span class="emem">emem</span>') }
-                            if (p.evo) { text.push('<span class="evo">EVO</span>') }
-                            if (p.wwii) { text.push('<span class="refugee">refugee</span>') }
-                            if (p.mv) { text.push('<span class="mv">MV</span>') }
-                            text.push('</div>')
-                            text.push('<div class="row">')
-
-                            text.push('<h3 class="search-result-name col-12 mb-2 mb-1">' + (p.eesnimi ? p.eesnimi : '') + ' ' + p.perenimi
-                                + ' <a href="https://www.google.com/search?q=%22' + p.eesnimi + '%20' + p.perenimi + '%22" target="_blank" class="google-search"><i class="fas fa-search">G</i></a>'
-                                + '</h3>')
-
-                            text.push('<div class="col-5 col-sm-3">')
-                            if (p.sünd) {
-                                text.push('<p class="mb-0">#{self.result.born}: ' + p.sünd)
-                                if (p.sünnikoht) { text.push('<span> ' + p.sünnikoht + '</span>') }
-                                text.push('</p>')
-                            }
-
-                            if (p.surm) {
-                                text.push('<p class="mb-0">#{self.result.dead}: ' + p.surm)
-                                if (p.surmakoht) { text.push('<span> ' + p.surmakoht + '</span>') }
-                                text.push('</p>')
-                            }
-
-                            if (p.isanimi) { text.push('<p class="mb-0">#{self.result.father}: ' + p.isanimi + '</p>') }
-                            if (p.emanimi) { text.push('<p class="mb-0">#{self.result.mother}: ' + p.emanimi + '</p>') }
-                            let pub_a = pub_b = ''
-                            if (p.wwii) {
-                                pub_a = '<a href="https://wwii-refugees.ee/?q=' + p.id + '">'
-                                pub_b = '</a>'
-                            }
-                            if (p.emem) {
-                                pub_a = '<a href="https://www.memoriaal.ee/otsing/?q=' + p.id + '">'
-                                pub_b = '</a>'
-                            }
-                            text.push('<p class="mb-0"># ' + pub_a + p.id + pub_b)
-                            text.push('<span class="crossfade" clip="' + p.id + '" onClick="copy2clipboard(this)"><img src="/images/clip 512.png"/><img src="/images/clip-n-check 512.png" class="transparent"/></span>')
-                            text.push('</p>')
-                            if (p.updated_at) {
-                                text.push('<hr/>')
-                                text.push('<p class="mb-0" style="font-size:8pt; font-weight:100">' + p.updated_at + '</p>')
-                            }
-                            text.push('</div>')
-
-                            text.push('<div class="search-result-info col-7 col-sm-6">')
-                            p.kirjed = p.kirjed || []
-                            for (var ik = 0; ik < p.kirjed.length; ik++) {
-                                let a1 = a2 = ''
-                                if (p.kirjed[ik].viide) {
-                                    a1 = '<a href="' + p.kirjed[ik].viide + '" target="_blank">'
-                                    a2 = '</a>'
-                                }
-                                text.push('<p class="mt-2 mb-0"><strong>' + a1 + p.kirjed[ik].allikas + a2 + ' ' + p.kirjed[ik].kirjekood + '<span class="crossfade" clip="' + p.kirjed[ik].kirjekood + '" onClick="copy2clipboard(this)"><img src="/images/clip 512.png"/><img src="/images/clip-n-check 512.png" class="transparent"/></span>' + ' </strong></p>')
-                                if (p.kirjed[ik].kirje) { text.push('<p class="mb-1">') }
-                                if (p.kirjed[ik].kirje) { text.push(p.kirjed[ik].kirje) }
-                                if (p.kirjed[ik].kirje) { text.push('</p>') }
-                            }
-                            if (p.pereseosed && p.pereseosed.length > 0) {
-                                text.push('<div class="pere"><label>Pereliikmed</label>')
-                                for (var ip = 0; ip < p.pereseosed.length; ip++) {
-                                    let pereseos = p.pereseosed[ip].seos
-                                    if (p.pereseosed[ip].suund === '-1') {
-                                        pereseos = '(' + pereseos + ')'
-                                    }
-                                    let perekirjed = p.pereseosed[ip].kirjed
-                                    text.push('<li class="my-0 pereliige"><a href="?q=' + p.pereseosed[ip].persoon + '">' + p.pereseosed[ip].persoon + ' ' + pereseos + '</a>')
-                                    text.push(' : <span onclick="document.querySelector(\'#perekirjed-' + p.pereseosed[ip].persoon + '\').showModal()">' + p.pereseosed[ip].kirje + '</span>')
-                                    text.push('</li>')
-                                    text.push('<dialog class="perekirjed" id="perekirjed-' + p.pereseosed[ip].persoon + '">')
-                                    text.push('<button class="close" onclick="document.querySelector(\'#perekirjed-' + p.pereseosed[ip].persoon + '\').close()">X</button>')
-                                    text.push('<ul class="perekirjed">')
-                                    for (var ik = 0; ik < perekirjed.length; ik++) {
-                                        text.push('<li class="mb-1">')
-                                        text.push(perekirjed[ik].kirjekood + ': ' + perekirjed[ik].kirje)
-                                        text.push('</li>')
-                                    }
-                                    text.push('</ul>')
-                                    //- close button
-                                    text.push('</dialog>')
-                                }
-                                text.push('</div>')
-                            }
-                            if (p.episoodid && p.episoodid.length > 0) {
-                                text.push('<div class="episoodid"><label>Episoodid</label>')
-                                for (var ie = 0; ie < p.episoodid.length; ie++) {
-                                    const episood = p.episoodid[ie]
-                                    text.push('<li class="my-0 episood">' + episood.kirjekood)
-                                    text.push(' : <span>' + episood.nimetus + '</span>')
-                                    if (episood.aeg) { text.push(' <span>' + episood.aeg + '</span>') }
-                                    if (episood.asukoht) { text.push(' <span>' + episood.asukoht + '</span>') }
-                                    if (episood.väärtus) { text.push(': <span>' + episood.väärtus + '</span>') }
-                                    text.push('</li>')
-                                }
-                                text.push('</div>')
-                            }
-                            text.push('</div>')
-
-                            if (p.tahvlikirje) {
-                                text.push('<div class="search-result-plaque' + (p.kivi ? "" : " obsolete") + ' col-12 col-sm-3">')
-                                if (p.tahvlikirje.tahvel) {
-                                    text.push('<p class="mb-0">#{self.result.plaque}:</p>')
-                                    text.push('<p class="mb-2 plaque-info">' + p.tahvlikirje.tahvel + '</p>')
-                                }
-                                if (p.tahvlikirje.tulp) { text.push('<p class="mb-2">#{self.result.col}: ' + p.tahvlikirje.tulp + ' / #{self.result.row}: ' + p.tahvlikirje.rida + '</p>') }
-                                if (p.tahvlikirje.kirje) {
-                                    text.push('<p class="mb-0">#{self.result.nameOnPlaque}: ' + p.tahvlikirje.kirje + '</p>')
-                                }
-                            }
-
-                            if (p.evo === 1) {
-                                text.push('<hr/><p class="mb-0">#{self.result.nameOnEVOPlaque}: ' + p.evokirje + '</p>')
-                            }
-                            text.push('</div>')
-                            text.push('</div>')
-                            text.push('</div>')
-
-                            $('#search-results').append(text.join(''))
-                        }
-                    },
-                    error: function( error) {
-                        console.log(error)
-                    }
-                })
             }
+
+            $.ajax('/.netlify/functions/baas_search', {
+                data : JSON.stringify(qData),
+                contentType : 'application/json',
+                type : 'POST',
+                cache: false,
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Basic cmVhZGVyOnJlYWRlcg==')
+                },
+                success: function (data) {
+                    const count = data.hits.total.value
+                    console.log(data.error || 'All green')
+                    $('#search-count').html(count + (count === 1 ? ' #{self.result.count.one}' : ' #{self.result.count.multiple}'))
+
+                    const hits = data.hits.hits
+
+                    // if it's an id query with a redirect field, redirect to that person
+                    if (idQuery && hits[0]._source.redirect) {
+                        window.location.href = '?q=' + hits[0]._source.redirect
+                    }
+
+                    for (var i = 0; i < count; i++) {
+                        var text = []
+                        var p = hits[i]._source
+
+                        console.log(p)
+                        // skip records with redirect
+                        if (p.redirect) { continue }
+
+                        let c3class = (p.emem||p.kivi||p.evo||p.wwii === 1 ? 'relevantne' : 'mitterelevantne')
+                        if (p.isperson === 0) { c3class = 'nonperson' }
+
+                        text.push('<div id="' + p.id + '" class="search-result pt-2 pb-4 ' + c3class + '">')
+                        text.push('<div class="labels">')
+                        if (p.kivi) { text.push('<span class="kivi">kivi</span>') }
+                        if (p.emem) { text.push('<span class="emem">emem</span>') }
+                        if (p.evo) { text.push('<span class="evo">EVO</span>') }
+                        if (p.wwii) { text.push('<span class="refugee">refugee</span>') }
+                        if (p.mv) { text.push('<span class="mv">MV</span>') }
+                        text.push('</div>')
+                        text.push('<div class="row">')
+
+                        text.push('<h3 class="search-result-name col-12 mb-2 mb-1">' + (p.eesnimi ? p.eesnimi : '') + ' ' + p.perenimi
+                            + ' <a href="https://www.google.com/search?q=%22' + p.eesnimi + '%20' + p.perenimi + '%22" target="_blank" class="google-search"><i class="fas fa-search">G</i></a>'
+                            + '</h3>')
+
+                        text.push('<div class="col-5 col-sm-3">')
+                        if (p.sünd) {
+                            text.push('<p class="mb-0">#{self.result.born}: ' + p.sünd)
+                            if (p.sünnikoht) { text.push('<span> ' + p.sünnikoht + '</span>') }
+                            text.push('</p>')
+                        }
+
+                        if (p.surm) {
+                            text.push('<p class="mb-0">#{self.result.dead}: ' + p.surm)
+                            if (p.surmakoht) { text.push('<span> ' + p.surmakoht + '</span>') }
+                            text.push('</p>')
+                        }
+
+                        if (p.isanimi) { text.push('<p class="mb-0">#{self.result.father}: ' + p.isanimi + '</p>') }
+                        if (p.emanimi) { text.push('<p class="mb-0">#{self.result.mother}: ' + p.emanimi + '</p>') }
+                        let pub_a = pub_b = ''
+                        if (p.wwii) {
+                            pub_a = '<a href="https://wwii-refugees.ee/?q=' + p.id + '">'
+                            pub_b = '</a>'
+                        }
+                        if (p.emem) {
+                            pub_a = '<a href="https://www.memoriaal.ee/otsing/?q=' + p.id + '">'
+                            pub_b = '</a>'
+                        }
+                        text.push('<p class="mb-0"># ' + pub_a + p.id + pub_b)
+                        text.push('<span class="crossfade" clip="' + p.id + '" onClick="copy2clipboard(this)"><img src="/images/clip 512.png"/><img src="/images/clip-n-check 512.png" class="transparent"/></span>')
+                        text.push('</p>')
+                        if (p.updated_at) {
+                            text.push('<hr/>')
+                            text.push('<p class="mb-0" style="font-size:8pt; font-weight:100">' + p.updated_at + '</p>')
+                        }
+                        text.push('</div>')
+
+                        text.push('<div class="search-result-info col-7 col-sm-6">')
+                        p.kirjed = p.kirjed || []
+                        for (var ik = 0; ik < p.kirjed.length; ik++) {
+                            let a1 = a2 = ''
+                            if (p.kirjed[ik].viide) {
+                                a1 = '<a href="' + p.kirjed[ik].viide + '" target="_blank">'
+                                a2 = '</a>'
+                            }
+                            text.push('<p class="mt-2 mb-0"><strong>' + a1 + p.kirjed[ik].allikas + a2 + ' ' + p.kirjed[ik].kirjekood + '<span class="crossfade" clip="' + p.kirjed[ik].kirjekood + '" onClick="copy2clipboard(this)"><img src="/images/clip 512.png"/><img src="/images/clip-n-check 512.png" class="transparent"/></span>' + ' </strong></p>')
+                            if (p.kirjed[ik].kirje) { text.push('<p class="mb-1">') }
+                            if (p.kirjed[ik].kirje) { text.push(p.kirjed[ik].kirje) }
+                            if (p.kirjed[ik].kirje) { text.push('</p>') }
+                        }
+                        if (p.pereseosed && p.pereseosed.length > 0) {
+                            text.push('<div class="pere"><label>Pereliikmed</label>')
+                            for (var ip = 0; ip < p.pereseosed.length; ip++) {
+                                let pereseos = p.pereseosed[ip].seos
+                                if (p.pereseosed[ip].suund === '-1') {
+                                    pereseos = '(' + pereseos + ')'
+                                }
+                                let perekirjed = p.pereseosed[ip].kirjed
+                                text.push('<li class="my-0 pereliige"><a href="?q=' + p.pereseosed[ip].persoon + '">' + p.pereseosed[ip].persoon + ' ' + pereseos + '</a>')
+                                text.push(' : <span onclick="document.querySelector(\'#perekirjed-' + p.pereseosed[ip].persoon + '\').showModal()">' + p.pereseosed[ip].kirje + '</span>')
+                                text.push('</li>')
+                                text.push('<dialog class="perekirjed" id="perekirjed-' + p.pereseosed[ip].persoon + '">')
+                                text.push('<button class="close" onclick="document.querySelector(\'#perekirjed-' + p.pereseosed[ip].persoon + '\').close()">X</button>')
+                                text.push('<ul class="perekirjed">')
+                                for (var ik = 0; ik < perekirjed.length; ik++) {
+                                    text.push('<li class="mb-1">')
+                                    text.push(perekirjed[ik].kirjekood + ': ' + perekirjed[ik].kirje)
+                                    text.push('</li>')
+                                }
+                                text.push('</ul>')
+                                //- close button
+                                text.push('</dialog>')
+                            }
+                            text.push('</div>')
+                        }
+                        if (p.episoodid && p.episoodid.length > 0) {
+                            text.push('<div class="episoodid"><label>Episoodid</label>')
+                            for (var ie = 0; ie < p.episoodid.length; ie++) {
+                                const episood = p.episoodid[ie]
+                                text.push('<li class="my-0 episood">' + episood.kirjekood)
+                                text.push(' : <span>' + episood.nimetus + '</span>')
+                                if (episood.aeg) { text.push(' <span>' + episood.aeg + '</span>') }
+                                if (episood.asukoht) { text.push(' <span>' + episood.asukoht + '</span>') }
+                                if (episood.väärtus) { text.push(': <span>' + episood.väärtus + '</span>') }
+                                text.push('</li>')
+                            }
+                            text.push('</div>')
+                        }
+                        text.push('</div>')
+
+                        if (p.tahvlikirje) {
+                            text.push('<div class="search-result-plaque' + (p.kivi ? "" : " obsolete") + ' col-12 col-sm-3">')
+                            if (p.tahvlikirje.tahvel) {
+                                text.push('<p class="mb-0">#{self.result.plaque}:</p>')
+                                text.push('<p class="mb-2 plaque-info">' + p.tahvlikirje.tahvel + '</p>')
+                            }
+                            if (p.tahvlikirje.tulp) { text.push('<p class="mb-2">#{self.result.col}: ' + p.tahvlikirje.tulp + ' / #{self.result.row}: ' + p.tahvlikirje.rida + '</p>') }
+                            if (p.tahvlikirje.kirje) {
+                                text.push('<p class="mb-0">#{self.result.nameOnPlaque}: ' + p.tahvlikirje.kirje + '</p>')
+                            }
+                        }
+
+                        if (p.evo === 1) {
+                            text.push('<hr/><p class="mb-0">#{self.result.nameOnEVOPlaque}: ' + p.evokirje + '</p>')
+                        }
+                        text.push('</div>')
+                        text.push('</div>')
+                        text.push('</div>')
+
+                        $('#search-results').append(text.join(''))
+                    }
+                },
+                error: function( error) {
+                    console.log(error)
+                }
+            })
 
             $('input[type="radio"]').on('click', function () {
                 query = $('input[name="q"]').val()
