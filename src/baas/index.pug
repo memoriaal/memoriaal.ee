@@ -76,7 +76,8 @@ block script
             const episoodElukoht = qs('ee')
             const episoodVangilaager = qs('ev')
 
-            const idQuery = (query == Number(query) && query.length === 10)
+            const isIdQuery = (q) => (q == Number(q) && q.length === 10)
+            const idQuery = isIdQuery(query)
 
             if (idQuery) {
                 filter = 'all'
@@ -326,23 +327,14 @@ block script
                 }
             })
 
-            $('input[type="radio"]').on('click', function () {
-                query = $('input[name="q"]').val()
-                idQuery = (query == Number(query) && query.length === 10)
-                if (idQuery) {
-                    $('input[value="all"]').prop('checked', true)
-                    return
-                }
-                if ($(query && $(this).prop('value')) !== filter) {
-                    $('#searchform').submit()
-                }
-            })
-            //- $('#search-results').on('mouseenter', '.search-result', function () {
-            //-     $(this).find('.search-result-feedback').removeClass('d-none')
-            //- })
-
-            //- $('#search-results').on('mouseleave', '.search-result', function () {
-            //-     $(this).find('.search-result-feedback').addClass('d-none')
+            //- $('input[type="radio"]').on('click', function () {
+            //-     if (isIdQuery(qs('q'))) {
+            //-         $('input[value="all"]').prop('checked', true)
+            //-         return
+            //-     }
+            //-     if ($(query && $(this).prop('value')) !== filter) {
+            //-         $('#searchform').submit()
+            //-     }
             //- })
 
             $('#search-results').on('click', '.search-result-feedback', function () {
