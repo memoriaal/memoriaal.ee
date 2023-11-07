@@ -71,13 +71,15 @@ block content
 block script
     script.
         $(function () {
-            const query = qs('q')
+            const query = qs('q') || ''
             const filter = qs('f') || 'all'
             const episoodElukoht = qs('ee')
             const episoodVangilaager = qs('ev')
 
             const isIdQuery = (q) => (q == Number(q) && q.length === 10)
+            console.log(`query: ${query}, filter: ${filter}, episoodElukoht: ${episoodElukoht}, episoodVangilaager: ${episoodVangilaager}`)
             const idQuery = isIdQuery(query)
+            console.log(`idQuery: ${idQuery}`)
 
             if (idQuery) {
                 filter = 'all'
