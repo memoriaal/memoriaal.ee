@@ -106,10 +106,15 @@ block script
                     type: 'cross_fields'
                 }
             }
-            const nested = {
-                nested: {
-                    path: 'episoodid',
-                    query: { bool: { must: [] } }
+            const nestedQ = (nimetus, asukoht) => {
+                return {
+                    nested: {
+                        path: 'episoodid',
+                        query: { bool: { must: [
+                            { match: { 'episoodid.nimetus': nimetus } },
+                            { match: { 'episoodid.asukoht': asukoht } }
+                        ] } }
+                    }
                 }
             }
             const qData = {
@@ -124,7 +129,7 @@ block script
                     'pereseosed.persoon', 'pereseosed.kirje',
                     'pereseosed.seos', 'pereseosed.suund', 'pereseosed.kirjed',
                     'tahvlikirje.kirjekood', 'tahvlikirje.kirje', 'tahvlikirje.tahvel', 'tahvlikirje.tulp', 'tahvlikirje.rida',
-                    'episoodid.kirjekood', 'episoodid.aeg', 'episoodid.asukoht', 'episoodid.nimetus', 'episoodid.väärtus',
+                    'episoodid.asukoht', 'episoodid.nimetus',
                     'updated_at'
                 ]
             }
@@ -139,17 +144,11 @@ block script
                 }
                 qData['query']['bool']['must_not'] = { term: { redirect: '' } }
                 // Täppisotsingut teostame ainult siis, kui ei otsita ID järgi
-                let hasNested = false
                 if (qs('ee')) {
-                    nested['nested']['query']['bool']['must'].push({ match: { 'episoodid.asukoht': qs('ee') } })
-                    hasNested = true
+                    qData['query']['bool']['must'].push(nestedQ('Elukoht', qs('ee')))
                 }
                 if (qs('ev')) {
-                    nested['nested']['query']['bool']['must'].push({ match: { 'episoodid.vangilaager': qs('ev') } })
-                    hasNested = true
-                }
-                if (hasNested) {
-                    qData['query']['bool']['must'].push(nested)
+                    qData['query']['bool']['must'].push(nestedQ('Vangilaager', qs('ev')))
                 }
                 if (filter === 'emem') {
                     qData['query']['bool']['filter'] = { term: { emem: 1 } }
@@ -171,6 +170,7 @@ block script
                 }
             }
 
+            console.log({qData: JSON.stringify(qData, null, 2)})
             $.ajax('/.netlify/functions/baas_search', {
                 data : JSON.stringify(qData),
                 contentType : 'application/json',
