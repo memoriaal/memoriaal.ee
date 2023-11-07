@@ -106,17 +106,29 @@ block script
                     type: 'cross_fields'
                 }
             }
-            const nestedQ = (nimetus, asukoht) => {
+            // optionsA = [ { field: 'nimetus', value: 'Elukoht'}, { field: 'asukoht', value: 'Tallinn'}]
+            const nestedQ = (nestName, optionsA) => {
+                if (!optionsA) { return {} }
+                if (!Array.isArray(optionsA)) { optionsA = [optionsA] }
+                if (optionsA.length === 0) { return {} }
+                if (!nestName) { return {} }
+
+                const must = []
+                for (let i = 0; i < optionsA.length; i++) {
+                    const option = optionsA[i]
+                    const field = `${nestName}.${option.field}`
+                    const match = {}
+                    match[field] = option.value
+                    must.push({ match })
+                }
                 return {
                     nested: {
-                        path: 'episoodid',
-                        query: { bool: { must: [
-                            { match: { 'episoodid.nimetus': nimetus } },
-                            { match: { 'episoodid.asukoht': asukoht } }
-                        ] } }
+                        path: nestName,
+                        query: { bool: { must } }
                     }
                 }
             }
+
             const qData = {
                 query : { bool : { must : [] } },
                 sort: { 'eesnimi.raw': 'asc', 'perenimi.raw': 'asc' },
@@ -145,10 +157,16 @@ block script
                 qData['query']['bool']['must_not'] = { term: { redirect: '' } }
                 // Täppisotsingut teostame ainult siis, kui ei otsita ID järgi
                 if (qs('ee')) {
-                    qData['query']['bool']['must'].push(nestedQ('Elukoht', qs('ee')))
+                    qData['query']['bool']['must'].push(nestedQ('episoodid', [
+                        { field: 'nimetus', value: 'Elukoht' },
+                        { field: 'asukoht', value: qs('ee') },
+                    ]))
                 }
                 if (qs('ev')) {
-                    qData['query']['bool']['must'].push(nestedQ('Vangilaager', qs('ev')))
+                    qData['query']['bool']['must'].push(nestedQ('episoodid', [
+                        { field: 'nimetus', value: 'Vangilaager' },
+                        { field: 'asukoht', value: qs('ev') },
+                    ]))
                 }
                 if (filter === 'emem') {
                     qData['query']['bool']['filter'] = { term: { emem: 1 } }
