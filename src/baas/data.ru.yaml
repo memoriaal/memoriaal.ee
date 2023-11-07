@@ -5,6 +5,13 @@ pictures:
 q:
     episood_elukoht: Место жительства
     episood_vangilaager: Лагерь
+    eesnimi: Имя
+    perenimi: Фамилия
+    isanimi: Имя отца
+    emanimi: Имя матери
+    synniaeg: Дата рождения
+    surmaaeg: Дата смерти
+
 result:
     title: Поиск в базе данных жертв коммунизма
     count:

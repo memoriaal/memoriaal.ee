@@ -4,6 +4,12 @@ pictures:
 q:
     episood_elukoht: Elukoht
     episood_vangilaager: Vangilaager
+    eesnimi: Eesnimi
+    perenimi: Perenimi
+    isanimi: Isanimi
+    emanimi: Emanimi
+    synniaeg: Sünniaeg
+    surmaaeg: Surmaaeg
 result:
     title: Otsing kommunismiohvrite andmebaasist
     count:

@@ -5,6 +5,13 @@ pictures:
 q:
     episood_elukoht: Place of residence
     episood_vangilaager: Prison camp
+    eesnimi: First name
+    perenimi: Last name
+    isanimi: Father's name
+    emanimi: Mother's name
+    synniaeg: Date of birth
+    surmaaeg: Date of death
+
 result:
     title: Search in the database of victims of communism
     count:

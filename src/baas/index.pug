@@ -10,6 +10,19 @@ block content
                 button#mainSearchButton.col-lg-2.col-md-5.col-sm-4= self.search.button
             #episoodifilter.form-check.col-lg-8.col-md-6.col-sm-12
                 .form-check.col-md-12.my-2
+                    label.form-check-label.col-4.padding(for='qForename')= self.q.eesnimi
+                    input.form-check-input.emem-text-input.col-8(type='search', id='qForename', name='fn', placeholder=self.q.eesnimi, value='')
+                .form-check.col-md-12.my-2
+                    label.form-check-label.col-4.padding(for='qSurname')= self.q.perenimi
+                    input.form-check-input.emem-text-input.col-8(type='search', id='qSurname', name='sn', placeholder=self.q.perenimi, value='')
+                .form-check.col-md-12.my-2
+                    label.form-check-label.col-4.padding(for='qFather')= self.q.isanimi
+                    input.form-check-input.emem-text-input.col-8(type='search', id='qFather', name='ftn', placeholder=self.q.isanimi, value='')
+                .form-check.col-md-12.my-2
+                    label.form-check-label.col-4.padding(for='qMother')= self.q.emanimi
+                    input.form-check-input.emem-text-input.col-8(type='search', id='qMother', name='mtn', placeholder=self.q.emanimi, value='')
+                hr
+                .form-check.col-md-12.my-2
                     label.form-check-label.col-4.padding(for='episoodElukoht')= self.q.episood_elukoht
                     input.form-check-input.emem-text-input.col-8(type='search', id='episoodElukoht', name='ee', placeholder=self.q.episood_elukoht, value='')
                 .form-check.col-md-12.my-2
@@ -67,17 +80,22 @@ block content
 
             h2#db-feedback-success.col-12.d-none= self.feedback.success
 
-
 block script
     script.
         $(function () {
             const query = qs('q') || ''
             const filter = qs('f') || 'all'
-            const episoodElukoht = qs('ee')
-            const episoodVangilaager = qs('ev')
+
+            const qEesnimi = qs('fn')
+            const qPerenimi = qs('sn')
+            const qIsanimi = qs('ftn')
+            const qEmanimi = qs('mtn')
+
+            const eElukoht = qs('ee')
+            const eVangilaager = qs('ev')
 
             const isIdQuery = (q) => (q == Number(q) && q.length === 10)
-            console.log(`query: ${query}, filter: ${filter}, episoodElukoht: ${episoodElukoht}, episoodVangilaager: ${episoodVangilaager}`)
+            console.log(`query: ${query}, filter: ${filter}, episoodElukoht: ${eElukoht}, episoodVangilaager: ${eVangilaager}`)
             const idQuery = isIdQuery(query)
             console.log(`idQuery: ${idQuery}`)
 
@@ -88,15 +106,15 @@ block script
 
             $('input[value="'+filter+'"]').prop('checked', true)
 
-            if (episoodElukoht) {
-                $('#episoodElukoht').val(episoodElukoht)
-            }
-            if (episoodVangilaager) {
-                $('#episoodVangilaager').val(episoodVangilaager)
-            }
-            if (query) {
-                $('input[name="q"]').val(query)
-            }
+            query && (document.getElementById('mainSearchInput').value = query)
+
+            qEesnimi && (document.getElementById('qForename').value = qEesnimi)
+            qPerenimi && (document.getElementById('qSurname').value = qPerenimi)
+            qIsanimi && (document.getElementById('qFather').value = qIsanimi)
+            qEmanimi && (document.getElementById('qMother').value = qEmanimi)
+
+            eElukoht && (document.getElementById('episoodElukoht').value = eElukoht)
+            eVangilaager && (document.getElementById('episoodVangilaager').value = eVangilaager)
 
             const multiMatch = {
                 multi_match: {
@@ -129,6 +147,12 @@ block script
                 }
             }
 
+            const matchQ = (field, value) => {
+                const match = {}
+                match[field] = { query: value }
+                return { match }
+            }
+
             const qData = {
                 query : { bool : { must : [] } },
                 sort: { 'eesnimi.raw': 'asc', 'perenimi.raw': 'asc' },
@@ -156,6 +180,19 @@ block script
                 }
                 qData['query']['bool']['must_not'] = { term: { redirect: '' } }
                 // Täppisotsingut teostame ainult siis, kui ei otsita ID järgi
+                if (qs('fn')) {
+                    qData['query']['bool']['must'].push(matchQ('eesnimi', qs('fn')))
+                }
+                if (qs('sn')) {
+                    qData['query']['bool']['must'].push(matchQ('perenimi', qs('sn')))
+                }
+                if (qs('ftn')) {
+                    qData['query']['bool']['must'].push(matchQ('isanimi', qs('ftn')))
+                }
+                if (qs('mtn')) {
+                    qData['query']['bool']['must'].push(matchQ('emanimi', qs('mtn')))
+                }
+
                 if (qs('ee')) {
                     qData['query']['bool']['must'].push(nestedQ('episoodid', [
                         { field: 'nimetus', value: 'Elukoht' },
