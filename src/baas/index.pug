@@ -7,26 +7,29 @@ block content
         form#searchForm.form.row(action='/baas/', method='GET')
             .col-12
                 input#mainSearchInput.emem-text-input.col-lg-10.col-md-7.col-sm-8(type='search', name='q', placeholder=self.search.placeholder)
-                button#mainSearchButton.col-lg-2.col-md-5.col-sm-4= self.search.button
+                button#mainSearchButton.col-lg-2.col-md-5.col-sm-4(
+                    type='submit',
+                    onclick='return submitForm(event)'
+                )= self.search.button
             #episoodifilter.form-check.col-lg-8.col-md-6.col-sm-12
                 .form-check.col-md-12.my-2
                     label.form-check-label.col-4.padding= ' '
                     button#clearSearchButton.col-8(
                         type='button',
-                        onclick='document.getElementById("searchForm").reset(); return false'
+                        onclick='clearForm(event)'
                     )= self.search.clear
                 .form-check.col-md-12.my-2
                     label.form-check-label.col-4.padding(for='qForename')= self.q.eesnimi
-                    input.form-check-input.emem-text-input.col-8(type='search', id='qForename', name='fn', placeholder=self.q.eesnimi, value='')
+                    input.form-check-input.emem-text-input.col-8(type='search', id='qForename', name='fn', placeholder=self.q.eesnimi)
                 .form-check.col-md-12.my-2
                     label.form-check-label.col-4.padding(for='qSurname')= self.q.perenimi
-                    input.form-check-input.emem-text-input.col-8(type='search', id='qSurname', name='sn', placeholder=self.q.perenimi, value='')
+                    input.form-check-input.emem-text-input.col-8(type='search', id='qSurname', name='sn', placeholder=self.q.perenimi)
                 .form-check.col-md-12.my-2
                     label.form-check-label.col-4.padding(for='qFather')= self.q.isanimi
-                    input.form-check-input.emem-text-input.col-8(type='search', id='qFather', name='ftn', placeholder=self.q.isanimi, value='')
+                    input.form-check-input.emem-text-input.col-8(type='search', id='qFather', name='ftn', placeholder=self.q.isanimi)
                 .form-check.col-md-12.my-2
                     label.form-check-label.col-4.padding(for='qMother')= self.q.emanimi
-                    input.form-check-input.emem-text-input.col-8(type='search', id='qMother', name='mtn', placeholder=self.q.emanimi, value='')
+                    input.form-check-input.emem-text-input.col-8(type='search', id='qMother', name='mtn', placeholder=self.q.emanimi)
                 hr
                 .form-check.col-md-12.my-2
                     label.form-check-label.col-4.padding(for='episoodElukoht')= self.q.episood_elukoht
@@ -88,9 +91,49 @@ block content
 
 block script
     script.
+        const removeEmptyValues = (form) => {
+            const inputs = form.getElementsByTagName('input')
+            let preventSubmit = true
+            for (let i = 0; i < inputs.length; i++) {
+                const input = inputs[i]
+                if (input.type === 'radio') { continue }
+                if (input.value === '') {
+                    //- console.log('removing empty value', input.name)
+                    input.name = ''
+                } else {
+                    //- console.log('not removing empty value', input.name)
+                    preventSubmit = false
+                }
+            }
+            return preventSubmit
+        }
+        const submitForm = (event) => {
+            const form = event.target.form
+            const preventSubmit = removeEmptyValues(form)
+            if (preventSubmit) {
+                event.preventDefault()
+                return false
+            }
+        }
+        const clearForm = (event) => {
+            const form = event.target.form
+            const inputs = form.getElementsByTagName('input')
+            for (let i = 0; i < inputs.length; i++) {
+                const input = inputs[i]
+                if (input.type === 'radio') { continue }
+                input.value = ''
+            }
+            // clean the url
+            const url = window.location.href
+            const cleanUrl = url.split('?')[0]
+            window.history.replaceState({}, '', cleanUrl)
+        }
+
         $(function () {
             const query = qs('q') || ''
             const filter = qs('f') || 'all'
+
+            // if query has only empty values (or pnly filter is set), populate it with query params
 
             const qEesnimi = qs('fn')
             const qPerenimi = qs('sn')
