@@ -10,6 +10,12 @@ block content
                 button#mainSearchButton.col-lg-2.col-md-5.col-sm-4= self.search.button
             #episoodifilter.form-check.col-lg-8.col-md-6.col-sm-12
                 .form-check.col-md-12.my-2
+                    label.form-check-label.col-4.padding= ' '
+                    button#clearSearchButton.col-8(
+                        type='button',
+                        onclick='document.getElementById("searchForm").reset(); return false'
+                    )= self.search.clear
+                .form-check.col-md-12.my-2
                     label.form-check-label.col-4.padding(for='qForename')= self.q.eesnimi
                     input.form-check-input.emem-text-input.col-8(type='search', id='qForename', name='fn', placeholder=self.q.eesnimi, value='')
                 .form-check.col-md-12.my-2
