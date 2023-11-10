@@ -50,9 +50,9 @@ search:
     text: |
         ### Otsing elektrooniliselt memoriaalilt
         Otsingu akna kaudu saate tutvuda memoriaali andmebaasis oleva infoga kommunistliku terrori läbi kannatanud isikute kohta ning leiate juhised nende nime leidmiseks nimetahvlitel.
-    placeholder: sisesta nimi →
+    placeholder: sisesta otsisõna →
     button: Otsi
-
+    clear: Puhasta
     title: Otsing kommunismiohvrite andmebaasist
     radio:
         all: Kõigi kirjete seast

@@ -4,30 +4,61 @@ extends /_templates/baas_layout.pug
 block content
     #search.col-12
         h3.mb-3= self.search.title
-        form.form(id='searchform', action='/baas/', method='GET')
-            input.col-8.col-md-6.col-xl-4(type='search', name='q', placeholder=self.search.placeholder)
-            .form-check.col-12.my-2
-                input.form-check-input(type='radio', id='filter_'+self.search.radio.all, name='f', value='all')
-                label.form-check-label(for='filter_'+self.search.radio.all)= self.search.radio.all
-            .form-check.col-12.my-2
-                input.form-check-input(type='radio', id='filter_'+self.search.radio.emem, name='f', value='emem')
-                label.form-check-label(for='filter_'+self.search.radio.emem)= self.search.radio.emem
-            .form-check.col-12.my-2
-                input.form-check-input(type='radio', id='filter_'+self.search.radio.wall, name='f', value='wall')
-                label.form-check-label(for='filter_'+self.search.radio.wall)= self.search.radio.wall
-            .form-check.col-12.my-2
-                input.form-check-input(type='radio', id='filter_'+self.search.radio.officers, name='f', value='officers')
-                label.form-check-label(for='filter_'+self.search.radio.officers)= self.search.radio.officers
-            .form-check.col-12.my-2
-                input.form-check-input(type='radio', id='filter_'+self.search.radio.refugees, name='f', value='refugees')
-                label.form-check-label(for='filter_'+self.search.radio.refugees)= self.search.radio.refugees
-            .form-check.col-12.my-2
-                input.form-check-input(type='radio', id='filter_'+self.search.radio.mv, name='f', value='mv')
-                label.form-check-label(for='filter_'+self.search.radio.mv)= self.search.radio.mv
-            .form-check.col-12.my-2
-                input.form-check-input(type='radio', id='filter_'+self.search.radio.none, name='f', value='none')
-                label.form-check-label(for='filter_'+self.search.radio.none)= self.search.radio.none
-            button.col-4.col-md-3.col-xl-2= self.search.button
+        form#searchForm.form.row(action='/baas/', method='GET')
+            .col-12
+                input#mainSearchInput.emem-text-input.col-lg-10.col-md-7.col-sm-8(type='search', name='q', placeholder=self.search.placeholder)
+                button#mainSearchButton.col-lg-2.col-md-5.col-sm-4(
+                    type='submit',
+                    onclick='return submitForm(event)'
+                )= self.search.button
+            #episoodifilter.form-check.col-lg-8.col-md-6.col-sm-12
+                .form-check.col-md-12.my-2
+                    label.form-check-label.col-4.padding= ' '
+                    button#clearSearchButton.col-8(
+                        type='button',
+                        onclick='clearForm(event)'
+                    )= self.search.clear
+                .form-check.col-md-12.my-2
+                    label.form-check-label.col-4.padding(for='qForename')= self.q.eesnimi
+                    input.form-check-input.emem-text-input.col-8(type='search', id='qForename', name='fn', placeholder=self.q.eesnimi)
+                .form-check.col-md-12.my-2
+                    label.form-check-label.col-4.padding(for='qSurname')= self.q.perenimi
+                    input.form-check-input.emem-text-input.col-8(type='search', id='qSurname', name='sn', placeholder=self.q.perenimi)
+                .form-check.col-md-12.my-2
+                    label.form-check-label.col-4.padding(for='qFather')= self.q.isanimi
+                    input.form-check-input.emem-text-input.col-8(type='search', id='qFather', name='ftn', placeholder=self.q.isanimi)
+                .form-check.col-md-12.my-2
+                    label.form-check-label.col-4.padding(for='qMother')= self.q.emanimi
+                    input.form-check-input.emem-text-input.col-8(type='search', id='qMother', name='mtn', placeholder=self.q.emanimi)
+                hr
+                .form-check.col-md-12.my-2
+                    label.form-check-label.col-4.padding(for='episoodElukoht')= self.q.episood_elukoht
+                    input.form-check-input.emem-text-input.col-8(type='search', id='episoodElukoht', name='ee', placeholder=self.q.episood_elukoht, value='')
+                .form-check.col-md-12.my-2
+                    label.form-check-label.col-4.padding(for='episoodVangilaager')= self.q.episood_vangilaager
+                    input.form-check-input.emem-text-input.col-8(type='search', id='episoodVangilaager', name='ev', placeholder=self.q.episood_vangilaager, value='')
+            .form-check.col-lg-4.col-md-6.col-sm-12
+                .form-check.col-12.my-2
+                    input.form-check-input(type='radio', id='filter_'+self.search.radio.all, name='f', value='all')
+                    label.form-check-label(for='filter_'+self.search.radio.all)= self.search.radio.all
+                .form-check.col-12.my-2
+                    input.form-check-input(type='radio', id='filter_'+self.search.radio.emem, name='f', value='emem')
+                    label.form-check-label(for='filter_'+self.search.radio.emem)= self.search.radio.emem
+                .form-check.col-12.my-2
+                    input.form-check-input(type='radio', id='filter_'+self.search.radio.wall, name='f', value='wall')
+                    label.form-check-label(for='filter_'+self.search.radio.wall)= self.search.radio.wall
+                .form-check.col-12.my-2
+                    input.form-check-input(type='radio', id='filter_'+self.search.radio.officers, name='f', value='officers')
+                    label.form-check-label(for='filter_'+self.search.radio.officers)= self.search.radio.officers
+                .form-check.col-12.my-2
+                    input.form-check-input(type='radio', id='filter_'+self.search.radio.refugees, name='f', value='refugees')
+                    label.form-check-label(for='filter_'+self.search.radio.refugees)= self.search.radio.refugees
+                .form-check.col-12.my-2
+                    input.form-check-input(type='radio', id='filter_'+self.search.radio.mv, name='f', value='mv')
+                    label.form-check-label(for='filter_'+self.search.radio.mv)= self.search.radio.mv
+                .form-check.col-12.my-2
+                    input.form-check-input(type='radio', id='filter_'+self.search.radio.none, name='f', value='none')
+                    label.form-check-label(for='filter_'+self.search.radio.none)= self.search.radio.none
         p#search-count.mt-2.mb-4
         #search-results
 
@@ -58,26 +89,64 @@ block content
 
             h2#db-feedback-success.col-12.d-none= self.feedback.success
 
-
 block script
     script.
-        var copy2clipboard = function (t) {
-            const clip = t.getAttribute('clip')
-            navigator.clipboard.writeText(clip)
-            t.firstChild.nextSibling.classList.remove('transparent')
-            setTimeout(()=>{t.firstChild.nextSibling.classList.add('transparent')}, 400)
-            //- console.log(person)
-        }
-        $(function () {
-            var qs = function (key) {
-                key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&")
-                var match = location.search.match(new RegExp("[?&]"+key+"=([^&]+)(&|$)"))
-                return match && decodeURIComponent(match[1].replace(/\+/g, " "))
+        const removeEmptyValues = (form) => {
+            const inputs = form.getElementsByTagName('input')
+            let preventSubmit = true
+            for (let i = 0; i < inputs.length; i++) {
+                const input = inputs[i]
+                if (input.type === 'radio') { continue }
+                if (input.value === '') {
+                    //- console.log('removing empty value', input.name)
+                    input.name = ''
+                } else {
+                    //- console.log('not removing empty value', input.name)
+                    preventSubmit = false
+                }
             }
+            return preventSubmit
+        }
+        const submitForm = (event) => {
+            const form = event.target.form
+            const preventSubmit = removeEmptyValues(form)
+            if (preventSubmit) {
+                event.preventDefault()
+                return false
+            }
+        }
+        const clearForm = (event) => {
+            const form = event.target.form
+            const inputs = form.getElementsByTagName('input')
+            for (let i = 0; i < inputs.length; i++) {
+                const input = inputs[i]
+                if (input.type === 'radio') { continue }
+                input.value = ''
+            }
+            // clean the url
+            const url = window.location.href
+            const cleanUrl = url.split('?')[0]
+            window.history.replaceState({}, '', cleanUrl)
+        }
 
-            var query = qs('q')
-            var filter = qs('f') || 'all'
-            var idQuery = (query == Number(query) && query.length === 10)
+        $(function () {
+            const query = qs('q') || ''
+            const filter = qs('f') || 'all'
+
+            // if query has only empty values (or pnly filter is set), populate it with query params
+
+            const qEesnimi = qs('fn')
+            const qPerenimi = qs('sn')
+            const qIsanimi = qs('ftn')
+            const qEmanimi = qs('mtn')
+
+            const eElukoht = qs('ee')
+            const eVangilaager = qs('ev')
+
+            const isIdQuery = (q) => (q == Number(q) && q.length === 10)
+            console.log(`query: ${query}, filter: ${filter}, episoodElukoht: ${eElukoht}, episoodVangilaager: ${eVangilaager}`)
+            const idQuery = isIdQuery(query)
+            console.log(`idQuery: ${idQuery}`)
 
             if (idQuery) {
                 filter = 'all'
@@ -86,45 +155,106 @@ block script
 
             $('input[value="'+filter+'"]').prop('checked', true)
 
-            if (query) {
-                $('input[name="q"]').val(query)
+            query && (document.getElementById('mainSearchInput').value = query)
 
-                var qData = {
-                    query : {
-                        bool : {
-                            must : {
-                                multi_match : {
-                                    query: query,
-                                    fields: [ 'perenimi', 'eesnimi', 'id', 'pereseosed.kirje', 'kirjed.kirje' ],
-                                    operator: 'and',
-                                    type: 'cross_fields'
-                                }
-                            }
-                        }
-                    },
-                    sort: { 'eesnimi.raw': 'asc', 'perenimi.raw': 'asc' },
-                    _source: [
-                        'redirect',
-                        'isperson', 'kivi', 'emem', 'evo', 'wwii', 'evokirje', 'mv',
-                        'perenimi', 'eesnimi', 'isanimi', 'emanimi', 'perenimed', 'eesnimed',
-                        'sünd', 'surm','sünnikoht','surmakoht', 'id',
-                        'kirjed.kirje', 'kirjed.kirjekood', 'kirjed.viide', 'kirjed.allikas', 'kirjed.allika_nimetus',
-                        'pereseosed.persoon', 'pereseosed.kirje',
-                        'pereseosed.seos', 'pereseosed.suund', 'pereseosed.kirjed',
-                        'tahvlikirje.kirjekood', 'tahvlikirje.kirje', 'tahvlikirje.tahvel', 'tahvlikirje.tulp', 'tahvlikirje.rida',
-                        'episoodid.kirjekood', 'episoodid.aeg', 'episoodid.asukoht', 'episoodid.nimetus', 'episoodid.väärtus',
-                        'updated_at'
-                    ]
+            qEesnimi && (document.getElementById('qForename').value = qEesnimi)
+            qPerenimi && (document.getElementById('qSurname').value = qPerenimi)
+            qIsanimi && (document.getElementById('qFather').value = qIsanimi)
+            qEmanimi && (document.getElementById('qMother').value = qEmanimi)
+
+            eElukoht && (document.getElementById('episoodElukoht').value = eElukoht)
+            eVangilaager && (document.getElementById('episoodVangilaager').value = eVangilaager)
+
+            const multiMatch = {
+                multi_match: {
+                    query: query,
+                    fields: ['perenimi', 'eesnimi', 'id', 'pereseosed.kirje', 'kirjed.kirje'],
+                    operator: 'and',
+                    type: 'cross_fields'
+                }
+            }
+            // optionsA = [ { field: 'nimetus', value: 'Elukoht'}, { field: 'asukoht', value: 'Tallinn'}]
+            const nestedQ = (nestName, optionsA) => {
+                if (!optionsA) { return {} }
+                if (!Array.isArray(optionsA)) { optionsA = [optionsA] }
+                if (optionsA.length === 0) { return {} }
+                if (!nestName) { return {} }
+
+                const must = []
+                for (let i = 0; i < optionsA.length; i++) {
+                    const option = optionsA[i]
+                    const field = `${nestName}.${option.field}`
+                    const match = {}
+                    match[field] = option.value
+                    must.push({ match })
+                }
+                return {
+                    nested: {
+                        path: nestName,
+                        query: { bool: { must } }
+                    }
+                }
+            }
+
+            const matchQ = (field, value) => {
+                const match = {}
+                match[field] = { query: value }
+                return { match }
+            }
+
+            const qData = {
+                query : { bool : { must : [] } },
+                sort: { 'eesnimi.raw': 'asc', 'perenimi.raw': 'asc' },
+                _source: [
+                    'redirect',
+                    'isperson', 'kivi', 'emem', 'evo', 'wwii', 'evokirje', 'mv',
+                    'perenimi', 'eesnimi', 'isanimi', 'emanimi', 'perenimed', 'eesnimed',
+                    'sünd', 'surm','sünnikoht','surmakoht', 'id',
+                    'kirjed.kirje', 'kirjed.kirjekood', 'kirjed.viide', 'kirjed.allikas', 'kirjed.allika_nimetus',
+                    'pereseosed.persoon', 'pereseosed.kirje',
+                    'pereseosed.seos', 'pereseosed.suund', 'pereseosed.kirjed',
+                    'tahvlikirje.kirjekood', 'tahvlikirje.kirje', 'tahvlikirje.tahvel', 'tahvlikirje.tulp', 'tahvlikirje.rida',
+                    'episoodid.kirjekood', 'episoodid.asukoht', 'episoodid.nimetus',
+                    'updated_at'
+                ]
+            }
+
+            if (idQuery) {
+                filter = 'all'
+                multiMatch['multi_match']['fields'] = ['id']
+                qData['query']['bool']['must'].push(multiMatch)
+            } else {  // filter out results with redirect = ''
+                if (query.length > 0) {
+                    qData['query']['bool']['must'].push(multiMatch)
+                }
+                qData['query']['bool']['must_not'] = { term: { redirect: '' } }
+                // Täppisotsingut teostame ainult siis, kui ei otsita ID järgi
+                if (qs('fn')) {
+                    qData['query']['bool']['must'].push(matchQ('eesnimi', qs('fn')))
+                }
+                if (qs('sn')) {
+                    qData['query']['bool']['must'].push(matchQ('perenimi', qs('sn')))
+                }
+                if (qs('ftn')) {
+                    qData['query']['bool']['must'].push(matchQ('isanimi', qs('ftn')))
+                }
+                if (qs('mtn')) {
+                    qData['query']['bool']['must'].push(matchQ('emanimi', qs('mtn')))
                 }
 
-                if (!idQuery) {  // filter out results with redirect = ''
-                    qData['query']['bool']['must_not'] = { term: { redirect: '' } }
+                if (qs('ee')) {
+                    qData['query']['bool']['must'].push(nestedQ('episoodid', [
+                        { field: 'nimetus', value: 'Elukoht' },
+                        { field: 'asukoht', value: qs('ee') },
+                    ]))
                 }
-
-                if (idQuery) {
-                    filter = 'all'
-                    qData['query']['bool']['must']['multi_match']['fields'] = ['id']
-                } else if (filter === 'emem') {
+                if (qs('ev')) {
+                    qData['query']['bool']['must'].push(nestedQ('episoodid', [
+                        { field: 'nimetus', value: 'Vangilaager' },
+                        { field: 'asukoht', value: qs('ev') },
+                    ]))
+                }
+                if (filter === 'emem') {
                     qData['query']['bool']['filter'] = { term: { emem: 1 } }
                 } else if (filter === 'wall') {
                     qData['query']['bool']['filter'] = { term: { kivi: 1 } }
@@ -142,182 +272,174 @@ block script
                         {term: {wwii: 0}}
                     ]
                 }
-                $.ajax('/.netlify/functions/baas_search', {
-                    data : JSON.stringify(qData),
-                    contentType : 'application/json',
-                    type : 'POST',
-                    cache: false,
-                    beforeSend: function (xhr) {
-                        xhr.setRequestHeader('Authorization', 'Basic cmVhZGVyOnJlYWRlcg==')
-                    },
-                    success: function (data) {
-                        const count = data.hits.total.value
-                        console.log(data.error || 'All green')
-                        $('#search-count').html(count + (count === 1 ? ' #{self.result.count.one}' : ' #{self.result.count.multiple}'))
-
-                        const hits = data.hits.hits
-
-                        // if it's an id query with a redirect field, redirect to that person
-                        if (idQuery && hits[0]._source.redirect) {
-                            window.location.href = '?q=' + hits[0]._source.redirect
-                        }
-
-                        for (var i = 0; i < count; i++) {
-                            var text = []
-                            var p = hits[i]._source
-
-                            console.log(p)
-                            // skip records with redirect
-                            if (p.redirect) { continue }
-
-                            let c3class = (p.emem||p.kivi||p.evo||p.wwii === 1 ? 'relevantne' : 'mitterelevantne')
-                            if (p.isperson === 0) { c3class = 'nonperson' }
-
-                            text.push('<div id="' + p.id + '" class="search-result pt-2 pb-4 ' + c3class + '">')
-                            text.push('<div class="labels">')
-                            if (p.kivi) { text.push('<span class="kivi">kivi</span>') }
-                            if (p.emem) { text.push('<span class="emem">emem</span>') }
-                            if (p.evo) { text.push('<span class="evo">EVO</span>') }
-                            if (p.wwii) { text.push('<span class="refugee">refugee</span>') }
-                            if (p.mv) { text.push('<span class="mv">MV</span>') }
-                            text.push('</div>')
-                            text.push('<div class="row">')
-
-                            text.push('<h3 class="search-result-name col-12 mb-2 mb-1">' + (p.eesnimi ? p.eesnimi : '') + ' ' + p.perenimi
-                                + ' <a href="https://www.google.com/search?q=%22' + p.eesnimi + '%20' + p.perenimi + '%22" target="_blank" class="google-search"><i class="fas fa-search">G</i></a>'
-                                + '</h3>')
-
-                            text.push('<div class="col-5 col-sm-3">')
-                            if (p.sünd) {
-                                text.push('<p class="mb-0">#{self.result.born}: ' + p.sünd)
-                                if (p.sünnikoht) { text.push('<span> ' + p.sünnikoht + '</span>') }
-                                text.push('</p>')
-                            }
-
-                            if (p.surm) {
-                                text.push('<p class="mb-0">#{self.result.dead}: ' + p.surm)
-                                if (p.surmakoht) { text.push('<span> ' + p.surmakoht + '</span>') }
-                                text.push('</p>')
-                            }
-
-                            if (p.isanimi) { text.push('<p class="mb-0">#{self.result.father}: ' + p.isanimi + '</p>') }
-                            if (p.emanimi) { text.push('<p class="mb-0">#{self.result.mother}: ' + p.emanimi + '</p>') }
-                            let pub_a = pub_b = ''
-                            if (p.wwii) {
-                                pub_a = '<a href="https://wwii-refugees.ee/?q=' + p.id + '">'
-                                pub_b = '</a>'
-                            }
-                            if (p.emem) {
-                                pub_a = '<a href="https://www.memoriaal.ee/otsing/?q=' + p.id + '">'
-                                pub_b = '</a>'
-                            }
-                            text.push('<p class="mb-0"># ' + pub_a + p.id + pub_b)
-                            text.push('<span class="crossfade" clip="' + p.id + '" onClick="copy2clipboard(this)"><img src="/images/clip 512.png"/><img src="/images/clip-n-check 512.png" class="transparent"/></span>')
-                            text.push('</p>')
-                            if (p.updated_at) {
-                                text.push('<hr/>')
-                                text.push('<p class="mb-0" style="font-size:8pt; font-weight:100">' + p.updated_at + '</p>')
-                            }
-                            text.push('</div>')
-
-                            text.push('<div class="search-result-info col-7 col-sm-6">')
-                            p.kirjed = p.kirjed || []
-                            for (var ik = 0; ik < p.kirjed.length; ik++) {
-                                let a1 = a2 = ''
-                                if (p.kirjed[ik].viide) {
-                                    a1 = '<a href="' + p.kirjed[ik].viide + '" target="_blank">'
-                                    a2 = '</a>'
-                                }
-                                text.push('<p class="mt-2 mb-0"><strong>' + a1 + p.kirjed[ik].allikas + a2 + ' ' + p.kirjed[ik].kirjekood + '<span class="crossfade" clip="' + p.kirjed[ik].kirjekood + '" onClick="copy2clipboard(this)"><img src="/images/clip 512.png"/><img src="/images/clip-n-check 512.png" class="transparent"/></span>' + ' </strong></p>')
-                                if (p.kirjed[ik].kirje) { text.push('<p class="mb-1">') }
-                                if (p.kirjed[ik].kirje) { text.push(p.kirjed[ik].kirje) }
-                                if (p.kirjed[ik].kirje) { text.push('</p>') }
-                            }
-                            if (p.pereseosed && p.pereseosed.length > 0) {
-                                text.push('<div class="pere"><label>Pereliikmed</label>')
-                                for (var ip = 0; ip < p.pereseosed.length; ip++) {
-                                    let pereseos = p.pereseosed[ip].seos
-                                    if (p.pereseosed[ip].suund === '-1') {
-                                        pereseos = '(' + pereseos + ')'
-                                    }
-                                    let perekirjed = p.pereseosed[ip].kirjed
-                                    text.push('<li class="my-0 pereliige"><a href="?q=' + p.pereseosed[ip].persoon + '">' + p.pereseosed[ip].persoon + ' ' + pereseos + '</a>')
-                                    text.push(' : <span onclick="document.querySelector(\'#perekirjed-' + p.pereseosed[ip].persoon + '\').showModal()">' + p.pereseosed[ip].kirje + '</span>')
-                                    text.push('</li>')
-                                    text.push('<dialog class="perekirjed" id="perekirjed-' + p.pereseosed[ip].persoon + '">')
-                                    text.push('<button class="close" onclick="document.querySelector(\'#perekirjed-' + p.pereseosed[ip].persoon + '\').close()">X</button>')
-                                    text.push('<ul class="perekirjed">')
-                                    for (var ik = 0; ik < perekirjed.length; ik++) {
-                                        text.push('<li class="mb-1">')
-                                        text.push(perekirjed[ik].kirjekood + ': ' + perekirjed[ik].kirje)
-                                        text.push('</li>')
-                                    }
-                                    text.push('</ul>')
-                                    //- close button
-                                    text.push('</dialog>')
-                                }
-                                text.push('</div>')
-                            }
-                            if (p.episoodid && p.episoodid.length > 0) {
-                                text.push('<div class="episoodid"><label>Episoodid</label>')
-                                for (var ie = 0; ie < p.episoodid.length; ie++) {
-                                    const episood = p.episoodid[ie]
-                                    text.push('<li class="my-0 episood">' + episood.kirjekood)
-                                    text.push(' : <span>' + episood.nimetus + '</span>')
-                                    if (episood.aeg) { text.push(' <span>' + episood.aeg + '</span>') }
-                                    if (episood.asukoht) { text.push(' <span>' + episood.asukoht + '</span>') }
-                                    if (episood.väärtus) { text.push(': <span>' + episood.väärtus + '</span>') }
-                                    text.push('</li>')
-                                }
-                                text.push('</div>')
-                            }
-                            text.push('</div>')
-
-                            if (p.tahvlikirje) {
-                                text.push('<div class="search-result-plaque' + (p.kivi ? "" : " obsolete") + ' col-12 col-sm-3">')
-                                if (p.tahvlikirje.tahvel) {
-                                    text.push('<p class="mb-0">#{self.result.plaque}:</p>')
-                                    text.push('<p class="mb-2 plaque-info">' + p.tahvlikirje.tahvel + '</p>')
-                                }
-                                if (p.tahvlikirje.tulp) { text.push('<p class="mb-2">#{self.result.col}: ' + p.tahvlikirje.tulp + ' / #{self.result.row}: ' + p.tahvlikirje.rida + '</p>') }
-                                if (p.tahvlikirje.kirje) {
-                                    text.push('<p class="mb-0">#{self.result.nameOnPlaque}: ' + p.tahvlikirje.kirje + '</p>')
-                                }
-                            }
-
-                            if (p.evo === 1) {
-                                text.push('<hr/><p class="mb-0">#{self.result.nameOnEVOPlaque}: ' + p.evokirje + '</p>')
-                            }
-                            text.push('</div>')
-                            text.push('</div>')
-                            text.push('</div>')
-
-                            $('#search-results').append(text.join(''))
-                        }
-                    },
-                    error: function( error) {
-                        console.log(error)
-                    }
-                })
             }
 
-            $('input[type="radio"]').on('click', function () {
-                query = $('input[name="q"]').val()
-                idQuery = (query == Number(query) && query.length === 10)
-                if (idQuery) {
-                    $('input[value="all"]').prop('checked', true)
-                    return
-                }
-                if ($(query && $(this).prop('value')) !== filter) {
-                    $('#searchform').submit()
+            console.log({qData: JSON.stringify(qData, null, 2)})
+            $.ajax('/.netlify/functions/baas_search', {
+                data : JSON.stringify(qData),
+                contentType : 'application/json',
+                type : 'POST',
+                cache: false,
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Basic cmVhZGVyOnJlYWRlcg==')
+                },
+                success: function (data) {
+                    const count = data.hits.total.value
+                    console.log(data.error || 'All green')
+                    $('#search-count').html(count + (count === 1 ? ' #{self.result.count.one}' : ' #{self.result.count.multiple}'))
+
+                    const hits = data.hits.hits
+
+                    // if it's an id query with a redirect field, redirect to that person
+                    if (idQuery && hits[0]._source.redirect) {
+                        window.location.href = '?q=' + hits[0]._source.redirect
+                    }
+
+                    for (var i = 0; i < count; i++) {
+                        var text = []
+                        var p = hits[i]._source
+
+                        console.log(p)
+                        // skip records with redirect
+                        if (p.redirect) { continue }
+
+                        let c3class = (p.emem||p.kivi||p.evo||p.wwii === 1 ? 'relevantne' : 'mitterelevantne')
+                        if (p.isperson === 0) { c3class = 'nonperson' }
+
+                        text.push('<div id="' + p.id + '" class="search-result pt-2 pb-4 ' + c3class + '">')
+                        text.push('<div class="labels">')
+                        if (p.kivi) { text.push('<span class="kivi">kivi</span>') }
+                        if (p.emem) { text.push('<span class="emem">emem</span>') }
+                        if (p.evo) { text.push('<span class="evo">EVO</span>') }
+                        if (p.wwii) { text.push('<span class="refugee">refugee</span>') }
+                        if (p.mv) { text.push('<span class="mv">MV</span>') }
+                        text.push('</div>')
+                        text.push('<div class="row">')
+
+                        text.push('<h3 class="search-result-name col-12 mb-2 mb-1">' + (p.eesnimi ? p.eesnimi : '') + ' ' + p.perenimi
+                            + ' <a href="https://www.google.com/search?q=%22' + p.eesnimi + '%20' + p.perenimi + '%22" target="_blank" class="google-search"><i class="fas fa-search">G</i></a>'
+                            + '</h3>')
+
+                        text.push('<div class="col-5 col-sm-3">')
+                        if (p.sünd) {
+                            text.push('<p class="mb-0">#{self.result.born}: ' + p.sünd)
+                            if (p.sünnikoht) { text.push('<span> ' + p.sünnikoht + '</span>') }
+                            text.push('</p>')
+                        }
+
+                        if (p.surm) {
+                            text.push('<p class="mb-0">#{self.result.dead}: ' + p.surm)
+                            if (p.surmakoht) { text.push('<span> ' + p.surmakoht + '</span>') }
+                            text.push('</p>')
+                        }
+
+                        if (p.isanimi) { text.push('<p class="mb-0">#{self.result.father}: ' + p.isanimi + '</p>') }
+                        if (p.emanimi) { text.push('<p class="mb-0">#{self.result.mother}: ' + p.emanimi + '</p>') }
+                        let pub_a = pub_b = ''
+                        if (p.wwii) {
+                            pub_a = '<a href="https://wwii-refugees.ee/?q=' + p.id + '">'
+                            pub_b = '</a>'
+                        }
+                        if (p.emem) {
+                            pub_a = '<a href="https://www.memoriaal.ee/otsing/?q=' + p.id + '">'
+                            pub_b = '</a>'
+                        }
+                        text.push('<p class="mb-0"># ' + pub_a + p.id + pub_b)
+                        text.push('<span class="crossfade" clip="' + p.id + '" onClick="copy2clipboard(this)"><img src="/images/clip 512.png"/><img src="/images/clip-n-check 512.png" class="transparent"/></span>')
+                        text.push('</p>')
+                        if (p.updated_at) {
+                            text.push('<hr/>')
+                            text.push('<p class="mb-0" style="font-size:8pt; font-weight:100">' + p.updated_at + '</p>')
+                        }
+                        text.push('</div>')
+
+                        text.push('<div class="search-result-info col-7 col-sm-6">')
+                        p.kirjed = p.kirjed || []
+                        for (var ik = 0; ik < p.kirjed.length; ik++) {
+                            let a1 = a2 = ''
+                            if (p.kirjed[ik].viide) {
+                                a1 = '<a href="' + p.kirjed[ik].viide + '" target="_blank">'
+                                a2 = '</a>'
+                            }
+                            text.push('<p class="mt-2 mb-0"><strong>' + a1 + p.kirjed[ik].allikas + a2 + ' ' + p.kirjed[ik].kirjekood + '<span class="crossfade" clip="' + p.kirjed[ik].kirjekood + '" onClick="copy2clipboard(this)"><img src="/images/clip 512.png"/><img src="/images/clip-n-check 512.png" class="transparent"/></span>' + ' </strong></p>')
+                            if (p.kirjed[ik].kirje) { text.push('<p class="mb-1">') }
+                            if (p.kirjed[ik].kirje) { text.push(p.kirjed[ik].kirje) }
+                            if (p.kirjed[ik].kirje) { text.push('</p>') }
+                        }
+                        if (p.pereseosed && p.pereseosed.length > 0) {
+                            text.push('<div class="pere"><label>Pereliikmed</label>')
+                            for (var ip = 0; ip < p.pereseosed.length; ip++) {
+                                let pereseos = p.pereseosed[ip].seos
+                                if (p.pereseosed[ip].suund === '-1') {
+                                    pereseos = '(' + pereseos + ')'
+                                }
+                                let perekirjed = p.pereseosed[ip].kirjed
+                                text.push('<li class="my-0 pereliige"><a href="?q=' + p.pereseosed[ip].persoon + '">' + p.pereseosed[ip].persoon + ' ' + pereseos + '</a>')
+                                text.push(' : <span onclick="document.querySelector(\'#perekirjed-' + p.pereseosed[ip].persoon + '\').showModal()">' + p.pereseosed[ip].kirje + '</span>')
+                                text.push('</li>')
+                                text.push('<dialog class="perekirjed" id="perekirjed-' + p.pereseosed[ip].persoon + '">')
+                                text.push('<button class="close" onclick="document.querySelector(\'#perekirjed-' + p.pereseosed[ip].persoon + '\').close()">X</button>')
+                                text.push('<ul class="perekirjed">')
+                                for (var ik = 0; ik < perekirjed.length; ik++) {
+                                    text.push('<li class="mb-1">')
+                                    text.push(perekirjed[ik].kirjekood + ': ' + perekirjed[ik].kirje)
+                                    text.push('</li>')
+                                }
+                                text.push('</ul>')
+                                //- close button
+                                text.push('</dialog>')
+                            }
+                            text.push('</div>')
+                        }
+                        if (p.episoodid && p.episoodid.length > 0) {
+                            text.push('<div class="episoodid"><label>Episoodid</label>')
+                            for (var ie = 0; ie < p.episoodid.length; ie++) {
+                                const episood = p.episoodid[ie]
+                                text.push('<li class="my-0 episood">' + episood.kirjekood)
+                                text.push(' : <span>' + episood.nimetus + '</span>')
+                                if (episood.aeg) { text.push(' <span>' + episood.aeg + '</span>') }
+                                if (episood.asukoht) { text.push(' <span>' + episood.asukoht + '</span>') }
+                                text.push('</li>')
+                            }
+                            text.push('</div>')
+                        }
+                        text.push('</div>')
+
+                        if (p.tahvlikirje) {
+                            text.push('<div class="search-result-plaque' + (p.kivi ? "" : " obsolete") + ' col-12 col-sm-3">')
+                            if (p.tahvlikirje.tahvel) {
+                                text.push('<p class="mb-0">#{self.result.plaque}:</p>')
+                                text.push('<p class="mb-2 plaque-info">' + p.tahvlikirje.tahvel + '</p>')
+                            }
+                            if (p.tahvlikirje.tulp) { text.push('<p class="mb-2">#{self.result.col}: ' + p.tahvlikirje.tulp + ' / #{self.result.row}: ' + p.tahvlikirje.rida + '</p>') }
+                            if (p.tahvlikirje.kirje) {
+                                text.push('<p class="mb-0">#{self.result.nameOnPlaque}: ' + p.tahvlikirje.kirje + '</p>')
+                            }
+                        }
+
+                        if (p.evo === 1) {
+                            text.push('<hr/><p class="mb-0">#{self.result.nameOnEVOPlaque}: ' + p.evokirje + '</p>')
+                        }
+                        text.push('</div>')
+                        text.push('</div>')
+                        text.push('</div>')
+
+                        $('#search-results').append(text.join(''))
+                    }
+                },
+                error: function( error) {
+                    console.log(error)
                 }
             })
-            //- $('#search-results').on('mouseenter', '.search-result', function () {
-            //-     $(this).find('.search-result-feedback').removeClass('d-none')
-            //- })
 
-            //- $('#search-results').on('mouseleave', '.search-result', function () {
-            //-     $(this).find('.search-result-feedback').addClass('d-none')
+            //- $('input[type="radio"]').on('click', function () {
+            //-     if (isIdQuery(qs('q'))) {
+            //-         $('input[value="all"]').prop('checked', true)
+            //-         return
+            //-     }
+            //-     if ($(query && $(this).prop('value')) !== filter) {
+            //-         $('#searchform').submit()
+            //-     }
             //- })
 
             $('#search-results').on('click', '.search-result-feedback', function () {
