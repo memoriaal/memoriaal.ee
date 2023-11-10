@@ -131,7 +131,7 @@ block script
 
         $(function () {
             const query = qs('q') || ''
-            const filter = qs('f') || 'all'
+            let filter = qs('f') || 'all'
 
             // if query has only empty values (or pnly filter is set), populate it with query params
 
@@ -220,6 +220,7 @@ block script
             }
 
             if (idQuery) {
+                console.log('idQuery')
                 filter = 'all'
                 multiMatch['multi_match']['fields'] = ['id']
                 qData['query']['bool']['must'].push(multiMatch)
