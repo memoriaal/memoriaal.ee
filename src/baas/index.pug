@@ -3,7 +3,7 @@ extends /_templates/baas_layout.pug
 
 block content
     #search.col-12
-        h3.mb-3= self.search.title
+        h3.mb-3= self.title
         form#searchForm.form.row(action='/baas/', method='GET')
             .col-12
                 input#mainSearchInput.emem-text-input.col-lg-10.col-md-7.col-sm-8(type='search', name='q', placeholder=self.search.placeholder)
