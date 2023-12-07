@@ -133,6 +133,10 @@ block script
             const query = qs('q') || ''
             let filter = qs('f') || 'all'
 
+            const replaceLinebreaks = (text) => {
+                return text.replace(/[\n\r]+/g, '<br/>')
+            }
+
             // if query has only empty values (or pnly filter is set), populate it with query params
 
             const qEesnimi = qs('fn')
@@ -364,7 +368,7 @@ block script
                             }
                             text.push('<p class="mt-2 mb-0"><strong>' + a1 + p.kirjed[ik].allikas + a2 + ' ' + p.kirjed[ik].kirjekood + '<span class="crossfade" clip="' + p.kirjed[ik].kirjekood + '" onClick="copy2clipboard(this)"><img src="/images/clip 512.png"/><img src="/images/clip-n-check 512.png" class="transparent"/></span>' + ' </strong></p>')
                             if (p.kirjed[ik].kirje) { text.push('<p class="mb-1">') }
-                            if (p.kirjed[ik].kirje) { text.push(p.kirjed[ik].kirje) }
+                            if (p.kirjed[ik].kirje) { replaceLinebreaks(text.push(p.kirjed[ik].kirje)) }
                             if (p.kirjed[ik].kirje) { text.push('</p>') }
                         }
                         if (p.pereseosed && p.pereseosed.length > 0) {
@@ -383,7 +387,7 @@ block script
                                 text.push('<ul class="perekirjed">')
                                 for (var ik = 0; ik < perekirjed.length; ik++) {
                                     text.push('<li class="mb-1">')
-                                    text.push(perekirjed[ik].kirjekood + ': ' + perekirjed[ik].kirje)
+                                    text.push(perekirjed[ik].kirjekood + ': ' + replaceLinebreaks(perekirjed[ik].kirje))
                                     text.push('</li>')
                                 }
                                 text.push('</ul>')
