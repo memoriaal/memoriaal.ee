@@ -369,9 +369,13 @@ block script
                                 a2 = '</a>'
                             }
                             text.push('<p class="mt-2 mb-0"><strong>' + a1 + p.kirjed[ik].allikas + a2 + ' ' + p.kirjed[ik].kirjekood + '<span class="crossfade" clip="' + p.kirjed[ik].kirjekood + '" onClick="copy2clipboard(this)"><img src="/images/clip 512.png"/><img src="/images/clip-n-check 512.png" class="transparent"/></span>' + ' </strong></p>')
-                            if (p.kirjed[ik].kirje) { text.push('<p class="mb-1">') }
-                            if (p.kirjed[ik].kirje) { text.push(replaceLinebreaks(p.kirjed[ik].kirje)) }
-                            if (p.kirjed[ik].kirje) { text.push('</p>') }
+                            if (p.kirjed[ik].kirje) {
+                                text.push('<p class="mb-1">')
+                                const breplaced = replaceLinebreaks(p.kirjed[ik].kirje)
+                                console.log({kirje: p.kirjed[ik].kirje, breplaced})
+                                text.push(breplaced)
+                                text.push('</p>')
+                            }
                         }
                         if (p.pereseosed && p.pereseosed.length > 0) {
                             text.push('<div class="pere"><label>Pereliikmed</label>')
