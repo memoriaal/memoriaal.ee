@@ -92,8 +92,9 @@ block content
 block script
     script.
         const replaceLinebreaks = (text) => {
-            console.log('replaceLinebreaks', text)
-            return text.replace(/[\n\r]+/g, '<br/>')
+            const replaced = text.replace(/[\n\r]+/g, '<br/>')
+            console.log('replaceLinebreaks', {text, replaced})
+            return replaced
         }
 
         const removeEmptyValues = (form) => {
