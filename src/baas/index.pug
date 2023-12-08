@@ -91,6 +91,11 @@ block content
 
 block script
     script.
+        const replaceLinebreaks = (text) => {
+            console.log('replaceLinebreaks', text)
+            return text.replace(/[\n\r]+/g, '<br/>')
+        }
+
         const removeEmptyValues = (form) => {
             const inputs = form.getElementsByTagName('input')
             let preventSubmit = true
@@ -132,10 +137,6 @@ block script
         $(function () {
             const query = qs('q') || ''
             let filter = qs('f') || 'all'
-
-            const replaceLinebreaks = (text) => {
-                return text.replace(/[\n\r]+/g, '<br/>')
-            }
 
             // if query has only empty values (or pnly filter is set), populate it with query params
 
