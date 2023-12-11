@@ -21,3 +21,8 @@ const qs = function (key) {
     var match = location.search.match(new RegExp("[?&]"+key+"=([^&]+)(&|$)"))
     return match && decodeURIComponent(match[1].replace(/\+/g, " "))
 }
+
+const replaceLinebreaks = (text) => {
+    const replaced = text.replace(/(\\n\\r|\\n|\\r)+/g, '<br/>')
+    return replaced
+}
