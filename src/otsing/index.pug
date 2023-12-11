@@ -137,10 +137,13 @@ block script
                             text.push('<div class="search-result-info col-7 col-sm-6">')
                             p.kirjed = p.kirjed || []
                             for (var ik = 0; ik < p.kirjed.length; ik++) {
-                                text.push('<p class="mt-2 mb-0"><strong>' + p.kirjed[ik].allikas + ':</strong></p>')
-                                if (p.kirjed[ik].kirje) { text.push('<p class="mb-1">') }
-                                if (p.kirjed[ik].kirje) { text.push(p.kirjed[ik].kirje) }
-                                if (p.kirjed[ik].kirje) { text.push('</p>') }
+                                const kirje = p.kirjed[ik]
+                                text.push('<p class="mt-2 mb-0"><strong>' + kirje.allikas + ':</strong></p>')
+                                if (kirje.kirje) {
+                                    text.push('<p class="mb-1">')
+                                    text.push(replaceLinebreaks(kirje.kirje))
+                                    text.push('</p>')
+                                }
                             }
                             if (p.pereseosed && p.pereseosed.length > 0) {
                                 text.push('<div class="pere"><label>Represseeritud pereliikmed</label>')
