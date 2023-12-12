@@ -99,7 +99,7 @@ block script
                 } else if (filter === 'officers') {
                     qData['query']['bool']['filter'] = { term: { evo: 1 } }
                 }
-                $.ajax('/.netlify/functions/search', {
+                $.ajax('https://wwii-refugees.ee/.netlify/functions/search', {
                     data : JSON.stringify(qData),
                     contentType : 'application/json',
                     type : 'POST',
