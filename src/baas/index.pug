@@ -276,7 +276,7 @@ block script
             }
 
             console.log({qData: JSON.stringify(qData, null, 2)})
-            $.ajax('/.netlify/functions/baas_search', {
+            $.ajax('https://www.memoriaal.ee/.netlify/functions/baas_search', {
                 data : JSON.stringify(qData),
                 contentType : 'application/json',
                 type : 'POST',
@@ -346,7 +346,7 @@ block script
                             pub_b = '</a>'
                         }
                         text.push('<p class="mb-0"># ' + pub_a + p.id + pub_b)
-                        text.push('<span class="crossfade" clip="' + p.id + '" onClick="copy2clipboard(this)"><img src="/images/clip 512.png"/><img src="/images/clip-n-check 512.png" class="transparent"/></span>')
+                        text.push('<span class="crossfade" clip="' + p.id + '" onClick="copy2clipboard(this)"><img src="/images/clip-512.png"/><img src="/images/clip-n-check-512.png" class="transparent"/></span>')
                         text.push('</p>')
                         if (p.updated_at) {
                             text.push('<hr/>')
@@ -363,7 +363,7 @@ block script
                                 a1 = '<a href="' + kirje.viide + '" target="_blank">'
                                 a2 = '</a>'
                             }
-                            text.push('<p class="mt-2 mb-0"><strong>' + a1 + kirje.allikas + a2 + ' ' + kirje.kirjekood + '<span class="crossfade" clip="' + kirje.kirjekood + '" onClick="copy2clipboard(this)"><img src="/images/clip 512.png"/><img src="/images/clip-n-check 512.png" class="transparent"/></span>' + ' </strong></p>')
+                            text.push('<p class="mt-2 mb-0"><strong>' + a1 + kirje.allikas + a2 + ' ' + kirje.kirjekood + '<span class="crossfade" clip="' + kirje.kirjekood + '" onClick="copy2clipboard(this)"><img src="/images/clip-512.png"/><img src="/images/clip-n-check-512.png" class="transparent"/></span>' + ' </strong></p>')
                             if (kirje.kirje) {
                                 text.push('<p class="mb-1">')
                                 text.push(replaceLinebreaks(kirje.kirje))
