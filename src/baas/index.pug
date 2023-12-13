@@ -70,16 +70,37 @@ block content
                 +markdown(self.feedback.text)
 
             form#db-feedback.col-12.col-md-8.offset-md-2(name='db-feedback', method='POST', netlify-honeypot='fax', netlify)
-                input#db-feedback-id(type='hidden', name='id')
-                input#db-feedback-url(type='hidden', name='url')
-                input#db-feedback-name(type='hidden', name='name')
-                input#db-feedback-fax.d-none(type='tel', name='fax')
                 .form-group.mt-5
-                    label.form-label.col-12.px-0(for='db-feedback-email')= self.feedback.email
-                    input#db-feedback-email.col-12.px-0(type='email', name='contact-email')
+                    label.form-label.col-12.px-0(for='db-feedback-email'
+                        )= self.feedback.email
+                    input#db-feedback-email.col-12.px-0(
+                        type='email', name='contact-email')
+                hr
                 .form-group.mt-5
-                    label.form-label.col-12.px-0(for='db-feedback-phone')= self.feedback.phone
-                    input#db-feedback-phone.col-12.px-0(type='tel', name='contact-phone')
+                    label.form-label.col-12.px-0(for='db-feedback-emiPerson'
+                        )= self.feedback.emiPerson
+                    input#db-feedback-emiPerson.col-12.px-0(
+                        type='email', name='emiPerson')
+                .form-group.mt-5
+                    label.form-label.col-12.px-0(for='db-feedback-forename'
+                        )= self.feedback.forename
+                    input#db-feedback-forename.col-12.px-0(
+                        type='text', name='forename')
+                .form-group.mt-5
+                    label.form-label.col-12.px-0(for='db-feedback-surname'
+                        )= self.feedback.surname
+                    input#db-feedback-surname.col-12.px-0(
+                        type='text', name='surname')
+                .form-group.mt-5
+                    label.form-label.col-12.px-0(for='db-feedback-patronymic'
+                        )= self.feedback.patronymic
+                    input#db-feedback-patronymic.col-12.px-0(
+                        type='text', name='patronymic')
+                .form-group.mt-5
+                    label.form-label.col-12.px-0(for='db-feedback-born'
+                        )= self.feedback.born
+                    input#db-feedback-born.col-12.px-0(
+                        type='date', name='born')
                 .form-group.mt-5
                     label.form-label.col-12.px-0(for='db-feedback-feedback')= self.feedback.feedback
                     textarea#db-feedback-feedback.col-12.px-0(name='feedback', rows=5)
@@ -352,6 +373,7 @@ block script
                             text.push('<hr/>')
                             text.push('<p class="mb-0" style="font-size:8pt; font-weight:100">' + p.updated_at + '</p>')
                         }
+                        text.push('<p class="search-result-feedback mt-3" data-emi_person ="' + p.id + '"data-forename="' + p.eesnimi + '"data-surname="' + p.perenimi + '"data-patronymic="' + p.isanimi + '"data-born="' + p.sünd + '">#{self.feedback.button}</p>')
                         text.push('</div>')
 
                         text.push('<div class="search-result-info col-7 col-sm-6">')
@@ -447,12 +469,18 @@ block script
             //- })
 
             $('#search-results').on('click', '.search-result-feedback', function () {
-                var id = $(this).data('id')
-                var name = $(this).data('name')
+                var emi_person = $(this).data('emi_person')
+                var forename = $(this).data('forename')
+                var surname = $(this).data('surname')
+                var patronymic = $(this).data('patronymic')
+                var born = $(this).data('born')
 
-                $('#db-feedback-id').val(id)
-                $('#db-feedback-url').val('http://baas.memoriaal.ee/#' + id)
-                $('#db-feedback-name').val(name)
+                $('#db-feedback-emiPerson').val(emi_person)
+                $('#db-feedback-forename').val(forename)
+                $('#db-feedback-surname').val(surname)
+                $('#db-feedback-patronymic').val(patronymic)
+                $('#db-feedback-born').val(born)
+
                 $('#db-feedback-title').html('#{ self.feedback.title }'.replace('%name%', name))
 
                 $('#db-feedback-title, #db-feedback-text, #db-feedback').removeClass('d-none')
