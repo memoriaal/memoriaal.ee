@@ -307,7 +307,7 @@ block script
             }
 
             console.log({qData: JSON.stringify(qData, null, 2)})
-            $.ajax('https://www.memoriaal.ee/.netlify/functions/baas_search', {
+            $.ajax('/.netlify/functions/baas_search', {
                 data : JSON.stringify(qData),
                 contentType : 'application/json',
                 type : 'POST',
