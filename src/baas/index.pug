@@ -80,7 +80,17 @@ block content
                     label.form-label.col-12.px-0(for='db-feedback-emiPerson'
                         )= self.feedback.emiPerson
                     input#db-feedback-emiPerson.col-12.px-0(
-                        type='email', name='emiPerson')
+                        type='text', name='emiPerson')
+                //- Episoodide filter, mida täidetakse javascriptis
+                //- Valikud laetakse API kaudu episoodid.js abil
+                //- API tagastab JSON-i kujul
+                //- [[{"id":1,"Kuupäev":"1947-12","Nimetus":"Esbjergi (Gjesingi) laagris asuvad eestlased detsembris 1947"}]
+                .form-group.mt-5
+                    label.form-label.col-12.px-0(for='db-feedback-episode'
+                        )= self.feedback.episode
+                    select#db-feedback-episode-select.col-12.px-0(name='episode')
+                    //- fetch episoodid from getEpisodes() in episoodid.js on document load
+
                 .form-group.mt-5
                     label.form-label.col-12.px-0(for='db-feedback-forename'
                         )= self.feedback.forename

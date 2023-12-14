@@ -1,3 +1,7 @@
+const get = document.getElementById.bind(document)
+const query = document.querySelector.bind(document)
+const queryAll = document.querySelectorAll.bind(document)
+
 const copy2clipboard = function (DomE, transparentE = null) {
     if (!DomE) {
         console.error('copy2clipboard: missing DomE')

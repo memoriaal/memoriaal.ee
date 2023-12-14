@@ -32,6 +32,7 @@ feedback:
         Valige episood. Kui on teada sünniaeg, märkige ka see.
         Kõikvõimalik muu info on samuti teretulnud.
     email: Täitja e-post
+
     episode: Episood
     emiPerson: EMI isiku ID (persoon)
     forename: Eesnimi
@@ -39,6 +40,7 @@ feedback:
     patronymic: Isanimi
     born: Sünniaeg
     feedback: Kõikvõimalik muu info
+
     submit: Saada tagasiside
     cancel: Tühista
     success: Täname tagasiside eest
