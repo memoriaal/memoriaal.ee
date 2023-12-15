@@ -29,7 +29,7 @@ const populateEpisodes = async () => {
     episodes.forEach(episode => {
         const option = document.createElement('option')
         option.value = episode.id
-        option.text = `${episode.nimetus} (${episode.allikas})`
+        option.text = `${episode.Nimetus} (${episode.Allikas})`
         select.appendChild(option)
     })
 }
