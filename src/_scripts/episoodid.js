@@ -53,7 +53,7 @@ const submitEpisode = (evnt) => {
         // we can use server response to our request now
         // document.dispatchEvent(new KeyboardEvent('keydown', { 'key': 'Escape' }))
         console.log('response', xhr2.responseText)
-        formE.reset()
+        // formE.reset()
         // hide form
         closeModal()
     }
