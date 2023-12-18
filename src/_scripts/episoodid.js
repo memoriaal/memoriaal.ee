@@ -102,15 +102,18 @@ const validateEmail = () => {
     const email = emailInput.value
     if (!email || email.length === 0) {
         emailInput.classList.add('is-invalid')
+        alert('Palun sisesta e-posti aadress')
         return false
     }
     if (!email.includes('@')) {
         emailInput.classList.add('is-invalid')
+        alert('Palun sisesta korrektne e-posti aadress')
         return false
     }
     const emailRe = /\S+@\S+\.\S+/
     if (!emailRe.test(email)) {
         emailInput.classList.add('is-invalid')
+        alert('Palun sisesta korrektne e-posti aadress')
         return false
     }
     emailInput.classList.remove('is-invalid')
