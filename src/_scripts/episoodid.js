@@ -32,6 +32,11 @@ const populateEpisodes = async () => {
         option.text = `${episode.Nimetus} (${episode.Allikas})`
         select.appendChild(option)
     })
+    // if selected episode in local storage, set it
+    const selectedEpisode = localStorage.getItem('selectedEpisode')
+    if (selectedEpisode) {
+        select.value = selectedEpisode
+    }
 }
 
 const getEpisodes = async () => {
@@ -46,6 +51,10 @@ const getEpisodes = async () => {
 const submitEpisode = (evnt) => {
 
     const formE = get('db-feedback')
+    // get selected episode
+    const episodeId = get('db-feedback-episode-select').value
+    // save selected episode to local storage
+    localStorage.setItem('selectedEpisode', episodeId)
     const xhr2 = new XMLHttpRequest()
     xhr2.open('POST', feedbackApi, true)
 
