@@ -85,6 +85,8 @@ const submitEpisode = (evnt) => {
     xhr2.onerror = function () {
         console.log('Error:', xhr2.status)
     }
+
+    const formE = get('db-feedback-form')
     const formData = new FormData(formE)
     // add current url to form data
     formData.append('url', window.location.href)
