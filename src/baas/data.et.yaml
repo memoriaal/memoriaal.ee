@@ -34,6 +34,7 @@ feedback:
     email: Täitja e-post
 
     episode: Episood
+    rownum: Järjekorranumber
     emiPerson: EMI isiku ID (persoon)
     forename: Eesnimi
     surname: Perenimi

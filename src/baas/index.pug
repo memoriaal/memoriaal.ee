@@ -81,6 +81,11 @@ block content
                         )= self.feedback.emiPerson
                     input#db-feedback-emiPerson.col-12.px-0(
                         type='text', name='emiPerson')
+                .form-group.mt-5
+                    label.form-label.col-12.px-0(for='db-feedback-rownum'
+                        )= self.feedback.rownum
+                    input#db-feedback-rownum.col-12.px-0(
+                        type='text', name='rownum')
                 //- Episoodide filter, mida täidetakse javascriptis
                 //- Valikud laetakse API kaudu episoodid.js abil
                 //- API tagastab JSON-i kujul
