@@ -9,6 +9,7 @@ const episodesApi = `${gscriptBase}/${episodesApiId}/exec`
 
 document.addEventListener('DOMContentLoaded', function () {
     populateEpisodes()
+    prefillFromLocalstorage()
     const submitE = get('db-feedback-submit')
     submitE.addEventListener('click', submitEpisode)
 })
@@ -32,12 +33,23 @@ const populateEpisodes = async () => {
         option.text = `${episode.Nimetus} (${episode.Allikas})`
         select.appendChild(option)
     })
+}
+
+const prefillFromLocalstorage = () => {
     // if selected episode in local storage, set it
+    const episodeSelect = document.getElementById('db-feedback-episode-select')
     const selectedEpisode = localStorage.getItem('selectedEpisode')
     if (selectedEpisode) {
-        select.value = selectedEpisode
+        episodeSelect.value = selectedEpisode
+    }
+    // if email in local storage, set it
+    const emailInput = document.getElementById('db-feedback-email')
+    const email = localStorage.getItem('email')
+    if (email) {
+        emailInput.value = email
     }
 }
+
 
 const getEpisodes = async () => {
     try {
@@ -50,10 +62,14 @@ const getEpisodes = async () => {
 
 const submitEpisode = (evnt) => {
 
-    // get selected episode
-    const episodeId = get('db-feedback-episode-select').value
     // save selected episode to local storage
+    const episodeId = get('db-feedback-episode-select').value
     localStorage.setItem('selectedEpisode', episodeId)
+
+    // save email to local storage
+    const email = get('db-feedback-email').value
+    localStorage.setItem('email', email)
+
     const xhr2 = new XMLHttpRequest()
     xhr2.open('POST', feedbackApi, true)
 
