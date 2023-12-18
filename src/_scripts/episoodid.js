@@ -61,6 +61,10 @@ const getEpisodes = async () => {
 }
 
 const submitEpisode = (evnt) => {
+    // if email is not valid, do not submit
+    if (!validateEmail(email)) {
+        return
+    }
 
     // save selected episode to local storage
     const episodeId = get('db-feedback-episode-select').value
@@ -91,4 +95,23 @@ const submitEpisode = (evnt) => {
 
     xhr2.send(formData)
     evnt.preventDefault()
+}
+
+const validateEmail = (email) => {
+    const emailInput = get('db-feedback-email')
+    if (!email || email.length === 0) {
+        emailInput.classList.add('is-invalid')
+        return false
+    }
+    if (!email.includes('@')) {
+        emailInput.classList.add('is-invalid')
+        return false
+    }
+    const emailRe = /\S+@\S+\.\S+/
+    if (!emailRe.test(email)) {
+        emailInput.classList.add('is-invalid')
+        return false
+    }
+    emailInput.classList.remove('is-invalid')
+    return true
 }
