@@ -62,7 +62,7 @@ const getEpisodes = async () => {
 
 const submitEpisode = (evnt) => {
     // if email is not valid, do not submit
-    if (!validateEmail(email)) {
+    if (!validateEmail()) {
         return
     }
 
@@ -97,8 +97,9 @@ const submitEpisode = (evnt) => {
     evnt.preventDefault()
 }
 
-const validateEmail = (email) => {
+const validateEmail = () => {
     const emailInput = get('db-feedback-email')
+    const email = emailInput.value
     if (!email || email.length === 0) {
         emailInput.classList.add('is-invalid')
         return false
