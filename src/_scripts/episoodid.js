@@ -50,7 +50,6 @@ const getEpisodes = async () => {
 
 const submitEpisode = (evnt) => {
 
-    const formE = get('db-feedback')
     // get selected episode
     const episodeId = get('db-feedback-episode-select').value
     // save selected episode to local storage
@@ -59,11 +58,7 @@ const submitEpisode = (evnt) => {
     xhr2.open('POST', feedbackApi, true)
 
     xhr2.onload = function () { // request successful
-        // we can use server response to our request now
-        // document.dispatchEvent(new KeyboardEvent('keydown', { 'key': 'Escape' }))
         console.log('response', xhr2.responseText)
-        // formE.reset()
-        // hide form
         closeModal()
     }
 
