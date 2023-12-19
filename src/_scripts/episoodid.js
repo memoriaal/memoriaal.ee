@@ -3,8 +3,8 @@ const feedbackApiId =
     'AKfycbyRe0i0Q4g9cqOg0Dxt2Da3KqmXzTSYutb141G5AHAlt3N9P84LgGrj0awcPqjCMJKWWA'
 const feedbackApi = `${gscriptBase}/${feedbackApiId}/exec`
 const episodesApiId =
-    'AKfycbyRe0i0Q4g9cqOg0Dxt2Da3KqmXzTSYutb141G5AHAlt3N9P84LgGrj0awcPqjCMJKWWA'
-const episodesApi = `${gscriptBase}/${episodesApiId}/exec`
+    'AKfycbzVtTRjfZxD-U5wrzQ-OrcupXY_3W19cOay6632XK-jJcxhLyY6tSwKiraAgDTYUCBRsA'
+const episodesApi = `${gscriptBase}/${episodesApiId}/exec?Episoodid`
 
 
 document.addEventListener('DOMContentLoaded', function () {
