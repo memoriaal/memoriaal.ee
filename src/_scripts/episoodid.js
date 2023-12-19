@@ -6,9 +6,15 @@ const episodesApiId =
     'AKfycbzVtTRjfZxD-U5wrzQ-OrcupXY_3W19cOay6632XK-jJcxhLyY6tSwKiraAgDTYUCBRsA'
 const episodesApi = `${gscriptBase}/${episodesApiId}/exec?Episoodid`
 
+const episodes = []
 
 document.addEventListener('DOMContentLoaded', function () {
-    populateEpisodes()
+    // fetch episodes from api and add to global episodes array
+    populateEpisodes().then(episodes => {
+        episodes.forEach(episode => {
+            episodes.push(episode)
+        })
+    })
     prefillFromLocalstorage()
     const submitE = get('db-feedback-submit')
     submitE.addEventListener('click', submitEpisode)
@@ -33,6 +39,16 @@ const populateEpisodes = async () => {
         option.text = `${episode.Nimetus} (${episode.Allikas})`
         select.appendChild(option)
     })
+    return episodes
+}
+
+const getEpisodes = async () => {
+    try {
+        const response = await fetch(episodesApi)
+        return await response.json()
+    } catch (err) {
+        throw err
+    }
 }
 
 const prefillFromLocalstorage = () => {
@@ -47,16 +63,6 @@ const prefillFromLocalstorage = () => {
     const email = localStorage.getItem('email')
     if (email) {
         emailInput.value = email
-    }
-}
-
-
-const getEpisodes = async () => {
-    try {
-        const response = await fetch(episodesApi)
-        return await response.json()
-    } catch (err) {
-        throw err
     }
 }
 
