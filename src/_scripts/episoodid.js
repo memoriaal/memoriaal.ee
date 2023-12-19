@@ -1,6 +1,6 @@
 const gscriptBase = 'https://script.google.com/macros/s'
 const feedbackApiId =
-    'AKfycbyRe0i0Q4g9cqOg0Dxt2Da3KqmXzTSYutb141G5AHAlt3N9P84LgGrj0awcPqjCMJKWWA'
+    'AKfycbzVtTRjfZxD-U5wrzQ-OrcupXY_3W19cOay6632XK-jJcxhLyY6tSwKiraAgDTYUCBRsA'
 const feedbackApi = `${gscriptBase}/${feedbackApiId}/exec`
 const episodesApiId =
     'AKfycbzVtTRjfZxD-U5wrzQ-OrcupXY_3W19cOay6632XK-jJcxhLyY6tSwKiraAgDTYUCBRsA'
