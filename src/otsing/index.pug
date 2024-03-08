@@ -148,12 +148,14 @@ block script
                             if (p.pereseosed && p.pereseosed.length > 0) {
                                 text.push('<div class="pere"><label>Represseeritud pereliikmed</label>')
                                 for (var ip = 0; ip < p.pereseosed.length; ip++) {
-                                    let pereseos = p.pereseosed[ip].seos
-                                    if (p.pereseosed[ip].suund === '-1') {
-                                        pereseos = '(' + pereseos + ')'
+                                    const pereseos = p.pereseosed[ip]
+                                    //- let pereseos = p.pereseosed[ip].seos
+                                    if (pereseos.suund === '-1') {
+                                        pereseos.seos = '(' + pereseos.seos + ')'
                                     }
-                                    let perekirjed = p.pereseosed[ip].kirjed
-                                    text.push('<p class="my-0"><a href="?q=' + p.pereseosed[ip].persoon + '">' + p.pereseosed[ip].persoon + ' ' + pereseos + '</a></p>')
+                                    let perekirjed = pereseos.kirjed
+                                    console.log(pereseos)
+                                    text.push('<p class="my-0"><a href="?q=' + pereseos.persoon + '">' + pereseos.persoon + ' ' + pereseos.seos + '</a></p>')
                                     text.push('<div class="pereliige">')
                                     for (var ik = 0; ik < perekirjed.length; ik++) {
                                         text.push('<p class="mb-1">- ')
