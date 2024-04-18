@@ -10,6 +10,7 @@ q:
     emanimi: Emanimi
     synniaeg: Sünniaeg
     surmaaeg: Surmaaeg
+
 result:
     title: Otsing kommunismiohvrite andmebaasist
     count:
@@ -25,6 +26,7 @@ result:
     nameOnPlaque: nimi tahvlil
     nameOnEVOPlaque: nimi ohvitseride mälestusmärgil
     family: perekond
+
 feedback:
     button: Tagasiside
     title: Tagasiside %name% kohta
@@ -34,6 +36,8 @@ feedback:
     email: Täitja e-post
 
     episode: Episood
+    episodeDate: Kuupäev
+    rownum: Järjekorranumber
     emiPerson: EMI isiku ID (persoon)
     forename: Eesnimi
     surname: Perenimi

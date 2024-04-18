@@ -1,0 +1,52 @@
+language: ukrainian
+path: search
+title: Пошук
+pictures:
+    - /images/bg/andmebaas.jpg
+q:
+    episood_elukoht:
+    episood_vangilaager:
+    eesnimi: Ім'я
+    perenimi: Прізвище
+    isanimi: Ім'я батька
+    emanimi: Ім'я матері
+    synniaeg: Дата народження
+    surmaaeg: Дата смерті
+
+result:
+    title: Пошук у базі даних жертв комунізму
+    count:
+        one: запис
+        multiple: записів
+    father: батько
+    mother: мати
+    born: народився
+    dead: помер
+    plaque: меморіальна дошка
+    col: колонка
+    row: рядок
+    nameOnPlaque: ім'я на дошці
+    nameOnEVOPlaque: ім'я на пам'ятній дошці офіцерів
+    family: сім'я
+
+feedback:
+    button: Зворотній зв'язок
+    title: Зворотній зв'язок про %name%
+    text: |
+        Виберіть епізод. Якщо відома дата народження, вкажіть її.
+        Будь-яка інша інформація також вітається.
+    email: Контактний E-mail
+
+    episode: Episode
+    episodeDate: Date
+    rownum: Row number
+    emiPerson: EMI person ID
+    forename: First name
+    surname: Last name
+    patronymic: Father's name
+    born: Date of birth
+    feedback: Feedback
+
+    submit: Send feedback
+    cancel: Cancel
+    success: Thank You!

@@ -27,13 +27,23 @@ result:
     nameOnPlaque: nimi tahvlil
     nameOnEVOPlaque: nimi ohvitseride mälestusmärgil
     family: family
+
 feedback:
     button: Feedback
     title: Feedback about %name%
     text:
     email: Contact E-mail
-    phone: Contact Phone
+
+    episode: Episode
+    episodeDate: Date
+    rownum: Row number
+    emiPerson: EMI person ID
+    forename: First name
+    surname: Last name
+    patronymic: Father's name
+    born: Date of birth
     feedback: Feedback
+
     submit: Send feedback
     cancel: Cancel
     success: Thank You!

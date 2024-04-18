@@ -1,14 +1,21 @@
 const gscriptBase = 'https://script.google.com/macros/s'
 const feedbackApiId =
-    'AKfycbyRe0i0Q4g9cqOg0Dxt2Da3KqmXzTSYutb141G5AHAlt3N9P84LgGrj0awcPqjCMJKWWA'
+    'AKfycbzVtTRjfZxD-U5wrzQ-OrcupXY_3W19cOay6632XK-jJcxhLyY6tSwKiraAgDTYUCBRsA'
 const feedbackApi = `${gscriptBase}/${feedbackApiId}/exec`
 const episodesApiId =
-    'AKfycbyRe0i0Q4g9cqOg0Dxt2Da3KqmXzTSYutb141G5AHAlt3N9P84LgGrj0awcPqjCMJKWWA'
-const episodesApi = `${gscriptBase}/${episodesApiId}/exec`
+    'AKfycbzVtTRjfZxD-U5wrzQ-OrcupXY_3W19cOay6632XK-jJcxhLyY6tSwKiraAgDTYUCBRsA'
+const episodesApi = `${gscriptBase}/${episodesApiId}/exec?Episoodid`
 
+const episodes = []
 
 document.addEventListener('DOMContentLoaded', function () {
-    populateEpisodes()
+    // fetch episodes from api and add to global episodes array
+    populateEpisodes().then(episodes => {
+        episodes.forEach(episode => {
+            episodes.push(episode)
+        })
+    })
+    prefillFromLocalstorage()
     const submitE = get('db-feedback-submit')
     submitE.addEventListener('click', submitEpisode)
 })
@@ -29,9 +36,10 @@ const populateEpisodes = async () => {
     episodes.forEach(episode => {
         const option = document.createElement('option')
         option.value = episode.id
-        option.text = episode.Nimetus
+        option.text = `${episode.Nimetus} (${episode.Allikas})`
         select.appendChild(option)
     })
+    return episodes
 }
 
 const getEpisodes = async () => {
@@ -43,24 +51,48 @@ const getEpisodes = async () => {
     }
 }
 
-const submitEpisode = (evnt) => {
+const prefillFromLocalstorage = () => {
+    // if selected episode in local storage, set it
+    const episodeSelect = document.getElementById('db-feedback-episode-select')
+    const selectedEpisode = localStorage.getItem('selectedEpisode')
+    if (selectedEpisode) {
+        episodeSelect.value = selectedEpisode
+    }
+    // if email in local storage, set it
+    const emailInput = document.getElementById('db-feedback-email')
+    const email = localStorage.getItem('email')
+    if (email) {
+        emailInput.value = email
+    }
+}
 
-    const formE = get('db-feedback')
+const submitEpisode = (evnt) => {
+    // if email is not valid, do not submit
+    if (!validateEmail()) {
+        return
+    }
+
+    // save selected episode to local storage
+    const episodeId = get('db-feedback-episode-select').value
+    localStorage.setItem('selectedEpisode', episodeId)
+
+    // save email to local storage
+    const email = get('db-feedback-email').value
+    localStorage.setItem('email', email)
+
     const xhr2 = new XMLHttpRequest()
     xhr2.open('POST', feedbackApi, true)
 
     xhr2.onload = function () { // request successful
-        // we can use server response to our request now
-        // document.dispatchEvent(new KeyboardEvent('keydown', { 'key': 'Escape' }))
         console.log('response', xhr2.responseText)
-        formE.reset()
-        // hide form
         closeModal()
     }
 
     xhr2.onerror = function () {
         console.log('Error:', xhr2.status)
     }
+
+    const formE = get('db-feedback')
     const formData = new FormData(formE)
     // add current url to form data
     formData.append('url', window.location.href)
@@ -71,4 +103,27 @@ const submitEpisode = (evnt) => {
 
     xhr2.send(formData)
     evnt.preventDefault()
+}
+
+const validateEmail = () => {
+    const emailInput = get('db-feedback-email')
+    const email = emailInput.value
+    if (!email || email.length === 0) {
+        emailInput.classList.add('is-invalid')
+        alert('Palun sisesta e-posti aadress')
+        return false
+    }
+    if (!email.includes('@')) {
+        emailInput.classList.add('is-invalid')
+        alert('Palun sisesta korrektne e-posti aadress')
+        return false
+    }
+    const emailRe = /\S+@\S+\.\S+/
+    if (!emailRe.test(email)) {
+        emailInput.classList.add('is-invalid')
+        alert('Palun sisesta korrektne e-posti aadress')
+        return false
+    }
+    emailInput.classList.remove('is-invalid')
+    return true
 }

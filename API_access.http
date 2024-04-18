@@ -43,3 +43,6 @@ Accept: application/json, text/plain, */*
 Authorization: Bearer
 Referer: https://www.familysearch.org
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+
+### read from episoodid tagasiside google spreadsheet
+https://script.google.com/macros/s/AKfycbzVtTRjfZxD-U5wrzQ-OrcupXY_3W19cOay6632XK-jJcxhLyY6tSwKiraAgDTYUCBRsA/exec?Tagasiside&born=1935-10-09

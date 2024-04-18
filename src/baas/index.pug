@@ -69,53 +69,58 @@ block content
             #db-feedback-text.col-12.col-md-10.offset-md-1
                 +markdown(self.feedback.text)
 
-            form#db-feedback.col-12.col-md-8.offset-md-2(name='db-feedback', method='POST', netlify-honeypot='fax', netlify)
+            form#db-feedback.col-12.col-md-8.offset-md-2(name='db-feedback2', method='POST', netlify-honeypot='fax', netlify)
                 .form-group.mt-5
-                    label.form-label.col-12.px-0(for='db-feedback-email'
+                    label.form-label.col-12.px-0(for='db-feedback2-email'
                         )= self.feedback.email
-                    input#db-feedback-email.col-12.px-0(
+                    input#db-feedback2-email.col-12.px-0(
                         type='email', name='contact-email')
                 hr
                 .form-group.mt-5
-                    label.form-label.col-12.px-0(for='db-feedback-emiPerson'
+                    label.form-label.col-12.px-0(for='db-feedback2-emiPerson'
                         )= self.feedback.emiPerson
-                    input#db-feedback-emiPerson.col-12.px-0(
+                    input#db-feedback2-emiPerson.col-12.px-0(
                         type='text', name='emiPerson')
+                .form-group.mt-5
+                    label.form-label.col-12.px-0(for='db-feedback2-rownum'
+                        )= self.feedback.rownum
+                    input#db-feedback2-rownum.col-12.px-0(
+                        type='number', name='rownum')
                 //- Episoodide filter, mida täidetakse javascriptis
                 //- Valikud laetakse API kaudu episoodid.js abil
                 //- API tagastab JSON-i kujul
                 //- [[{"id":1,"Kuupäev":"1947-12","Nimetus":"Esbjergi (Gjesingi) laagris asuvad eestlased detsembris 1947"}]
                 .form-group.mt-5
-                    label.form-label.col-12.px-0(for='db-feedback-episode'
+                    label.form-label.col-12.px-0(for='db-feedback2-episode'
                         )= self.feedback.episode
-                    select#db-feedback-episode-select.col-12.px-0(name='episode')
+                    select#db-feedback2-episode-select.col-12.px-0(name='episode')
                     //- fetch episoodid from getEpisodes() in episoodid.js on document load
 
                 .form-group.mt-5
-                    label.form-label.col-12.px-0(for='db-feedback-forename'
+                    label.form-label.col-12.px-0(for='db-feedback2-forename'
                         )= self.feedback.forename
-                    input#db-feedback-forename.col-12.px-0(
+                    input#db-feedback2-forename.col-12.px-0(
                         type='text', name='forename')
                 .form-group.mt-5
-                    label.form-label.col-12.px-0(for='db-feedback-surname'
+                    label.form-label.col-12.px-0(for='db-feedback2-surname'
                         )= self.feedback.surname
-                    input#db-feedback-surname.col-12.px-0(
+                    input#db-feedback2-surname.col-12.px-0(
                         type='text', name='surname')
                 .form-group.mt-5
-                    label.form-label.col-12.px-0(for='db-feedback-patronymic'
+                    label.form-label.col-12.px-0(for='db-feedback2-patronymic'
                         )= self.feedback.patronymic
-                    input#db-feedback-patronymic.col-12.px-0(
+                    input#db-feedback2-patronymic.col-12.px-0(
                         type='text', name='patronymic')
                 .form-group.mt-5
-                    label.form-label.col-12.px-0(for='db-feedback-born'
+                    label.form-label.col-12.px-0(for='db-feedback2-born'
                         )= self.feedback.born
-                    input#db-feedback-born.col-12.px-0(
+                    input#db-feedback2-born.col-12.px-0(
                         type='date', name='born')
                 .form-group.mt-5
-                    label.form-label.col-12.px-0(for='db-feedback-feedback')= self.feedback.feedback
-                    textarea#db-feedback-feedback.col-12.px-0(name='feedback', rows=5)
+                    label.form-label.col-12.px-0(for='db-feedback2-feedback')= self.feedback.feedback
+                    textarea#db-feedback2-feedback.col-12.px-0(name='feedback', rows=5)
                 .form-group.mt-5.text-right
-                    button#db-feedback-cancel.btn.btn-secondary= self.feedback.cancel
+                    button#db-feedback2-cancel.btn.btn-secondary= self.feedback.cancel
                     button#db-feedback-submit.btn.btn-primary.ml-3(type='submit')= self.feedback.submit
 
             h2#db-feedback-success.col-12.d-none= self.feedback.success
