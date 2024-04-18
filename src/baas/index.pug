@@ -2,6 +2,10 @@ extends /_templates/baas_layout.pug
 
 
 block content
+
+    include /_templates/formFeedback.pug
+    include /_templates/formNewPerson.pug
+
     #search.col-12
         h3.mb-3= self.title
         form#searchForm.form.row(action='/baas/', method='GET')
@@ -312,7 +316,7 @@ block script
             }
 
             console.log({qData: JSON.stringify(qData, null, 2)})
-            $.ajax('/.netlify/functions/baas_search', {
+            $.ajax('/netlify/functions/baas_search', {
                 data : JSON.stringify(qData),
                 contentType : 'application/json',
                 type : 'POST',

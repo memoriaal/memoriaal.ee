@@ -21,7 +21,7 @@ $(function () {
             'tahvlikirje.kirjekood', 'tahvlikirje.kirje', 'tahvlikirje.tahvel', 'tahvlikirje.tulp', 'tahvlikirje.rida'
         ]
     }
-    $.ajax('/.netlify/functions/search', {
+    $.ajax('/netlify/functions/search', {
         data : JSON.stringify(qData),
         contentType : 'application/json',
         type : 'POST',

@@ -1,0 +1,43 @@
+.w3-modal.w3-card-4#newPersonFormRoot.modal-root
+    form#newPersonForm.w3-modal-content.modal-content(method="POST")
+        //- title of the form
+        button.w3-button.close-modal(type="button", style="position: absolute; right: 0px;") &times;
+        .w3-container
+            h1= self.newPersonForm.title
+            //- description of the form
+            p= self.newPersonForm.description
+            //- iterate over sections
+            each section in self.newPersonForm.sections
+                .w3-container()
+                    //- section title
+                    h2= section.title
+                    each field in section.fields
+                        - field.autocomplete = field.autocomplete || 'off'
+                        //- field label
+                        //- add red asterisk if required
+                        label= field.label + (field.required ? ' *' : '')
+                        //- field input
+                        //- add .wwii-invalid class, if required
+                        //- set autocomplete to on, if required, otherwise off
+                        if (field.type === 'textarea')
+                            textarea.w3-input.w3-border(
+                                id=field.name, name=field.name, placeholder=field.placeholder||false, required=field.required||false, validator=field.validator||false, rows=field.rows||3, cols=field.cols||80, class=field.required ? 'wwii-invalid' : '' persistent=section.persistent||false, 
+                                autocomplete=field.autocomplete, 
+                                readonly=field.autocomplete === 'off' ? true : false, 
+                                onfocus=field.autocomplete === 'off' ? 'this.removeAttribute(\'readonly\');' : '', 
+                                onblur=field.autocomplete === 'off' ? 'this.setAttribute(\'readonly\', true);' : ''
+                            )
+                        else
+                            input.w3-input.w3-border(
+                                id=field.name, type=field.type, name=field.name, placeholder=field.placeholder||false, required=field.required||false, validator=field.validator||false, class=field.required ? 'wwii-invalid' : '' persistent=section.persistent||false, 
+                                autocomplete=field.autocomplete, 
+                                readonly=field.autocomplete === 'off' ? true : false, 
+                                onfocus=field.autocomplete === 'off' ? 'this.removeAttribute(\'readonly\');' : '', 
+                                onblur=field.autocomplete === 'off' ? 'this.setAttribute(\'readonly\', true);' : ''
+                            )
+
+        button#newPersonFormSubmitButton.w3-button.w3-block.w3-padding.w3-blue(
+            type="submit",
+            style="margin-bottom: 3em; margin-top: 1em;"
+            )= self.newPersonForm.submit
+        

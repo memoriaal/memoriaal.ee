@@ -51,3 +51,155 @@ search:
         officers: From the Monument to Regular Officers
         mv: Forest Brothers
         refugees: From the Refugees of WWII
+
+newPersonForm:
+    linkText: Feedback on a missing person
+    title: Feedback
+    description: "If you would like to give feedback on the database, please fill in the form below."
+    sections:
+        -   title: Person who fled from Estonia
+            fields:
+                -   label: First name
+                    name: forename
+                    type: text
+                -   label: Surname
+                    name: surname
+                    type: text
+                -   label: Date of birth
+                    name: birthdate
+                    type: date
+                    format: YYYY-MM-DD
+                -   label: Place of birth
+                    name: birthplace
+                    type: text
+                -   label: Date of death
+                    name: deathdate
+                    type: date
+                    format: YYYY-MM-DD
+                -   label: Place of death
+                    name: deathplace
+                    type: text
+                -   label: Occupation in Estonia
+                    name: occupation
+                    type: text
+                -   label: Residence in Estonia
+                    name: residence
+                    type: text
+                -   label: Place in Estonia from which he/she left on the escape route
+                    name: departureplace
+                    type: text
+                -   label: When did he/she leave Estonia
+                    name: departuredate
+                    type: date
+                    format: YYYY-MM-DD
+                -   label: How did he/she leave Estonia (by ship, by train)
+                    name: departuremode
+                    type: text
+                -   label: Which route did he/she leave Estonia
+                    name: departureroute
+                    type: text
+                -   label: When did he/she arrive in the destination country
+                    name: arrivaldate
+                    type: date
+                    format: YYYY-MM-DD
+                -   label: Which country did he/she arrive in
+                    name: arrivalcountry
+                    type: text
+                -   label: Which city in the destination country did he/she arrive in
+                    name: arrivalcity
+                    type: text
+                -   label: which city in the destination country did he/she move to
+                    name: arrivalcityresidence
+                    type: text
+                -   label: if moved forward, which country did he/she move to
+                    name: onwardcountry
+                    type: text
+
+        -   title: Information provider
+            persistent: true
+            fields:
+                -   label: Your relationship with the person who fled
+                    name: contactRelationship
+                    type: text
+                    autocomplete: on
+                -   label: Your name
+                    name: contactName
+                    type: text
+                    required: true
+                    autocomplete: on
+                -   label: Your e-mail address
+                    name: contactEmail
+                    type: email
+                    validator: email
+                    required: true
+                    autocomplete: on
+        -   title: Other
+            fields:
+                -   label: Additional information
+                    name: additionalInfo
+                    type: textarea
+                    rows: 5
+                    placeholder: "Please add any additional information here"
+    submit: Submit
+
+searchResultForm:
+    linkText: Feedback on %s
+    title: Feedback
+    description: "If you would like to give feedback on %s, please fill in the form below."
+    sections:
+        -   title: Information provider
+            persistent: true
+            fields:
+                -   label: Your name
+                    name: contactName
+                    type: text
+                    required: true
+                    autocomplete: on
+                -   label: Your e-mail address
+                    name: contactEmail
+                    type: email
+                    validator: email
+                    required: true
+                    autocomplete: on
+                -   label: Your phone number
+                    name: contactPhone
+                    type: text
+                    autocomplete: on
+        -   title: Feedback
+            fields:
+                -   label: code
+                    name: code
+                    type: hidden
+                -   label: Forename
+                    name: forename
+                    type: text
+                -   label: Surname
+                    name: surname
+                    type: text
+                -   label: Father's name
+                    name: fathername
+                    type: text
+                -   label: Mother's name
+                    name: mothername
+                    type: text
+                -   label: Date of birth
+                    name: birthdate
+                    type: date
+                    format: YYYY-MM-DD
+                -   label: Birth place
+                    name: birthplace
+                    type: text
+                -   label: Date of death
+                    name: deathdate
+                    type: date
+                    format: YYYY-MM-DD
+                -   label: Place of death
+                    name: deathplace
+                    type: text
+                -   label: Feedback
+                    name: feedback
+                    type: textarea
+                    rows: 5
+                    placeholder: "Please add any additional information here"
+    submit: Submit
+

@@ -10,11 +10,11 @@ const episodes = []
 
 document.addEventListener('DOMContentLoaded', function () {
     // fetch episodes from api and add to global episodes array
-    populateEpisodes().then(episodes => {
-        episodes.forEach(episode => {
-            episodes.push(episode)
-        })
-    })
+    // populateEpisodes().then(episodes => {
+    //     episodes.forEach(episode => {
+    //         episodes.push(episode)
+    //     })
+    // })
     prefillFromLocalstorage()
     const submitE = get('db-feedback-submit')
     submitE.addEventListener('click', submitEpisode)
