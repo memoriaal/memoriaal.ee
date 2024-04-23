@@ -1,40 +1,44 @@
-.w3-modal.w3-card-4#searchResultFormRoot.modal-root
-    form#searchResultForm.w3-modal-content.modal-content(method="POST")
-        //- title of the form
-        button.w3-button.w3-right.close-modal(type="button", style="position: absolute; right: 0px;") &times;
-        .w3-container
-            h1= self.searchResultForm.title
-            //- description of the form
-            p#searchResultFormDescription= self.searchResultForm.description
+#popup-content.p-3.d-none
+    .row
+        h2#db-feedback-title.col-12= self.feedback.title
+        #db-feedback-text.col-12.col-md-10.offset-md-1
+            +markdown(self.feedback.text)
+
+        form#db-feedback.col-12.col-md-8.offset-md-2(name='db-feedback2', method='POST')
+
+            //- title of the form
+            button.w3-button.w3-right.close-modal(type="button", style="position: absolute; right: 0px;") &times;
+
             //- iterate over sections
             each section in self.searchResultForm.sections
-                .w3-container
-                    //- section title
-                    h2= section.title
-                    each field in section.fields
+                //- section title
+                h2= section.title
+                each field in section.fields
+                    .form-group.mt-5
                         - field.autocomplete = field.autocomplete || 'off'
                         //- field label
                         if (field.type !== 'hidden')
-                            label= field.label + (field.required ? ' *' : '')
+                            label.form-label.col-12.px-0(for='db-feedback2-email'
+                        )= field.label + (field.required ? ' *' : '')
                         //- field input
                         if (field.type === 'textarea')
-                            textarea.w3-input.w3-border(
-                                id=field.name, name=field.name, placeholder=field.placeholder||false, required=field.required||false, validator=field.validator||false, rows=field.rows||3, cols=field.cols||80, class=field.required ? 'wwii-invalid' : '' persistent=section.persistent||false, 
-                                autocomplete=field.autocomplete, 
-                                readonly=field.autocomplete === 'off' ? true : false, 
-                                onfocus=field.autocomplete === 'off' ? 'this.removeAttribute(\'readonly\');' : '', 
+                            textarea.col-12.px-0(
+                                id=field.name, name=field.name, placeholder=field.placeholder||false, required=field.required||false, validator=field.validator||false, rows=field.rows||3, cols=field.cols||80, class=field.required ? 'wwii-invalid' : '' persistent=section.persistent||false,
+                                autocomplete=field.autocomplete,
+                                readonly=field.autocomplete === 'off' ? true : false,
+                                onfocus=field.autocomplete === 'off' ? 'this.removeAttribute(\'readonly\');' : '',
                                 onblur=field.autocomplete === 'off' ? 'this.setAttribute(\'readonly\', true);' : ''
                             )
                         else
-                            input.w3-input.w3-border(
-                                id=field.name, type=field.type, name=field.name, placeholder=field.placeholder||false, required=field.required||false, validator=field.validator||false, class=field.required ? 'wwii-invalid' : '' persistent=section.persistent||false, 
-                                autocomplete=field.autocomplete, 
-                                readonly=field.autocomplete === 'off' ? true : false, 
-                                onfocus=field.autocomplete === 'off' ? 'this.removeAttribute(\'readonly\');' : '', 
+                            input.col-12.px-0(
+                                id=field.name, type=field.type, name=field.name, placeholder=field.placeholder||false, required=field.required||false, validator=field.validator||false, class=field.required ? 'wwii-invalid' : '' persistent=section.persistent||false,
+                                autocomplete=field.autocomplete,
+                                readonly=field.autocomplete === 'off' ? true : false,
+                                onfocus=field.autocomplete === 'off' ? 'this.removeAttribute(\'readonly\');' : '',
                                 onblur=field.autocomplete === 'off' ? 'this.setAttribute(\'readonly\', true);' : ''
                             )
 
-        button#searchResultFormSubmitButton.w3-button.w3-block.w3-section.w3-padding.w3-blue.w3-round(
-            type="submit",
-            style="margin-bottom: 3em; margin-top: 1em;"
-            )= self.searchResultForm.submit
+            .form-group.mt-5.text-right
+                button#db-feedback2-cancel.btn.btn-secondary= self.feedback.cancel
+                button#db-feedback-submit.btn.btn-primary.ml-3(type='submit')= self.feedback.submit
+        h2#db-feedback-success.col-12.d-none= self.feedback.success

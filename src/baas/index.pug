@@ -4,7 +4,7 @@ extends /_templates/baas_layout.pug
 block content
 
     include /_templates/formFeedback.pug
-    include /_templates/formNewPerson.pug
+    //- include /_templates/formNewPerson.pug
 
     #search.col-12
         h3.mb-3= self.title
@@ -90,15 +90,6 @@ block content
                         )= self.feedback.rownum
                     input#db-feedback2-rownum.col-12.px-0(
                         type='number', name='rownum')
-                //- Episoodide filter, mida täidetakse javascriptis
-                //- Valikud laetakse API kaudu episoodid.js abil
-                //- API tagastab JSON-i kujul
-                //- [[{"id":1,"Kuupäev":"1947-12","Nimetus":"Esbjergi (Gjesingi) laagris asuvad eestlased detsembris 1947"}]
-                .form-group.mt-5
-                    label.form-label.col-12.px-0(for='db-feedback2-episode'
-                        )= self.feedback.episode
-                    select#db-feedback2-episode-select.col-12.px-0(name='episode')
-                    //- fetch episoodid from getEpisodes() in episoodid.js on document load
 
                 .form-group.mt-5
                     label.form-label.col-12.px-0(for='db-feedback2-forename'
