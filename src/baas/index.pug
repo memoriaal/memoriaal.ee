@@ -3,7 +3,6 @@ extends /_templates/baas_layout.pug
 
 block content
 
-    include /_templates/formFeedback.pug
     //- include /_templates/formNewPerson.pug
 
     #search.col-12
@@ -67,58 +66,7 @@ block content
         #search-results
 
     #popup-background.d-none
-    #popup-content.p-3.d-none
-        .row
-            h2#db-feedback-title.col-12= self.feedback.title
-            #db-feedback-text.col-12.col-md-10.offset-md-1
-                +markdown(self.feedback.text)
-
-            form#db-feedback.col-12.col-md-8.offset-md-2(name='db-feedback2', method='POST', netlify-honeypot='fax', netlify)
-                .form-group.mt-5
-                    label.form-label.col-12.px-0(for='db-feedback2-email'
-                        )= self.feedback.email
-                    input#db-feedback2-email.col-12.px-0(
-                        type='email', name='contact-email')
-                hr
-                .form-group.mt-5
-                    label.form-label.col-12.px-0(for='db-feedback2-emiPerson'
-                        )= self.feedback.emiPerson
-                    input#db-feedback2-emiPerson.col-12.px-0(
-                        type='text', name='emiPerson')
-                .form-group.mt-5
-                    label.form-label.col-12.px-0(for='db-feedback2-rownum'
-                        )= self.feedback.rownum
-                    input#db-feedback2-rownum.col-12.px-0(
-                        type='number', name='rownum')
-
-                .form-group.mt-5
-                    label.form-label.col-12.px-0(for='db-feedback2-forename'
-                        )= self.feedback.forename
-                    input#db-feedback2-forename.col-12.px-0(
-                        type='text', name='forename')
-                .form-group.mt-5
-                    label.form-label.col-12.px-0(for='db-feedback2-surname'
-                        )= self.feedback.surname
-                    input#db-feedback2-surname.col-12.px-0(
-                        type='text', name='surname')
-                .form-group.mt-5
-                    label.form-label.col-12.px-0(for='db-feedback2-patronymic'
-                        )= self.feedback.patronymic
-                    input#db-feedback2-patronymic.col-12.px-0(
-                        type='text', name='patronymic')
-                .form-group.mt-5
-                    label.form-label.col-12.px-0(for='db-feedback2-born'
-                        )= self.feedback.born
-                    input#db-feedback2-born.col-12.px-0(
-                        type='date', name='born')
-                .form-group.mt-5
-                    label.form-label.col-12.px-0(for='db-feedback2-feedback')= self.feedback.feedback
-                    textarea#db-feedback2-feedback.col-12.px-0(name='feedback', rows=5)
-                .form-group.mt-5.text-right
-                    button#db-feedback2-cancel.btn.btn-secondary= self.feedback.cancel
-                    button#db-feedback-submit.btn.btn-primary.ml-3(type='submit')= self.feedback.submit
-
-            h2#db-feedback-success.col-12.d-none= self.feedback.success
+    include /_templates/formFeedback.pug
 
 block script
     script.
