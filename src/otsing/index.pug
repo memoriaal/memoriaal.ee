@@ -130,7 +130,19 @@ block script
                             if (p.surm) { text.push('<p class="mb-0">#{self.result.dead}: ' + p.surm + '</p>') }
                             if (p.isanimi) { text.push('<p class="mb-0">#{self.result.father}: ' + p.isanimi + '</p>') }
                             if (p.emanimi) { text.push('<p class="mb-0">#{self.result.mother}: ' + p.emanimi + '</p>') }
-                            text.push('<p class="mb-0"><a href="./?q=' + p.id + '"># ' + p.id + '</a></p>')
+
+                            let pub_a = pub_b = ''
+                            if (p.wwii) {
+                                pub_a = '<a href="https://wwii-refugees.ee/?q=' + p.id + '">'
+                                pub_b = '</a>'
+                            }
+                            if (p.emem) {
+                                pub_a = '<a href="https://www.memoriaal.ee/otsing/?q=' + p.id + '">'
+                                pub_b = '</a>'
+                            }
+                            text.push('<p class="mb-0"># ' + pub_a + p.id + pub_b)
+
+                            //- text.push('<p class="mb-0"><a href="./?q=' + p.id + '"># ' + p.id + '</a></p>')
                             text.push('<p class="search-result-feedback mt-3" data-id="' + p.id + '" data-name="' + p.eesnimi + ' ' + p.perenimi + '">#{self.feedback.button}</p>')
                             text.push('</div>')
 
