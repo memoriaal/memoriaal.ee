@@ -81,7 +81,7 @@ block script
                         'perenimi', 'eesnimi', 'isanimi', 'emanimi', 'perenimed', 'eesnimed',
                         'sünd', 'surm', 'id',
                         'kirjed.kirje', 'kirjed.kirjekood', 'kirjed.viide', 'kirjed.allikas', 'kirjed.allika_nimetus',
-                        'pereseosed.persoon', 'pereseosed.kirje',
+                        'pereseosed.persoon', 'pereseosed.kirje', 'pereseosed.emem', 'pereseosed.wwii',
                         'pereseosed.seos', 'pereseosed.suund', 'pereseosed.kirjed',
                         'tahvlikirje.kirjekood', 'tahvlikirje.kirje', 'tahvlikirje.tahvel', 'tahvlikirje.tulp', 'tahvlikirje.rida',
                         'episoodid.kirjekood', 'episoodid.asukoht', 'episoodid.nimetus'
@@ -141,8 +141,8 @@ block script
                                 pub_b = '</a>'
                             }
                             text.push('<p class="mb-0"># ' + pub_a + p.id + pub_b)
-
                             //- text.push('<p class="mb-0"><a href="./?q=' + p.id + '"># ' + p.id + '</a></p>')
+
                             text.push('<p class="search-result-feedback mt-3" data-id="' + p.id + '" data-name="' + p.eesnimi + ' ' + p.perenimi + '">#{self.feedback.button}</p>')
                             text.push('</div>')
 
@@ -167,7 +167,21 @@ block script
                                     }
                                     let perekirjed = pereseos.kirjed
                                     console.log(pereseos)
-                                    text.push('<p class="my-0"><a href="?q=' + pereseos.persoon + '">' + pereseos.persoon + ' ' + pereseos.seos + '</a></p>')
+                                    // if person has .emem record, link to memoriaal.ee;
+                                    // eise, if it has wwii record, link to wwii-refugees.ee
+                                    let pub_a = pub_b = ''
+                                    if (pereseos.emem) {
+                                        pub_a = '<a href="https://www.memoriaal.ee/otsing/?q=' + pereseos.persoon + '">'
+                                        pub_b = '</a>'
+                                    } else if (pereseos.wwii) {
+                                        pub_a = '<a href="https://wwii-refugees.ee/?q=' + pereseos.persoon + '">'
+                                        pub_b = '</a>'
+                                    } else { // if no memoriaal.ee or wwii-refugees.ee record, dont link
+                                        pub_a = ''
+                                        pub_b = ''
+                                    }
+                                    text.push('<p class="my-0">' + pub_a + pereseos.persoon + ' ' + pereseos.seos + pub_b + '</p>')
+                                    //- text.push('<p class="my-0"><a href="?q=' + pereseos.persoon + '">' + pereseos.persoon + ' ' + pereseos.seos + '</a></p>')
                                     text.push('<div class="pereliige">')
                                     for (var ik = 0; ik < perekirjed.length; ik++) {
                                         text.push('<p class="mb-1">- ')
