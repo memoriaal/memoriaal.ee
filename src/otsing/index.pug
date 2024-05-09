@@ -170,10 +170,10 @@ block script
                                     // if person has .emem record, link to memoriaal.ee;
                                     // eise, if it has wwii record, link to wwii-refugees.ee
                                     let pub_a = pub_b = ''
-                                    if (pereseos.emem) {
+                                    if (pereseos.emem === '1') {
                                         pub_a = '<a href="https://www.memoriaal.ee/otsing/?q=' + pereseos.persoon + '">'
                                         pub_b = '</a>'
-                                    } else if (pereseos.wwii) {
+                                    } else if (pereseos.wwii === '1') {
                                         pub_a = '<a href="https://wwii-refugees.ee/?q=' + pereseos.persoon + '">'
                                         pub_b = '</a>'
                                     } else { // if no memoriaal.ee or wwii-refugees.ee record, dont link
